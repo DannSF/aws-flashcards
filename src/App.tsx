@@ -36,6 +36,7 @@ import {
   WeakCards,
   Dialog,
 } from "./components/StudyWidgets";
+import { Challenge } from "./pages/Challenge";
 import { Dashboard } from "./pages/Dashboard";
 import { createEmptyCard } from "ts-fsrs";
 import { Button } from "./components/ui/button";
@@ -57,7 +58,8 @@ import {
 } from "./lib/progress";
 import type { DomainId, RecallRating, UserProgress } from "./types";
 
-type Page = "dashboard" | "study" | "library" | "analytics" | "settings";
+type Page =
+  "dashboard" | "study" | "library" | "analytics" | "settings" | "challenge";
 type Status = "all" | "new" | "learning" | "due" | "mastered";
 const statusNames: Record<Exclude<Status, "all">, string> = {
   new: "Nueva",
@@ -69,6 +71,7 @@ const initial = loadProgress();
 const nav: { page: Page; label: string; icon: LucideIcon }[] = [
   { page: "dashboard", label: "Mi dashboard", icon: LayoutDashboard },
   { page: "study", label: "Estudiar", icon: Layers3 },
+  { page: "challenge", label: "Reta tu conocimiento", icon: Target },
   { page: "library", label: "Biblioteca", icon: BookOpen },
   { page: "analytics", label: "Mi progreso", icon: BarChart3 },
 ];
@@ -252,7 +255,7 @@ function App() {
       const next = parseProgress(await file.text());
       if (
         !window.confirm(
-          `¿Reemplazar tu progreso por esta copia con ${next.history.length} repasos? Exporta primero tu progreso actual si quieres conservarlo.`,
+          `¿Reemplazar tu progreso por esta copia con ${next.history.length} repasos y ${next.challenges?.length ?? 0} retos? Exporta primero tu progreso actual si quieres conservarlo.`,
         )
       )
         return;
@@ -412,6 +415,7 @@ function App() {
                   library: "Biblioteca",
                   analytics: "Mi progreso",
                   settings: "Ajustes",
+                  challenge: "Reto de conocimiento",
                 }[page]
               }
             </strong>
@@ -453,6 +457,13 @@ function App() {
                 setQuery("");
                 go(p);
               }}
+            />
+          )}
+          {page === "challenge" && (
+            <Challenge
+              progress={progress}
+              onSave={commit}
+              blocked={!!storageError}
             />
           )}
           {page === "study" && (
@@ -1123,7 +1134,7 @@ function App() {
                     <div>
                       <h3>Empezar de nuevo</h3>
                       <p>
-                        Elimina tus repasos y estadísticas. Las tarjetas
+                        Elimina tus repasos, retos y estadísticas. Las tarjetas
                         permanecen.
                       </p>
                     </div>
@@ -1144,9 +1155,9 @@ function App() {
                   </p>
                   <p>
                     Esta primera versión incluye Flashcards, Aprender,
-                    repetición espaciada y analítica local. Los escenarios,
-                    comparaciones interactivas, simulador de examen y modo cram
-                    quedan para las siguientes fases.
+                    repetición espaciada, retos de opción múltiple y analítica
+                    local. Los escenarios, comparaciones interactivas, simulador
+                    de examen y modo cram quedan para las siguientes fases.
                   </p>
                   <p>
                     Las referencias oficiales se incluyen para consulta. Su
@@ -1249,7 +1260,7 @@ function App() {
           onClose={() => setResetConfirm(false)}
         >
           <p>
-            Se eliminarán todos los repasos y sesiones de este navegador.
+            Se eliminarán todos los repasos, sesiones y retos de este navegador.
             Exporta una copia antes si deseas conservarlos.
           </p>
           <div className="dialog-actions">

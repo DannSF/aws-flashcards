@@ -33,6 +33,20 @@ In study mode, use **Space** to reveal/hide an answer and **1–4** to rate a re
 
 “Mastered” is a learning heuristic: FSRS Review state, stability of at least 21 days, and not currently due. Recall accuracy is the percentage of self-ratings Good or Easy; it is **not** an exam score. A session is counted only after its first rating. Streaks use the browser's local calendar days and can include yesterday if you have not yet studied today.
 
+## Reta tu conocimiento
+
+Abre **Reta tu conocimiento** en la navegación o **Probar mi conocimiento** en el dashboard.
+
+- **Reto corto**: 10 o 20 preguntas de opción múltiple, con explicación después de confirmar cada respuesta. Incluye un caso real, la distinción clave y explicaciones de las cuatro opciones.
+- **Evaluación completa**: una pregunta por cada tarjeta del alcance elegido (114 para toda la biblioteca). Sin temporizador, sin preguntas repetidas y sin revelar respuestas hasta finalizar. Puedes evaluar también un dominio completo.
+- Al terminar: número de aciertos, porcentaje sobre el total del intento, resultados por dominio y revisión de errores o de todas las preguntas.
+- **Practicar mis errores** crea un reto independiente con solo las preguntas falladas, conservando el resultado original.
+- Cada respuesta confirmada queda guardada. Puedes pausar, recargar y usar **Continuar reto**. Las preguntas y el orden de opciones se conservan al reanudar.
+- El resumen muestra el último resultado de toda la biblioteca; no confunde el resultado de un reto corto o un repaso de errores con una evaluación global.
+- Los resultados se incluyen en las copias JSON. Las copias v1 anteriores siguen siendo compatibles. Restablecer progreso también elimina los retos.
+
+El porcentaje mide reconocimiento de respuestas de opción múltiple, no una predicción de aprobación oficial. Los retos no modifican FSRS, la precisión de recuerdo, la racha ni los repasos diarios. La biblioteca de alternativas relacionadas está en `src/data/challenges.ts`; añadir una tarjeta requiere incluir sus alternativas para habilitarla en retos.
+
 ## Validation
 
 ```sh
@@ -53,6 +67,9 @@ In this managed environment, the system Chromium was used because browser downlo
 
 - `src/data/cards.ts`: versioned learning content, independent of UI and user progress.
 - `src/data/domains.ts`: exam domain metadata and weights.
+- `src/pages/Challenge.tsx`: practice, full-library assessment, persistent resume, results, and incorrect-answer review.
+- `src/lib/challenge.ts`: challenge state transitions, scoring, randomization, and strict import validation.
+- `src/data/challenges.ts`: per-card correct answers, related alternatives, and option explanations.
 - `src/types.ts`: content, review, session, progress, and future exam interfaces.
 - `src/lib/progress.ts`: FSRS adapter, analytics utilities, backup validation, storage, and export.
 - `src/components/ui/button.tsx`: shadcn/ui button pattern with Radix Slot and class-variance-authority.
@@ -80,7 +97,7 @@ Official documentation retrieval returned HTTP 403 during implementation. Theref
 
 ## Next phases
 
-This is the requested first working MVP with FSRS and data protection added. The following are **not implemented** and have no placeholder navigation controls:
+This release includes the working MVP, FSRS, data protection, and untimed knowledge challenges. The following are **not implemented** and have no placeholder navigation controls:
 
 - Scenario-based multiple choice with per-option explanations.
 - Side-by-side service comparisons with mini-quizzes.

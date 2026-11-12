@@ -26,7 +26,7 @@ interface Props {
   progress: UserProgress;
   now: Date;
   onStudy: (domain: DomainId | "all", learn: boolean) => void;
-  onNavigate: (page: "library") => void;
+  onNavigate: (page: "library" | "challenge") => void;
 }
 export function Dashboard({ progress, now, onStudy, onNavigate }: Props) {
   const due = cards.filter(
@@ -104,6 +104,21 @@ export function Dashboard({ progress, now, onStudy, onNavigate }: Props) {
               : "Todo al día. Explora algo nuevo."
           }
         />
+      </section>
+      <section className="dashboard-challenge panel">
+        <div className="approach-icon">
+          <Target size={24} />
+        </div>
+        <div>
+          <h3>¿Cuánto sabes de toda tu biblioteca?</h3>
+          <p>
+            Rétate sin temporizador, evalúa tus {cards.length} tarjetas y
+            aprende de cada error.
+          </p>
+        </div>
+        <Button variant="outline" onClick={() => onNavigate("challenge")}>
+          Probar mi conocimiento <ArrowRight size={16} />
+        </Button>
       </section>
       <div className="dashboard-columns">
         <div className="dashboard-main">

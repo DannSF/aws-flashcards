@@ -62,4 +62,19 @@ export interface UserProgress {
   sessions: StudySession[];
   exams: ExamAttempt[];
   dailyGoal: number;
+  challenges?: ChallengeAttempt[];
+}
+
+export interface ChallengeAttempt {
+  id: string;
+  contentVersion: string;
+  kind: "practice" | "full" | "retry";
+  domain: DomainId | "all";
+  startedAt: string;
+  completedAt?: string;
+  questionIds: string[];
+  optionOrder: Record<string, string[]>;
+  answers: Record<string, string>;
+  cursor: number;
+  parentId?: string;
 }

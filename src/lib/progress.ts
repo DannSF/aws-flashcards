@@ -3,6 +3,8 @@ import type { Card } from "ts-fsrs";
 import { cards } from "../data/cards";
 import type { RecallRating, UserProgress } from "../types";
 
+import { parseChallenges } from "./challenge";
+
 export const STORAGE_KEY = "cloudrecall.progress.v1";
 export const scheduler = fsrs({ enable_fuzz: false, request_retention: 0.9 });
 export const emptyProgress = (): UserProgress => ({
@@ -103,6 +105,7 @@ export function parseProgress(raw: string): UserProgress {
     sessions: v.sessions as UserProgress["sessions"],
     exams: [],
     dailyGoal: v.dailyGoal as number,
+    challenges: parseChallenges(v.challenges),
   };
 }
 export function loadProgress(): {
