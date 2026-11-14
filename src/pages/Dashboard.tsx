@@ -56,7 +56,7 @@ export function Dashboard({ progress, now, onStudy, onNavigate }: Props) {
         <div>
           <div className="eyebrow">TU PRÓXIMO GRAN PASO EMPIEZA AQUÍ</div>
           <h1>
-            Hola, cloud learner <span className="wave">✦</span>
+            Tu próximo aprendizaje <span className="wave">✦</span>
           </h1>
           <p>
             Construye conocimiento que se queda contigo. Una tarjeta a la vez.
@@ -214,7 +214,7 @@ export function Dashboard({ progress, now, onStudy, onNavigate }: Props) {
                       <span className="domain-icon">
                         <Icon size={21} />
                       </span>
-                      <span className="weight">{d.weight}% del examen</span>
+                      <span className="weight">{activeCourse.id === 'clf-c02' ? `${d.weight}% del examen` : `${total} tarjetas`}</span>
                     </div>
                     <div className="domain-number">DOMINIO 0{i + 1}</div>
                     <h3>{d.name}</h3>
@@ -243,8 +243,8 @@ export function Dashboard({ progress, now, onStudy, onNavigate }: Props) {
             <div>
               <h3>Entender es mejor que memorizar.</h3>
               <p>
-                Preguntas en inglés. Explicaciones en español. Conecta cada
-                servicio con un caso real.
+                Relaciona cada concepto con un ejemplo práctico y comprueba
+                lo que recuerdas antes de ver la respuesta.
               </p>
             </div>
             <button

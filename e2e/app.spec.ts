@@ -34,7 +34,7 @@ test('invalid imports preserve existing progress and reset requires confirmation
 });
 test('mobile navigation and study have no horizontal overflow',async({page})=>{
  await page.setViewportSize({width:390,height:844});await page.goto('/');
- await expect(page.getByRole('heading',{name:/Hola, cloud learner/})).toBeVisible();
+ await expect(page.getByRole('heading',{name:/Tu próximo aprendizaje/})).toBeVisible();
  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
  await page.screenshot({path:'test-results/dashboard-mobile.png',fullPage:true});
  await page.getByRole('button',{name:'Abrir navegación'}).click();await page.getByRole('button',{name:'Biblioteca',exact:true}).click();await expect(page.getByRole('textbox',{name:'Buscar tarjetas'})).toBeVisible();
