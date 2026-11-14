@@ -1,7 +1,6 @@
-import { useRef, useState } from 'react';
-import { BookOpen, CheckCircle2, Download, FileJson, Plus, Upload, Search, Trash2, ArrowLeft, ArrowRight, FolderOpen } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
+import { BookOpen, CheckCircle2, Download, FileJson, Plus, Upload, Search, Trash2, ArrowLeft, ArrowRight } from 'lucide-react';
 import App from './App';
-import { Dialog } from './components/StudyWidgets';
 import { Button } from './components/ui/button';
 import { activateCourse, loadPackages, originalCourse, PACKAGES_KEY, parsePackage } from './lib/catalog';
 import { courseSummary, removeCourse } from './lib/course-storage';
@@ -25,7 +24,12 @@ export default function Courses() {
     const course = [originalCourse, ...catalog.packages].find(c => c.id === id) || originalCourse;
     activateCourse(course); return course.id;
   });
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(() => window.location.hash === '#courses');
+  useEffect(() => {
+    const sync = () => { setOpen(window.location.hash === '#courses'); request.current++; setPreview(null); setBusy(false); setDeleting(null); setError(''); };
+    window.addEventListener('hashchange', sync);
+    return () => window.removeEventListener('hashchange', sync);
+  }, []);
   const [tab, setTab] = useState<'courses' | 'import' | 'examples'>('courses');
   const [search, setSearch] = useState('');
   const [deleting, setDeleting] = useState<CoursePackage | null>(null);
@@ -43,7 +47,7 @@ export default function Courses() {
     activateCourse(course); setSelected(course.id);
     try { localStorage.setItem('cloudrecall.activeCourse', course.id); } catch { /* optional preference */ }
   };
-  const close = () => { request.current++; setOpen(false); setPreview(null); setError(''); setBusy(false); setDragging(false); setDeleting(null); setEraseProgress(false); };
+  const close = () => { request.current++; setOpen(false); if (window.location.hash === '#courses') window.location.hash = 'dashboard'; setPreview(null); setError(''); setBusy(false); setDragging(false); setDeleting(null); setEraseProgress(false); };
   const validate = (raw: string) => {
     const next = parsePackage(raw);
     if (all.some(c => c.id === next.id)) throw new Error(`«${next.title}» ya está en tus cursos. Ábrelo desde Mis cursos. No se ha cambiado ningún dato.`);
@@ -75,7 +79,7 @@ export default function Courses() {
     if (!preview || catalog.error) return;
     try {
       const latest = loadPackages();
-      if ([originalCourse, ...latest].some(c => c.id === preview.id)) throw new Error('Este curso ya existe. Cierra el diálogo y recarga para verlo en el selector.');
+      if ([originalCourse, ...latest].some(c => c.id === preview.id)) throw new Error('Este curso ya existe. Recarga la página para verlo en tu biblioteca.');
       const next = [...latest, preview];
       localStorage.setItem(PACKAGES_KEY, JSON.stringify(next));
       setPackages(next); changeCourse(preview);
@@ -103,15 +107,8 @@ export default function Courses() {
       setPackages(next); setSuccess(`Curso restaurado: ${undo.title}.`); setUndo(null);
     } catch (e) { setError(e instanceof Error ? e.message : 'No se pudo restaurar.'); }
   };
-  return <>
-    <section className="course-bar" aria-label="Cursos independientes">
-      <div className="course-picker"><BookOpen size={20} aria-hidden="true" /><label>MI APRENDIZAJE<select aria-label="Curso activo" value={selected} onChange={e => { changeCourse(all.find(c => c.id === e.target.value)!); setSuccess(''); }}>{all.map(c => <option key={c.id} value={c.id}>{c.title}</option>)}</select></label></div>
-      <Button variant="outline" onClick={() => { setOpen(true); switchTab('courses'); }}><FolderOpen size={16} />Mis cursos</Button>
-      {(catalog.error || (!open && error)) && <p role="alert">{catalog.error || error}</p>}
-      {success && !open && <p className="course-success" role="status"><CheckCircle2 size={16} />{success}{undo && <button className="text-button" onClick={restore}>Deshacer</button>}</p>}
-    </section>
-    <App key={selected} />
-    {open && <Dialog title="Mis cursos" onClose={close}>
+  const management = <section className="courses-page" aria-label="Gestión de cursos">
+      <div className="page-heading"><div><div className="eyebrow">TU BIBLIOTECA PERSONAL</div><h1>Mis cursos<span className="heading-dot">.</span></h1><p>Aprende lo que te interesa. Cada materia, a tu ritmo.</p></div><span className="courses-total"><BookOpen size={18} />{all.length} {all.length === 1 ? 'curso' : 'cursos'}</span></div>
       <div className="course-import-flow">
         {!deleting && <nav className="course-tabs" aria-label="Gestión de cursos">{([['courses', 'Mi biblioteca'], ['import', 'Importar archivo'], ['examples', 'Explorar ejemplos']] as const).map(([id, label]) => <button key={id} aria-current={tab === id ? 'page' : undefined} onClick={() => switchTab(id)}>{label}</button>)}</nav>}
         {success && <p className="course-success" role="status">{success}{undo && <button className="text-button" onClick={restore}>Deshacer</button>}</p>}
@@ -169,6 +166,9 @@ export default function Courses() {
         {busy && <p role="status">Validando contenido…</p>}
         {(catalog.error || error) && <div className="import-error" role="alert"><strong>No se pudo completar la acción</strong><p>{catalog.error || error}</p><p>Tu biblioteca y tu progreso siguen intactos.</p></div>}
       </div>
-    </Dialog>}
-  </>;
+    </section>;
+  return <App key={selected} coursesContent={management} showCourses={open}
+    onOpenCourses={() => { switchTab('courses'); setOpen(true); window.location.hash = 'courses'; }}
+    onLeaveCourses={close} courseList={all} onSelectCourse={course => { changeCourse(course); close(); setSuccess(''); }}
+    courseNotice={!open && success ? <p className="course-success panel" role="status"><CheckCircle2 size={16} />{success}{undo && <button className="text-button" onClick={restore}>Deshacer</button>}</p> : null} />;
 }

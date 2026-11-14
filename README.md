@@ -24,9 +24,9 @@ El selector **Curso activo** cambia toda la biblioteca, los filtros, las sesione
 
 1. Pulsa **Mis cursos → Importar archivo**. Arrastra un paquete JSON o usa **Elegir archivo**; también puedes abrir un ejemplo sin descargarlo.
 2. Revisa la vista previa: validación, temas, cantidades y una tarjeta de muestra. Los detalles técnicos quedan en un desplegable.
-3. Pulsa **Añadir y abrir curso** para comenzar directamente. Cancelar con Escape o cerrar el diálogo no escribe datos. Un ID existente se rechaza para conservar su contenido y progreso.
+3. Pulsa **Añadir y abrir curso** para comenzar directamente. Cambiar de sección o salir de la página antes de confirmar no escribe datos. Un ID existente se rechaza para conservar su contenido y progreso.
 
-El diálogo permite descargar cada JSON. **Python desde cero** incluye ocho tarjetas y ocho retos sobre tipos, funciones, archivos y errores; CLF-C02 avanzado, SAA-C03 y DevOps incluyen seis de cada uno. Son muestras, no temarios completos. Para probar la importación manual, descarga `public/packages/python-fundamentos.json` y selecciónalo en **Elegir archivo**.
+La sección Explorar ejemplos permite descargar cada JSON. **Python desde cero** incluye ocho tarjetas y ocho retos sobre tipos, funciones, archivos y errores; CLF-C02 avanzado, SAA-C03 y DevOps incluyen seis de cada uno. Son muestras, no temarios completos. Para probar la importación manual, descarga `public/packages/python-fundamentos.json` y selecciónalo en **Elegir archivo**.
 
 La preferencia de tema se aplica en el `<head>` antes de cargar React y el CSS, con un fondo inicial coherente para evitar destellos blancos al recargar en modo oscuro.
 
@@ -134,7 +134,7 @@ The exam interfaces are reserved for these later phases. This version rejects ba
 
 ## Gestionar cursos
 
-**Mis cursos** reúne tres secciones: **Mi biblioteca**, **Importar archivo** y **Explorar ejemplos**. La biblioteca permite buscar por título o descripción, ver tarjetas estudiadas y repasos por curso, abrir un curso y exportar su paquete de contenido JSON (el progreso se exporta desde Ajustes). El selector de la cabecera sigue disponible como acceso rápido.
+**Mis cursos** reúne tres secciones: **Mi biblioteca**, **Importar archivo** y **Explorar ejemplos**. La biblioteca permite buscar por título o descripción, ver tarjetas estudiadas y repasos por curso, abrir un curso y exportar su paquete de contenido JSON (el progreso se exporta desde Ajustes). El selector **Curso activo** está en la barra lateral, junto a la navegación de estudio. **Mis cursos** es una página propia (`#courses`) que se conserva al recargar y funciona con Atrás/Adelante del navegador. En móvil se accede desde el menú de navegación.
 
 Los cursos importados se pueden eliminar con confirmación. Por defecto solo se quita el paquete: su progreso se conserva y se recupera al reimportar el mismo paquete. **Deshacer** restaura el último paquete eliminado mientras siga abierta la sesión. La casilla **Eliminar también sus repasos, retos y progreso guardados** permite borrar permanentemente ese progreso; no ofrece Deshacer. Al eliminar el curso activo se abre CLF-C02. El curso incluido se mantiene protegido y su progreso se gestiona desde Ajustes.
 

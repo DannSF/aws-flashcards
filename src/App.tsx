@@ -9,6 +9,7 @@ import {
   ChevronRight,
   Clock3,
   Cloud,
+  FolderOpen,
   Command,
   Flame,
   GraduationCap,
@@ -56,6 +57,8 @@ import {
   STORAGE_KEY,
   streak,
 } from "./lib/progress";
+import type { ReactNode } from "react";
+import type { CoursePackage } from "./lib/catalog";
 import { activeCourse } from "./lib/catalog";
 import type { DomainId, RecallRating, UserProgress } from "./types";
 
@@ -76,7 +79,16 @@ const nav: { page: Page; label: string; icon: LucideIcon }[] = [
   { page: "library", label: "Biblioteca", icon: BookOpen },
   { page: "analytics", label: "Mi progreso", icon: BarChart3 },
 ];
-function App() {
+interface AppProps {
+  coursesContent: ReactNode;
+  showCourses: boolean;
+  onOpenCourses: () => void;
+  onLeaveCourses: () => void;
+  courseList: CoursePackage[];
+  onSelectCourse: (course: CoursePackage) => void;
+  courseNotice: ReactNode;
+}
+function App({ coursesContent, showCourses, onOpenCourses, onLeaveCourses, courseList, onSelectCourse, courseNotice }: AppProps) {
   const [initial] = useState(loadProgress);
   const [progress, setProgress] = useState(initial.progress);
   const [storageError, setStorageError] = useState(initial.error);
@@ -159,11 +171,16 @@ function App() {
     }
   };
   const go = (next: Page) => {
+    if (showCourses) onLeaveCourses();
     setPage(next);
     setMobile(false);
     setSelected(null);
     window.scrollTo({ top: 0, behavior: "instant" });
   };
+  useEffect(() => {
+    document.getElementById('main-content')?.focus();
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, [showCourses]);
   const due = cards.filter(
     (c) => cardStatus(progress.cards[c.id], now) === "due",
   );
@@ -313,7 +330,7 @@ function App() {
   );
   return (
     <div className="app-shell">
-      <a className="skip-link" href="#main-content">
+      <a className="skip-link" href="#main-content" onClick={e => { e.preventDefault(); document.getElementById("main-content")?.focus(); }}>
         Saltar al contenido
       </a>
       {mobile && (
@@ -337,33 +354,26 @@ function App() {
           </span>
           CloudRecall<span className="brand-dot">.</span>
         </a>
-        <div className="workspace-label">TU ESPACIO DE APRENDIZAJE</div>
+        <div className="workspace-label">MI ESPACIO</div>
         <nav aria-label="Navegación principal">
+          <button aria-label="Mis cursos" className={`nav-item ${showCourses ? 'active' : ''}`} aria-current={showCourses ? 'page' : undefined} onClick={() => { onOpenCourses(); setMobile(false); }}><FolderOpen size={19} /><span>Mis cursos</span><span className="nav-count">{courseList.length}</span></button>
+        </nav>
+        <div className="sidebar-rule" />
+        <div className="workspace-label">CURSO ACTIVO</div>
+        <div className="sidebar-course-picker">
+          <BookOpen size={18} aria-hidden="true" />
+          <label className="sr-only" htmlFor="active-course-select">Curso activo</label>
+          <select id="active-course-select" value={activeCourse.id} onChange={e => { const course = courseList.find(c => c.id === e.target.value); if (course) { onSelectCourse(course); setMobile(false); } }}>
+            {courseList.map(c => <option key={c.id} value={c.id}>{c.title}</option>)}
+          </select>
+        </div>
+        <nav aria-label="Aprender en el curso activo">
           {nav.map(({ page: p, label, icon: Icon }) => (
-            <button
-              key={p}
-              className={`nav-item ${page === p ? "active" : ""}`}
-              onClick={() => {
-                if (p === "study" && !started) startStudy();
-                else go(p);
-              }}
-            >
-              <Icon size={19} />
-              <span>{label}</span>
-              {p === "study" && due.length > 0 && (
-                <span className="nav-count">{due.length}</span>
-              )}
+            <button key={p} className={`nav-item ${!showCourses && page === p ? "active" : ""}`} aria-current={!showCourses && page === p ? 'page' : undefined} onClick={() => { if (p === "study" && !started) startStudy(); else go(p); }}>
+              <Icon size={19} /><span>{label}</span>{p === "study" && due.length > 0 && <span className="nav-count">{due.length}</span>}
             </button>
           ))}
         </nav>
-        <div className="sidebar-rule" />
-        <div className="workspace-label">CURSO</div>
-        <div className="cert-label">
-          <span className="aws-small"><BookOpen size={20} /></span>
-          <div>
-            {activeCourse.title}<small>{activeCourse.description}</small>
-          </div>
-        </div>
         <div className="sidebar-tip">
           <span className="tip-star">
             <Sparkles size={18} />
@@ -378,7 +388,7 @@ function App() {
         </div>
         <div className="sidebar-bottom">
           <button
-            className={`nav-item ${page === "settings" ? "active" : ""}`}
+            className={`nav-item ${!showCourses && page === "settings" ? "active" : ""}`}
             onClick={() => go("settings")}
           >
             <Settings2 size={19} />
@@ -411,7 +421,7 @@ function App() {
             <span>Mi aprendizaje</span>
             <ChevronRight size={14} />
             <strong>
-              {
+              {showCourses ? 'Mis cursos' :
                 {
                   dashboard: "Dashboard",
                   study: "Sesión de estudio",
@@ -445,6 +455,8 @@ function App() {
           </div>
         </header>
         <main id="main-content" tabIndex={-1}>
+          {courseNotice}
+          {showCourses ? coursesContent : <>
           {storageError && (
             <div className="error-banner" role="alert">
               {storageError}{" "}
@@ -526,7 +538,7 @@ function App() {
                   </h2>
                   <p>
                     {learn
-                      ? "Conoce el servicio y un caso real antes de poner a prueba tu recuerdo."
+                      ? "Conoce el concepto y un caso real antes de poner a prueba tu recuerdo."
                       : "Las tarjetas pendientes aparecen primero, seguidas de conceptos nuevos."}
                   </p>
                   <Button
@@ -1160,7 +1172,7 @@ function App() {
                     local. Los escenarios, comparaciones interactivas, simulador
                     de examen y modo cram quedan para las siguientes fases.
                   </p>
-                  <p>
+                  {activeCourse.id === 'clf-c02' && <><p>
                     Las referencias oficiales se incluyen para consulta. Su
                     actualización en línea no pudo verificarse en este entorno
                     (acceso HTTP 403). Comprueba los planes de soporte, precios
@@ -1186,11 +1198,12 @@ function App() {
                     rel="noreferrer"
                   >
                     Shared Responsibility Model <ExternalLink size={14} />
-                  </a>
+                  </a></>}
                 </section>
               </div>
             </>
           )}
+          </>}
           <footer className="page-footer">
             <span>
               <Cloud size={14} />
