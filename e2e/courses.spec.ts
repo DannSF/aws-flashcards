@@ -5,7 +5,8 @@ test('preview, import, study and course isolation survive reload', async ({page}
   await page.getByRole('button',{name:'Revelar respuesta'}).click();
   await page.getByRole('button',{name:/Good/}).click();
   const original = await page.evaluate(() => localStorage.getItem('cloudrecall.progress.v1'));
-  await page.getByRole('button', {name:'Añadir curso',exact:true}).click();
+  await page.getByRole('button', {name:'Mis cursos',exact:true}).click();
+  await page.getByRole('button', {name:'Importar archivo',exact:true}).click();
   await page.getByLabel('Importar paquete JSON',{exact:true}).setInputFiles('public/packages/devops.json');
   await expect(page.getByRole('region',{name:'Vista previa del paquete'})).toContainText('6 flashcards');
   expect(await page.evaluate(() => localStorage.getItem('cloudrecall.packages.v2'))).toBeNull();
@@ -24,7 +25,8 @@ test('preview, import, study and course isolation survive reload', async ({page}
   expect(await page.evaluate(() => JSON.parse(localStorage.getItem('cloudrecall.course.devops.progress.v1')!).history.length)).toBe(1);
   await page.getByLabel('Curso activo',{exact:true}).selectOption('clf-c02');
   expect(await page.evaluate(() => localStorage.getItem('cloudrecall.progress.v1'))).toBe(original);
-  await page.getByRole('button', {name:'Añadir curso',exact:true}).click();
+  await page.getByRole('button', {name:'Mis cursos',exact:true}).click();
+  await page.getByRole('button', {name:'Importar archivo',exact:true}).click();
   await page.getByLabel('Importar paquete JSON',{exact:true}).setInputFiles({name:'bad.json',mimeType:'application/json',buffer:Buffer.from('{}')});
   await expect(page.getByRole('alert')).toContainText('Paquete inválido');
   expect(await page.evaluate(() => localStorage.getItem('cloudrecall.progress.v1'))).toBe(original);

@@ -22,7 +22,7 @@ npm run preview
 
 El selector **Curso activo** cambia toda la biblioteca, los filtros, las sesiones FSRS, las estadísticas y los retos. Recuerda el curso seleccionado al recargar. El curso original conserva sus 114 tarjetas, IDs y la clave `cloudrecall.progress.v1`: no se migra ni elimina ningún progreso existente.
 
-1. Pulsa **Añadir curso**. Arrastra un paquete JSON o usa **Elegir archivo**; también puedes abrir un ejemplo sin descargarlo.
+1. Pulsa **Mis cursos → Importar archivo**. Arrastra un paquete JSON o usa **Elegir archivo**; también puedes abrir un ejemplo sin descargarlo.
 2. Revisa la vista previa: validación, temas, cantidades y una tarjeta de muestra. Los detalles técnicos quedan en un desplegable.
 3. Pulsa **Añadir y abrir curso** para comenzar directamente. Cancelar con Escape o cerrar el diálogo no escribe datos. Un ID existente se rechaza para conservar su contenido y progreso.
 
@@ -131,3 +131,11 @@ This release includes the working MVP, FSRS, data protection, and untimed knowle
 - Exam-date cram mode that leaves normal scheduling intact.
 
 The exam interfaces are reserved for these later phases. This version rejects backups containing exam records rather than silently dropping unsupported data. Browser-local persistence does not sync across devices; export a backup before clearing browser data.
+
+## Gestionar cursos
+
+**Mis cursos** reúne tres secciones: **Mi biblioteca**, **Importar archivo** y **Explorar ejemplos**. La biblioteca permite buscar por título o descripción, ver tarjetas estudiadas y repasos por curso, abrir un curso y exportar su paquete de contenido JSON (el progreso se exporta desde Ajustes). El selector de la cabecera sigue disponible como acceso rápido.
+
+Los cursos importados se pueden eliminar con confirmación. Por defecto solo se quita el paquete: su progreso se conserva y se recupera al reimportar el mismo paquete. **Deshacer** restaura el último paquete eliminado mientras siga abierta la sesión. La casilla **Eliminar también sus repasos, retos y progreso guardados** permite borrar permanentemente ese progreso; no ofrece Deshacer. Al eliminar el curso activo se abre CLF-C02. El curso incluido se mantiene protegido y su progreso se gestiona desde Ajustes.
+
+La eliminación vuelve a leer el catálogo guardado para conservar cambios de otras pestañas. Si falla el borrado del progreso, restaura el catálogo y muestra el error; los cursos ajenos nunca se borran.

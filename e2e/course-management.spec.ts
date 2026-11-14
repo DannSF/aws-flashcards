@@ -1,0 +1,54 @@
+import { test, expect } from '@playwright/test';
+async function manager(page: import('@playwright/test').Page) {
+  await page.getByRole('button', {name:'Mis cursos',exact:true}).click();
+}
+async function addPython(page: import('@playwright/test').Page) {
+  await manager(page);
+  await page.getByRole('navigation', {name:'Gestión de cursos'}).getByRole('button',{name:'Explorar ejemplos',exact:true}).click();
+  await page.getByRole('button',{name:'Vista previa de Python desde cero'}).click();
+  await page.getByRole('button',{name:'Añadir y abrir curso'}).click();
+}
+test('manage, search, cancel deletion, preserve progress, undo and permanently delete', async ({page}) => {
+  await page.goto('/'); await addPython(page);
+  await page.getByRole('button',{name:'Continuar estudiando'}).click();
+  await page.getByRole('button',{name:'Revelar respuesta'}).click();
+  await page.getByRole('button',{name:/Good/}).click();
+  const key = 'cloudrecall.course.python-fundamentos.progress.v1';
+  const before = await page.evaluate(key => localStorage.getItem(key),key);
+  await manager(page);
+  await page.getByLabel('Buscar cursos').fill('python');
+  await expect(page.locator('.managed-course')).toHaveCount(1);
+  await expect(page.locator('.managed-course')).toContainText('1 de 8 tarjetas estudiadas');
+  await page.getByRole('button',{name:'Eliminar Python desde cero',exact:true}).click();
+  await expect(page.getByLabel('Eliminar también sus repasos, retos y progreso guardados')).not.toBeChecked();
+  await page.getByRole('button',{name:'Cancelar',exact:true}).click();
+  expect(await page.evaluate(key => localStorage.getItem(key),key)).toBe(before);
+  await page.getByRole('button',{name:'Eliminar Python desde cero',exact:true}).click();
+  await page.getByRole('button',{name:'Eliminar curso',exact:true}).click();
+  await expect(page.getByLabel('Curso activo')).toHaveValue('clf-c02');
+  expect(await page.evaluate(key => localStorage.getItem(key),key)).toBe(before);
+  await expect(page.locator('.managed-course')).toHaveCount(0);
+  await page.getByRole('button',{name:'Deshacer',exact:true}).click();
+  await expect(page.locator('.managed-course')).toHaveCount(1);
+  await page.getByRole('button',{name:'Abrir curso',exact:true}).click();
+  await expect(page.getByLabel('Curso activo')).toHaveValue('python-fundamentos');
+  await manager(page);
+  await page.getByRole('button',{name:'Eliminar Python desde cero',exact:true}).click();
+  await page.getByLabel('Eliminar también sus repasos, retos y progreso guardados').check();
+  await page.getByRole('button',{name:'Eliminar curso y progreso',exact:true}).click();
+  expect(await page.evaluate(key => localStorage.getItem(key),key)).toBeNull();
+  await page.keyboard.press('Escape'); await page.reload();
+  await expect(page.getByLabel('Curso activo')).toHaveValue('clf-c02');
+  await expect(page.getByLabel('Curso activo').locator('option')).toHaveCount(1);
+});
+test('reimporting a removed package resumes retained progress', async ({page}) => {
+  await page.goto('/'); await addPython(page);
+  await page.getByRole('button',{name:'Continuar estudiando'}).click();
+  await page.getByRole('button',{name:'Revelar respuesta'}).click();
+  await page.getByRole('button',{name:/Good/}).click();
+  await manager(page);
+  await page.getByRole('button',{name:'Eliminar Python desde cero',exact:true}).click();
+  await page.getByRole('button',{name:'Eliminar curso',exact:true}).click();
+  await page.keyboard.press('Escape'); await addPython(page); await manager(page);
+  await expect(page.getByRole('article',{name:'Python desde cero',exact:true})).toContainText('1 de 8 tarjetas estudiadas');
+});
