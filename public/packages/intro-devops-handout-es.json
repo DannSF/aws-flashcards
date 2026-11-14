@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "id": "intro-devops-handout-es",
   "title": "Introducción a DevOps · Del equipo al pipeline",
-  "description": "Curso en español sobre roles, colaboración, cultura DevOps, automatización, pipelines CI/CD y herramientas. Preguntas autónomas y ejemplos prácticos.",
-  "version": "1.0.1",
+  "description": "32 situaciones prácticas de introducción a DevOps: roles, colaboración, cultura, automatización, CI/CD y herramientas. Alternativas plausibles con explicación de cada decisión.",
+  "version": "1.1.0",
   "domains": [
     {
       "id": "roles",
@@ -60,20 +60,21 @@
       "domain": "roles",
       "service": "Desarrollo",
       "category": "Roles del proceso de entrega",
-      "question": "¿Cuáles son las responsabilidades principales del equipo de desarrollo?",
-      "answer": "Programar funcionalidades nuevas y corregir errores.",
-      "explanation": "El equipo de desarrollo crea nuevas funcionalidades y corrige errores utilizando lenguajes como Java, Python o JavaScript.",
+      "question": "Un equipo necesita añadir recuperación de contraseña y corregir un error en el formulario. ¿Qué trabajo corresponde directamente a desarrollo?",
+      "answer": "Modificar la lógica de la aplicación e implementar las correcciones.",
+      "explanation": "Desarrollo modifica el comportamiento del software para crear funcionalidades y corregir errores.",
       "keywords": [
         "Desarrollo",
         "DevOps"
       ],
-      "example": "Una aplicación necesita recuperar contraseñas: desarrollo implementa la funcionalidad y corrige errores detectados.",
-      "confusion": "Crear funcionalidades y operar producción son responsabilidades distintas, aunque los equipos pueden colaborar en ambas.",
+      "example": "Situación práctica: Un equipo necesita añadir recuperación de contraseña y corregir un error en el formulario. ¿Qué trabajo corresponde directamente a desarrollo?",
+      "confusion": "Preparar el servidor facilita la ejecución, pero no implementa el comportamiento solicitado.",
       "mnemonic": "Desarrollo crea y corrige.",
-      "difficulty": "Foundation",
+      "difficulty": "Applied",
       "tags": [
         "devops",
-        "introduccion"
+        "introduccion",
+        "aplicacion-practica"
       ],
       "sourcePage": 2
     },
@@ -82,20 +83,21 @@
       "domain": "roles",
       "service": "Pruebas",
       "category": "Roles del proceso de entrega",
-      "question": "¿Qué se comprueba durante las pruebas de software?",
-      "answer": "Las funcionalidades nuevas y las ya existentes.",
-      "explanation": "Las pruebas verifican tanto las funcionalidades nuevas como el comportamiento existente, que podría verse afectado por los cambios.",
+      "question": "Una actualización cambia el inicio de sesión y comparte código con la recuperación de contraseña. ¿Qué alcance de pruebas reduce mejor el riesgo de regresiones?",
+      "answer": "Probar el inicio de sesión nuevo y los flujos existentes que podrían verse afectados.",
+      "explanation": "Un cambio puede afectar tanto a lo nuevo como al comportamiento existente, especialmente si comparten código.",
       "keywords": [
         "Pruebas",
         "DevOps"
       ],
-      "example": "Tras añadir un inicio de sesión, se prueba esa función y se comprueba que las funciones anteriores siguen funcionando.",
-      "confusion": "Probar solo lo nuevo deja sin comprobar si un cambio ha afectado a funcionalidades existentes.",
+      "example": "Situación práctica: Una actualización cambia el inicio de sesión y comparte código con la recuperación de contraseña. ¿Qué alcance de pruebas reduce mejor el riesgo de regresiones?",
+      "confusion": "Ampliar los usuarios de la función nueva no comprueba cómo afecta el código modificado a los otros flujos.",
       "mnemonic": "Nuevo y anterior: ambos se prueban.",
-      "difficulty": "Foundation",
+      "difficulty": "Applied",
       "tags": [
         "devops",
-        "introduccion"
+        "introduccion",
+        "aplicacion-practica"
       ],
       "sourcePage": 2
     },
@@ -104,20 +106,21 @@
       "domain": "roles",
       "service": "Participantes en las pruebas",
       "category": "Roles del proceso de entrega",
-      "question": "¿Quiénes participan en las pruebas de software?",
-      "answer": "Los desarrolladores y los testers dedicados.",
-      "explanation": "Las pruebas pueden involucrar a desarrolladores y testers dedicados; la calidad no depende exclusivamente de un solo rol.",
+      "question": "Desarrolladores conocen la lógica modificada y testers conocen los flujos de uso. ¿Cómo aprovechar mejor ambos conocimientos al validar una funcionalidad?",
+      "answer": "Combinar comprobaciones de desarrollo con pruebas de los testers sobre los flujos de uso.",
+      "explanation": "Las perspectivas de desarrollo y testing se complementan para validar comportamiento y detectar problemas.",
       "keywords": [
         "Participantes en las pruebas",
         "DevOps"
       ],
-      "example": "Una persona de desarrollo prueba su cambio y un tester dedicado evalúa otros comportamientos de la aplicación.",
-      "confusion": "Las pruebas no son responsabilidad exclusiva de testers dedicados.",
+      "example": "Situación práctica: Desarrolladores conocen la lógica modificada y testers conocen los flujos de uso. ¿Cómo aprovechar mejor ambos conocimientos al validar una funcionalidad?",
+      "confusion": "El éxito del despliegue no confirma el comportamiento de los flujos de uso.",
       "mnemonic": "Desarrolladores y testers comprueban.",
-      "difficulty": "Foundation",
+      "difficulty": "Applied",
       "tags": [
         "devops",
-        "introduccion"
+        "introduccion",
+        "aplicacion-practica"
       ],
       "sourcePage": 2
     },
@@ -126,20 +129,21 @@
       "domain": "roles",
       "service": "Modalidades de pruebas",
       "category": "Roles del proceso de entrega",
-      "question": "¿Qué dos modalidades de pruebas se complementan durante el desarrollo?",
-      "answer": "Pruebas manuales y automatizadas.",
-      "explanation": "Las pruebas manuales y automatizadas se complementan para comprobar el funcionamiento del software.",
+      "question": "Una comprobación estable se repite en cada versión, mientras otra requiere explorar una pantalla recién diseñada. ¿Qué enfoque aprovecha mejor las modalidades de prueba?",
+      "answer": "Automatizar la comprobación repetitiva y complementar con exploración manual de la pantalla.",
+      "explanation": "La automatización es útil para comprobaciones repetibles, y las pruebas manuales permiten explorar comportamientos nuevos.",
       "keywords": [
         "Modalidades de pruebas",
         "DevOps"
       ],
-      "example": "Un tester recorre manualmente una pantalla y una herramienta ejecuta otras comprobaciones automáticamente.",
-      "confusion": "Automatizar pruebas no implica que todas las comprobaciones manuales dejen de ser útiles.",
+      "example": "Situación práctica: Una comprobación estable se repite en cada versión, mientras otra requiere explorar una pantalla recién diseñada. ¿Qué enfoque aprovecha mejor las modalidades de prueba?",
+      "confusion": "Es posible, pero conserva trabajo repetitivo que puede automatizarse.",
       "mnemonic": "Manual o automática: comprobar sigue siendo la meta.",
-      "difficulty": "Foundation",
+      "difficulty": "Applied",
       "tags": [
         "devops",
-        "introduccion"
+        "introduccion",
+        "aplicacion-practica"
       ],
       "sourcePage": 2
     },
@@ -148,20 +152,21 @@
       "domain": "roles",
       "service": "Operaciones",
       "category": "Roles del proceso de entrega",
-      "question": "¿Qué actividades conectan el trabajo de operaciones con la ejecución del software en producción?",
-      "answer": "Construir, desplegar, actualizar y ejecutar el software en producción.",
-      "explanation": "Operaciones participa en construir, desplegar, actualizar y ejecutar el software, conectando la aplicación con sus entornos y servidores.",
+      "question": "La funcionalidad ya está programada y probada. Falta preparar su ejecución, actualizar el entorno y mantenerla funcionando en producción. ¿Qué conjunto de tareas responde a esa necesidad?",
+      "answer": "Preparar el entorno, desplegar la versión y atender su funcionamiento en producción.",
+      "explanation": "Estas actividades conectan el software con el entorno donde se ejecuta y con su operación continuada.",
       "keywords": [
         "Operaciones",
         "DevOps"
       ],
-      "example": "Tras recibir un cambio, operaciones prepara su despliegue y mantiene la aplicación ejecutándose.",
-      "confusion": "Operar producción no se reduce a almacenar código ni a desarrollar interfaces.",
+      "example": "Situación práctica: La funcionalidad ya está programada y probada. Falta preparar su ejecución, actualizar el entorno y mantenerla funcionando en producción. ¿Qué conjunto de tareas responde a esa necesidad?",
+      "confusion": "Son actividades útiles de desarrollo, pero no cubren la puesta en producción solicitada.",
       "mnemonic": "Operaciones lleva el software a producción y lo mantiene.",
-      "difficulty": "Foundation",
+      "difficulty": "Applied",
       "tags": [
         "devops",
-        "introduccion"
+        "introduccion",
+        "aplicacion-practica"
       ],
       "sourcePage": 2
     },
@@ -170,20 +175,21 @@
       "domain": "silos",
       "service": "Objetivos tradicionales",
       "category": "Problemas del modelo tradicional",
-      "question": "¿Qué diferencia de prioridades puede generar tensión entre desarrollo y operaciones?",
-      "answer": "Desarrollo busca nuevas funcionalidades rápidas; operaciones busca estabilidad.",
-      "explanation": "La presión por entregar nuevas funcionalidades rápidamente puede entrar en tensión con la necesidad de mantener sistemas estables.",
+      "question": "Desarrollo mide su éxito por funcionalidades publicadas; operaciones lo mide por estabilidad. Las discusiones reaparecen en cada entrega. ¿Qué causa explica mejor la tensión?",
+      "answer": "Cada equipo optimiza una prioridad distinta del mismo proceso de entrega.",
+      "explanation": "La rapidez de cambio y la estabilidad son necesidades válidas que deben coordinarse mediante objetivos compartidos.",
       "keywords": [
         "Objetivos tradicionales",
         "DevOps"
       ],
-      "example": "Desarrollo quiere publicar hoy y operaciones necesita comprobar el efecto del cambio sobre la estabilidad.",
-      "confusion": "Buscar estabilidad no significa oponerse a mejorar el producto: las prioridades deben coordinarse.",
+      "example": "Situación práctica: Desarrollo mide su éxito por funcionalidades publicadas; operaciones lo mide por estabilidad. Las discusiones reaparecen en cada entrega. ¿Qué causa explica mejor la tensión?",
+      "confusion": "El tamaño del repositorio no explica el conflicto entre las prioridades descritas.",
       "mnemonic": "DEV: velocidad. OPS: estabilidad.",
-      "difficulty": "Foundation",
+      "difficulty": "Applied",
       "tags": [
         "devops",
-        "introduccion"
+        "introduccion",
+        "aplicacion-practica"
       ],
       "sourcePage": 3
     },
@@ -192,20 +198,21 @@
       "domain": "silos",
       "service": "Conocimientos de desarrollo",
       "category": "Problemas del modelo tradicional",
-      "question": "¿Qué conocimientos suelen utilizarse al desarrollar una aplicación?",
-      "answer": "Lenguajes de programación, frameworks de pruebas, bases de datos y control de versiones.",
-      "explanation": "Programar una aplicación requiere trabajar con lenguajes, frameworks de pruebas, bases de datos y control de versiones.",
+      "question": "Un cambio modifica una consulta de datos y la lógica que la utiliza. ¿Qué combinación de conocimientos permite implementarlo y comprobarlo directamente?",
+      "answer": "Lenguaje de la aplicación, bases de datos, pruebas y control de versiones.",
+      "explanation": "El cambio necesita comprender la lógica, los datos, su validación y la gestión de las modificaciones.",
       "keywords": [
         "Conocimientos de desarrollo",
         "DevOps"
       ],
-      "example": "Una persona que implementa una función trabaja con el lenguaje, su framework de pruebas y el repositorio de versiones.",
-      "confusion": "Estos conocimientos no son exclusivos de desarrollo: otros roles también pueden necesitarlos.",
+      "example": "Situación práctica: Un cambio modifica una consulta de datos y la lógica que la utiliza. ¿Qué combinación de conocimientos permite implementarlo y comprobarlo directamente?",
+      "confusion": "Ayudan a operar el entorno, pero no cubren directamente la implementación y validación de esa lógica.",
       "mnemonic": "Código, pruebas, datos y versiones.",
-      "difficulty": "Foundation",
+      "difficulty": "Applied",
       "tags": [
         "devops",
-        "introduccion"
+        "introduccion",
+        "aplicacion-practica"
       ],
       "sourcePage": 4
     },
@@ -214,20 +221,21 @@
       "domain": "silos",
       "service": "Conocimientos de operaciones",
       "category": "Problemas del modelo tradicional",
-      "question": "¿Qué conocimientos ayudan a preparar y operar los entornos de ejecución?",
-      "answer": "Sistemas operativos —principalmente Linux—, línea de comandos, scripting y monitorización.",
-      "explanation": "Los sistemas operativos, la línea de comandos, el scripting y la monitorización son conocimientos útiles para operar los entornos de ejecución.",
+      "question": "La aplicación está probada, pero no arranca en un servidor Linux. Antes de cambiar su código, hay que inspeccionar el entorno y el proceso. ¿Qué conocimientos son más directamente útiles?",
+      "answer": "Sistema operativo, línea de comandos, scripting y monitorización.",
+      "explanation": "Esas habilidades permiten inspeccionar y operar el entorno en el que debería ejecutarse la aplicación.",
       "keywords": [
         "Conocimientos de operaciones",
         "DevOps"
       ],
-      "example": "Para investigar un problema de un servidor, el equipo utiliza Linux, comandos y herramientas de monitorización.",
-      "confusion": "El trabajo en DevOps requiere comprender desarrollo y operaciones, sin aislar sus conocimientos.",
+      "example": "Situación práctica: La aplicación está probada, pero no arranca en un servidor Linux. Antes de cambiar su código, hay que inspeccionar el entorno y el proceso. ¿Qué conocimientos son más directamente útiles?",
+      "confusion": "Ayudan al desarrollo, pero el primer paso solicitado se centra en inspeccionar el servidor y el proceso.",
       "mnemonic": "Sistema, comandos, scripts y observación.",
-      "difficulty": "Foundation",
+      "difficulty": "Applied",
       "tags": [
         "devops",
-        "introduccion"
+        "introduccion",
+        "aplicacion-practica"
       ],
       "sourcePage": 4
     },
@@ -236,20 +244,21 @@
       "domain": "silos",
       "service": "Comunicación y entornos",
       "category": "Problemas del modelo tradicional",
-      "question": "¿Por qué es importante la comunicación entre desarrollo y operaciones al desplegar?",
-      "answer": "Porque el despliegue requiere configuraciones y un entorno preparado.",
-      "explanation": "Un despliegue necesita configuraciones y un entorno preparado. La coordinación permite comunicar esas necesidades antes de publicar.",
+      "question": "Una versión funciona en pruebas, pero producción no dispone de una configuración que ahora necesita. ¿Qué práctica reduce directamente este fallo de coordinación?",
+      "answer": "Comunicar los requisitos del entorno y comprobar su preparación antes de desplegar.",
+      "explanation": "Compartir los requisitos del cambio permite preparar el entorno donde deberá ejecutarse.",
       "keywords": [
         "Comunicación y entornos",
         "DevOps"
       ],
-      "example": "Un cambio necesita una configuración nueva: los equipos deben acordarla antes del despliegue.",
-      "confusion": "Entregar el código no garantiza que el entorno esté preparado para ejecutarlo.",
+      "example": "Situación práctica: Una versión funciona en pruebas, pero producción no dispone de una configuración que ahora necesita. ¿Qué práctica reduce directamente este fallo de coordinación?",
+      "confusion": "Las pruebas unitarias no garantizan que producción disponga de la configuración necesaria.",
       "mnemonic": "Desplegar exige preparar y comunicar.",
       "difficulty": "Applied",
       "tags": [
         "devops",
-        "introduccion"
+        "introduccion",
+        "aplicacion-practica"
       ],
       "sourcePage": 5
     },
@@ -258,20 +267,21 @@
       "domain": "silos",
       "service": "Silos organizativos",
       "category": "Problemas del modelo tradicional",
-      "question": "¿Cómo se llama el aislamiento que dificulta la comunicación y colaboración entre desarrollo y operaciones?",
-      "answer": "El trabajo en silos entre desarrollo y operaciones.",
-      "explanation": "Los silos aparecen cuando los equipos trabajan aislados y dificultan coordinar los cambios con las necesidades del entorno.",
+      "question": "Desarrollo envía una versión y da su trabajo por terminado; operaciones descubre los requisitos del entorno al intentar desplegarla. ¿Qué problema organizativo refleja esta situación?",
+      "answer": "Un traspaso entre equipos en silos, sin coordinación suficiente del cambio.",
+      "explanation": "El aislamiento entre equipos deja necesidades importantes fuera de la comunicación durante la entrega.",
       "keywords": [
         "Silos organizativos",
         "DevOps"
       ],
-      "example": "Un equipo cambia requisitos de ejecución sin comunicarlos al equipo que prepara producción.",
-      "confusion": "Tener equipos con responsabilidades distintas no obliga a que trabajen aislados.",
+      "example": "Situación práctica: Desarrollo envía una versión y da su trabajo por terminado; operaciones descubre los requisitos del entorno al intentar desplegarla. ¿Qué problema organizativo refleja esta situación?",
+      "confusion": "El caso no indica un problema de reutilización de imágenes; sí muestra falta de coordinación.",
       "mnemonic": "Silo: cada equipo aislado.",
-      "difficulty": "Foundation",
+      "difficulty": "Applied",
       "tags": [
         "devops",
-        "introduccion"
+        "introduccion",
+        "aplicacion-practica"
       ],
       "sourcePage": 5
     },
@@ -280,20 +290,21 @@
       "domain": "silos",
       "service": "Trabajo manual",
       "category": "Problemas del modelo tradicional",
-      "question": "¿Qué combinación de tareas manuales puede frenar la publicación de versiones?",
-      "answer": "Comprobaciones de estabilidad o seguridad, despliegues y configuración del entorno.",
-      "explanation": "Las comprobaciones, configuraciones y publicaciones manuales repetitivas pueden introducir esperas y errores en el proceso de entrega.",
+      "question": "Las pruebas terminan en minutos, pero cada versión espera horas a que una persona configure servidores y ejecute el despliegue. ¿Dónde conviene concentrar primero la automatización?",
+      "answer": "En la preparación del entorno y los pasos repetitivos del despliegue.",
+      "explanation": "La mayor espera descrita está en las tareas manuales posteriores a las pruebas; automatizarlas aborda ese cuello de botella.",
       "keywords": [
         "Trabajo manual",
         "DevOps"
       ],
-      "example": "Cada versión espera una configuración manual del servidor, un despliegue manual y comprobaciones repetitivas.",
-      "confusion": "Automatizar no significa omitir comprobaciones de estabilidad y seguridad.",
+      "example": "Situación práctica: Las pruebas terminan en minutos, pero cada versión espera horas a que una persona configure servidores y ejecute el despliegue. ¿Dónde conviene concentrar primero la automatización?",
+      "confusion": "Puede ser una mejora, pero no ataca las horas de espera identificadas.",
       "mnemonic": "Repetición manual: cuello de botella.",
       "difficulty": "Applied",
       "tags": [
         "devops",
-        "introduccion"
+        "introduccion",
+        "aplicacion-practica"
       ],
       "sourcePage": 5
     },
@@ -302,20 +313,21 @@
       "domain": "cultura",
       "service": "Definición de DevOps",
       "category": "Cultura DevOps",
-      "question": "¿Qué busca DevOps al mejorar el proceso de entrega de software?",
-      "answer": "Hacer que el proceso de entrega continua sea rápido y tenga el mínimo de errores.",
-      "explanation": "DevOps busca mejorar la colaboración y el flujo de entrega para publicar software con rapidez y minimizar errores.",
+      "question": "Después de mejorar su proceso de entrega, ¿qué resultado refleja mejor el objetivo de DevOps?",
+      "answer": "Cambios que llegan con menos esperas y errores, con desarrollo y operaciones coordinados.",
+      "explanation": "DevOps combina colaboración y mejora del flujo para entregar con rapidez y reducir errores.",
       "keywords": [
         "Definición de DevOps",
         "DevOps"
       ],
-      "example": "Un equipo revisa cómo pasar de una idea a producción con menos esperas y errores.",
-      "confusion": "Minimizar errores no equivale a garantizar que nunca ocurrirá ninguno.",
+      "example": "Situación práctica: Después de mejorar su proceso de entrega, ¿qué resultado refleja mejor el objetivo de DevOps?",
+      "confusion": "Mejora una medida de velocidad a costa de la estabilidad; no equilibra ambos objetivos.",
       "mnemonic": "Entrega rápida, errores mínimos.",
-      "difficulty": "Foundation",
+      "difficulty": "Applied",
       "tags": [
         "devops",
-        "introduccion"
+        "introduccion",
+        "aplicacion-practica"
       ],
       "sourcePage": 6
     },
@@ -324,20 +336,21 @@
       "domain": "cultura",
       "service": "Origen cultural",
       "category": "Cultura DevOps",
-      "question": "¿Qué forma de trabajar dio origen a DevOps?",
-      "answer": "Una forma de trabajar entre desarrollo y operaciones con un lenguaje común.",
-      "explanation": "DevOps surgió como una forma de colaborar entre desarrollo y operaciones, con comunicación y objetivos compartidos.",
+      "question": "Una empresa compra herramientas de automatización, pero desarrollo y operaciones siguen sin compartir requisitos ni objetivos. ¿Qué falta para avanzar hacia una cultura DevOps?",
+      "answer": "Una forma de colaboración y comunicación compartida entre ambos equipos.",
+      "explanation": "Las herramientas apoyan DevOps, pero no sustituyen la colaboración necesaria para mejorar el proceso.",
       "keywords": [
         "Origen cultural",
         "DevOps"
       ],
-      "example": "Los equipos acuerdan cómo comunicar necesidades del despliegue y coordinar los ciclos de entrega.",
-      "confusion": "DevOps es una forma de trabajar, no un lenguaje de programación ni un producto único.",
+      "example": "Situación práctica: Una empresa compra herramientas de automatización, pero desarrollo y operaciones siguen sin compartir requisitos ni objetivos. ¿Qué falta para avanzar hacia una cultura DevOps?",
+      "confusion": "Cambiar de proveedor no establece la colaboración que falta.",
       "mnemonic": "Primero una forma de trabajar.",
-      "difficulty": "Foundation",
+      "difficulty": "Applied",
       "tags": [
         "devops",
-        "introduccion"
+        "introduccion",
+        "aplicacion-practica"
       ],
       "sourcePage": 6
     },
@@ -346,20 +359,21 @@
       "domain": "cultura",
       "service": "Mejora del proceso",
       "category": "Cultura DevOps",
-      "question": "¿Qué intenta eliminar DevOps del proceso de publicación?",
-      "answer": "Obstáculos y procesos manuales ineficientes que ralentizan los ciclos de entrega.",
-      "explanation": "Eliminar obstáculos y automatizar tareas ineficientes ayuda a construir ciclos de publicación más fluidos.",
+      "question": "Cada publicación repite las mismas comprobaciones y comandos manuales, con errores de transcripción. ¿Qué mejora conserva los controles y reduce esa fuente de fallos?",
+      "answer": "Automatizar las comprobaciones y los comandos repetitivos dentro de un flujo de entrega.",
+      "explanation": "Se mantiene el propósito de los controles y se reduce la ejecución manual que introduce errores.",
       "keywords": [
         "Mejora del proceso",
         "DevOps"
       ],
-      "example": "En lugar de repetir un despliegue manual cada semana, el equipo busca un proceso automatizado y consistente.",
-      "confusion": "Mejorar la velocidad de entrega no implica saltarse las pruebas ni dejar de observar el sistema.",
+      "example": "Situación práctica: Cada publicación repite las mismas comprobaciones y comandos manuales, con errores de transcripción. ¿Qué mejora conserva los controles y reduce esa fuente de fallos?",
+      "confusion": "Aumentar la frecuencia no elimina la causa de los errores de transcripción.",
       "mnemonic": "Quitar obstáculos, mejorar el flujo.",
       "difficulty": "Applied",
       "tags": [
         "devops",
-        "introduccion"
+        "introduccion",
+        "aplicacion-practica"
       ],
       "sourcePage": 6
     },
@@ -368,20 +382,21 @@
       "domain": "cultura",
       "service": "Ciclo de entrega",
       "category": "Cultura DevOps",
-      "question": "¿Qué ciclo conecta una idea con la entrega del software y la observación de sus resultados?",
-      "answer": "Idea → implementar → probar → construir → desplegar → observar.",
-      "explanation": "El ciclo conecta idea, implementación, pruebas, construcción, despliegue y observación. Lo observado alimenta nuevas mejoras.",
+      "question": "Una versión acaba de desplegarse correctamente. ¿Qué actividad cierra el ciclo de aprendizaje y aporta información para el siguiente cambio?",
+      "answer": "Observar su comportamiento en uso y aprovechar los resultados para nuevas mejoras.",
+      "explanation": "La observación posterior al despliegue permite comprobar sus efectos y orientar nuevas ideas.",
       "keywords": [
         "Ciclo de entrega",
         "DevOps"
       ],
-      "example": "Tras desplegar, el equipo observa el comportamiento y utiliza lo aprendido para orientar nuevas ideas.",
-      "confusion": "El despliegue no termina el ciclo: observar los resultados permite orientar nuevas mejoras.",
-      "mnemonic": "Idea, implementa, prueba, construye, despliega y observa.",
-      "difficulty": "Foundation",
+      "example": "Situación práctica: Una versión acaba de desplegarse correctamente. ¿Qué actividad cierra el ciclo de aprendizaje y aporta información para el siguiente cambio?",
+      "confusion": "Repetir la construcción no aporta la información de uso que requiere el ciclo.",
+      "mnemonic": "Desplegar, observar y aprender.",
+      "difficulty": "Applied",
       "tags": [
         "devops",
-        "introduccion"
+        "introduccion",
+        "aplicacion-practica"
       ],
       "sourcePage": 6
     },
@@ -390,20 +405,21 @@
       "domain": "cultura",
       "service": "Patrones comunes",
       "category": "Cultura DevOps",
-      "question": "¿Por qué distintas empresas pueden adoptar DevOps con organizaciones diferentes?",
-      "answer": "Porque pueden adaptar la organización y compartir principios y prácticas comunes.",
-      "explanation": "DevOps se adapta al contexto de cada empresa. Puede haber distintas estructuras organizativas y, a la vez, prácticas comunes de colaboración y automatización.",
+      "question": "Una empresa distribuye las tareas DevOps entre dos equipos y otra utiliza especialistas dedicados. ¿Qué permite evaluar ambas adopciones con el mismo criterio?",
+      "answer": "Comprobar si sus prácticas mejoran la colaboración y automatizan la entrega.",
+      "explanation": "Los principios y prácticas compartidos importan más que imponer una estructura organizativa idéntica.",
       "keywords": [
         "Patrones comunes",
         "DevOps"
       ],
-      "example": "Dos organizaciones organizan sus equipos de forma diferente, pero ambas adoptan integración y monitorización continuas.",
-      "confusion": "Compartir prácticas DevOps no exige una estructura organizativa idéntica en todas las empresas.",
+      "example": "Situación práctica: Una empresa distribuye las tareas DevOps entre dos equipos y otra utiliza especialistas dedicados. ¿Qué permite evaluar ambas adopciones con el mismo criterio?",
+      "confusion": "El nombre del equipo no demuestra colaboración ni mejora de la entrega.",
       "mnemonic": "Estructuras distintas, principios compartidos.",
-      "difficulty": "Foundation",
+      "difficulty": "Applied",
       "tags": [
         "devops",
-        "introduccion"
+        "introduccion",
+        "aplicacion-practica"
       ],
       "sourcePage": 7
     },
@@ -412,20 +428,21 @@
       "domain": "practicas",
       "service": "Prácticas DevOps",
       "category": "Prácticas compartidas",
-      "question": "¿Qué pareja de prácticas ayuda a coordinar el trabajo y gestionar los cambios en el código?",
-      "answer": "Planificación y colaboración, y gestión del código fuente.",
-      "explanation": "La planificación y colaboración coordinan el trabajo; la gestión del código fuente permite organizar sus cambios.",
+      "question": "Varias personas modifican la aplicación y necesitan coordinar qué se entrega y conservar el historial de cambios. ¿Qué combinación de prácticas responde a ambas necesidades?",
+      "answer": "Planificación y colaboración junto con gestión del código fuente.",
+      "explanation": "La coordinación organiza el trabajo y el control del código mantiene el historial de modificaciones.",
       "keywords": [
         "Prácticas DevOps",
         "DevOps"
       ],
-      "example": "El equipo planifica una mejora y utiliza un repositorio para gestionar los cambios necesarios en el código.",
-      "confusion": "DevOps abarca el proceso de trabajo completo, no únicamente el momento del despliegue.",
+      "example": "Situación práctica: Varias personas modifican la aplicación y necesitan coordinar qué se entrega y conservar el historial de cambios. ¿Qué combinación de prácticas responde a ambas necesidades?",
+      "confusion": "Ayuda a observar y operar, pero no cubre coordinar el trabajo y registrar el historial del código.",
       "mnemonic": "Planificar, colaborar y versionar.",
-      "difficulty": "Foundation",
+      "difficulty": "Applied",
       "tags": [
         "devops",
-        "introduccion"
+        "introduccion",
+        "aplicacion-practica"
       ],
       "sourcePage": 7
     },
@@ -434,20 +451,21 @@
       "domain": "practicas",
       "service": "Infraestructura como código",
       "category": "Prácticas compartidas",
-      "question": "¿Qué principio permite gestionar la infraestructura mediante definiciones automatizables?",
-      "answer": "Tratar la infraestructura como código.",
-      "explanation": "La infraestructura como código permite expresar y gestionar la infraestructura mediante definiciones que pueden automatizarse.",
+      "question": "Dos servidores deberían tener la misma configuración, pero los cambios manuales han creado diferencias difíciles de reproducir. ¿Qué enfoque aborda mejor esa causa?",
+      "answer": "Gestionar la configuración mediante definiciones automatizables de infraestructura como código.",
+      "explanation": "Las definiciones automatizables permiten reproducir la configuración en lugar de depender de acciones manuales divergentes.",
       "keywords": [
         "Infraestructura como código",
         "DevOps"
       ],
-      "example": "El equipo utiliza definiciones automatizables para gestionar la configuración de su infraestructura.",
-      "confusion": "La infraestructura también puede automatizarse; no queda fuera del proceso DevOps.",
+      "example": "Situación práctica: Dos servidores deberían tener la misma configuración, pero los cambios manuales han creado diferencias difíciles de reproducir. ¿Qué enfoque aborda mejor esa causa?",
+      "confusion": "Las métricas pueden revelar diferencias, pero no hacen reproducible su configuración.",
       "mnemonic": "Infraestructura también se expresa como código.",
-      "difficulty": "Foundation",
+      "difficulty": "Applied",
       "tags": [
         "devops",
-        "introduccion"
+        "introduccion",
+        "aplicacion-practica"
       ],
       "sourcePage": 7
     },
@@ -456,20 +474,21 @@
       "domain": "practicas",
       "service": "Monitorización continua",
       "category": "Prácticas compartidas",
-      "question": "¿Qué práctica permite seguir observando el sistema después de desplegar?",
-      "answer": "La monitorización continua.",
-      "explanation": "La monitorización continua mantiene la observación del sistema después de entregar una versión.",
+      "question": "El despliegue ha terminado, pero el equipo necesita detectar si la nueva versión empeora el funcionamiento del servicio. ¿Qué práctica responde directamente a esa necesidad?",
+      "answer": "Monitorización continua del sistema después de la publicación.",
+      "explanation": "La observación del comportamiento desplegado permite detectar efectos que el éxito del despliegue no garantiza.",
       "keywords": [
         "Monitorización continua",
         "DevOps"
       ],
-      "example": "Después del despliegue, el equipo sigue observando el comportamiento de la aplicación.",
-      "confusion": "Desplegar una versión no elimina la necesidad de observar su comportamiento.",
+      "example": "Situación práctica: El despliegue ha terminado, pero el equipo necesita detectar si la nueva versión empeora el funcionamiento del servicio. ¿Qué práctica responde directamente a esa necesidad?",
+      "confusion": "Conserva el historial del código, pero no observa el comportamiento de la versión en ejecución.",
       "mnemonic": "Entregar y seguir observando.",
-      "difficulty": "Foundation",
+      "difficulty": "Applied",
       "tags": [
         "devops",
-        "introduccion"
+        "introduccion",
+        "aplicacion-practica"
       ],
       "sourcePage": 7
     },
@@ -478,20 +497,21 @@
       "domain": "rol-pipeline",
       "service": "Organización del trabajo DevOps",
       "category": "Ingeniería DevOps y CI/CD",
-      "question": "¿Quién puede asumir las responsabilidades de DevOps en una organización?",
-      "answer": "Desarrolladores, operaciones o un rol dedicado de DevOps.",
-      "explanation": "Las responsabilidades pueden distribuirse entre desarrollo y operaciones o recaer en un rol dedicado de DevOps.",
+      "question": "Una empresa pequeña quiere adoptar DevOps sin crear un departamento nuevo. ¿Qué opción es compatible con esa decisión?",
+      "answer": "Repartir responsabilidades DevOps entre desarrollo y operaciones con objetivos compartidos.",
+      "explanation": "Las responsabilidades pueden distribuirse entre roles existentes; no requieren necesariamente un equipo independiente.",
       "keywords": [
         "Organización del trabajo DevOps",
         "DevOps"
       ],
-      "example": "Una empresa distribuye estas tareas entre equipos y otra contrata un rol dedicado; ambas configuraciones aparecen en la introducción.",
-      "confusion": "No es obligatorio que todas las organizaciones creen un equipo separado de DevOps.",
+      "example": "Situación práctica: Una empresa pequeña quiere adoptar DevOps sin crear un departamento nuevo. ¿Qué opción es compatible con esa decisión?",
+      "confusion": "Un proveedor no sustituye la coordinación ni las responsabilidades internas del proceso.",
       "mnemonic": "DEV, OPS o un rol dedicado.",
-      "difficulty": "Foundation",
+      "difficulty": "Applied",
       "tags": [
         "devops",
-        "introduccion"
+        "introduccion",
+        "aplicacion-practica"
       ],
       "sourcePage": 8
     },
@@ -500,20 +520,21 @@
       "domain": "rol-pipeline",
       "service": "Ingeniería DevOps",
       "category": "Ingeniería DevOps y CI/CD",
-      "question": "¿Cuál es una responsabilidad central de un DevOps Engineer?",
-      "answer": "Crear un proceso de publicación fluido y completamente automatizado.",
-      "explanation": "Una responsabilidad central es conectar y automatizar las tareas de publicación para lograr un proceso de entrega fluido.",
+      "question": "Una persona conoce muchas herramientas DevOps, pero las versiones siguen dependiendo de varios pasos manuales desconectados. ¿Qué resultado debería priorizar?",
+      "answer": "Conectar y automatizar los pasos para producir un flujo de entrega coherente.",
+      "explanation": "El valor del trabajo está en mejorar el proceso de entrega, no en acumular tecnologías sin integrarlas.",
       "keywords": [
         "Ingeniería DevOps",
         "DevOps"
       ],
-      "example": "La persona responsable conecta las tareas de prueba, construcción y despliegue en un flujo automatizado.",
-      "confusion": "Acumular herramientas sin mejorar el proceso de entrega no cumple ese objetivo.",
+      "example": "Situación práctica: Una persona conoce muchas herramientas DevOps, pero las versiones siguen dependiendo de varios pasos manuales desconectados. ¿Qué resultado debería priorizar?",
+      "confusion": "Añade tecnología sin resolver la desconexión y la dependencia manual.",
       "mnemonic": "Automatizar el camino hacia la entrega.",
-      "difficulty": "Foundation",
+      "difficulty": "Applied",
       "tags": [
         "devops",
-        "introduccion"
+        "introduccion",
+        "aplicacion-practica"
       ],
       "sourcePage": 8
     },
@@ -522,20 +543,21 @@
       "domain": "rol-pipeline",
       "service": "Habilidades del rol",
       "category": "Ingeniería DevOps y CI/CD",
-      "question": "¿Qué combinación de conocimientos necesita una persona que trabaja en DevOps?",
-      "answer": "Conocimientos de desarrollo y operaciones, además de habilidades específicas de DevOps.",
-      "explanation": "El trabajo en DevOps combina conocimientos de desarrollo y operaciones con competencias específicas de automatización y entrega.",
+      "question": "Hay que investigar por qué un cambio de código falla durante su entrega a un entorno Linux. ¿Qué perfil de conocimientos resulta más adecuado para conectar las posibles causas?",
+      "answer": "Desarrollo, operación de sistemas y automatización del proceso de entrega.",
+      "explanation": "El problema cruza código, entorno y automatización; comprender los tres permite relacionar las etapas.",
       "keywords": [
         "Habilidades del rol",
         "DevOps"
       ],
-      "example": "Una persona necesita entender tanto el cambio en el software como su ejecución y las herramientas de automatización.",
-      "confusion": "Conocer solo desarrollo o solo operaciones no resume todas las necesidades del rol.",
+      "example": "Situación práctica: Hay que investigar por qué un cambio de código falla durante su entrega a un entorno Linux. ¿Qué perfil de conocimientos resulta más adecuado para conectar las posibles causas?",
+      "confusion": "Son conocimientos útiles, pero no cubren el entorno Linux ni la automatización de la entrega.",
       "mnemonic": "DEV + OPS + habilidades DevOps.",
-      "difficulty": "Foundation",
+      "difficulty": "Applied",
       "tags": [
         "devops",
-        "introduccion"
+        "introduccion",
+        "aplicacion-practica"
       ],
       "sourcePage": 9
     },
@@ -544,20 +566,21 @@
       "domain": "rol-pipeline",
       "service": "Pipeline CI/CD",
       "category": "Ingeniería DevOps y CI/CD",
-      "question": "¿Qué mecanismo conecta las etapas de un proceso automatizado de entrega de software?",
-      "answer": "El pipeline CI/CD.",
-      "explanation": "Un pipeline CI/CD conecta las etapas automatizadas que transforman un cambio en una versión lista para entregar o desplegar.",
+      "question": "El repositorio, las pruebas, la construcción y el despliegue ya existen, pero alguien debe iniciar cada herramienta por separado. ¿Qué elemento falta para conectar el proceso?",
+      "answer": "Un pipeline CI/CD que coordine la ejecución de esas etapas.",
+      "explanation": "El pipeline conecta las actividades existentes en un flujo automatizado de entrega.",
       "keywords": [
         "Pipeline CI/CD",
         "DevOps"
       ],
-      "example": "Un commit inicia un flujo que conecta comprobaciones, construcción y despliegue.",
-      "confusion": "Un repositorio o una herramienta aislada no representan por sí solos el pipeline completo.",
+      "example": "Situación práctica: El repositorio, las pruebas, la construcción y el despliegue ya existen, pero alguien debe iniciar cada herramienta por separado. ¿Qué elemento falta para conectar el proceso?",
+      "confusion": "Otra copia del código no coordina la ejecución de pruebas, construcción y despliegue.",
       "mnemonic": "CI/CD conecta la entrega.",
-      "difficulty": "Foundation",
+      "difficulty": "Applied",
       "tags": [
         "devops",
-        "introduccion"
+        "introduccion",
+        "aplicacion-practica"
       ],
       "sourcePage": 10
     },
@@ -566,20 +589,21 @@
       "domain": "rol-pipeline",
       "service": "Etapas del pipeline",
       "category": "Ingeniería DevOps y CI/CD",
-      "question": "En un pipeline que prueba el código antes de construirlo, ¿qué secuencia lleva un cambio hasta su despliegue?",
-      "answer": "Commit del código → TEST → BUILD → PUSH → DEPLOY.",
-      "explanation": "Una posible secuencia es confirmar código, probarlo, construir el resultado, publicarlo y desplegarlo. El orden concreto de un pipeline depende del proyecto.",
+      "question": "Las pruebas han pasado y se ha construido una imagen. El servidor de despliegue necesita obtenerla de un registro. ¿Qué debe ocurrir antes de desplegarla desde ese registro?",
+      "answer": "Publicar la imagen construida en el registro que utilizará el despliegue.",
+      "explanation": "Si el despliegue obtiene la imagen de un registro, el resultado construido debe estar disponible allí antes de recuperarlo.",
       "keywords": [
         "Etapas del pipeline",
         "DevOps"
       ],
-      "example": "Tras confirmar el código, el flujo del ejemplo pasa por pruebas, construcción, publicación del resultado y despliegue.",
-      "confusion": "No todos los pipelines usan exactamente el mismo orden: la secuencia debe responder a las necesidades del proyecto.",
-      "mnemonic": "Commit, prueba, construye, publica y despliega.",
-      "difficulty": "Foundation",
+      "example": "Situación práctica: Las pruebas han pasado y se ha construido una imagen. El servidor de despliegue necesita obtenerla de un registro. ¿Qué debe ocurrir antes de desplegarla desde ese registro?",
+      "confusion": "Confirmar código no publica la imagen que el servidor necesita recuperar.",
+      "mnemonic": "Construir, publicar y después desplegar.",
+      "difficulty": "Applied",
       "tags": [
         "devops",
-        "introduccion"
+        "introduccion",
+        "aplicacion-practica"
       ],
       "sourcePage": 10
     },
@@ -588,20 +612,21 @@
       "domain": "herramientas",
       "service": "Git",
       "category": "Mapa de herramientas",
-      "question": "¿Qué herramienta permite gestionar las versiones del código fuente?",
-      "answer": "Git.",
-      "explanation": "Git es una herramienta de control de versiones que permite gestionar el código fuente y sus cambios.",
+      "question": "Dos personas modificaron el código y necesitan comparar cambios, conservar su historial y combinar el trabajo. ¿Qué herramienta responde directamente a esa necesidad?",
+      "answer": "Git, para gestionar versiones y cambios del código fuente.",
+      "explanation": "Git mantiene el historial y permite gestionar cambios en el código; es una función distinta de ejecutar pipelines o infraestructura.",
       "keywords": [
         "Git",
         "DevOps"
       ],
-      "example": "Un equipo utiliza Git para registrar los cambios en el código de su aplicación.",
-      "confusion": "Git gestiona versiones de código; Prometheus se orienta a monitorización.",
+      "example": "Situación práctica: Dos personas modificaron el código y necesitan comparar cambios, conservar su historial y combinar el trabajo. ¿Qué herramienta responde directamente a esa necesidad?",
+      "confusion": "Jenkins puede automatizar tareas usando un repositorio, pero no sustituye al control de versiones solicitado.",
       "mnemonic": "Git: gestionar código.",
-      "difficulty": "Foundation",
+      "difficulty": "Applied",
       "tags": [
         "devops",
-        "introduccion"
+        "introduccion",
+        "aplicacion-practica"
       ],
       "sourcePage": 10
     },
@@ -610,20 +635,21 @@
       "domain": "herramientas",
       "service": "Docker",
       "category": "Mapa de herramientas",
-      "question": "¿Cómo ayuda Docker a preparar una aplicación para su entrega?",
-      "answer": "Empaquetando la aplicación y sus dependencias en imágenes de contenedor.",
-      "explanation": "Docker permite empaquetar una aplicación y sus dependencias en imágenes de contenedor para facilitar su entrega y ejecución.",
+      "question": "Una aplicación necesita entregarse junto con las dependencias que utiliza para ejecutarse. ¿Qué uso de Docker responde a esa necesidad?",
+      "answer": "Construir una imagen que empaquete la aplicación y sus dependencias.",
+      "explanation": "Una imagen de contenedor reúne el software y sus dependencias para facilitar su distribución y ejecución.",
       "keywords": [
         "Docker",
         "DevOps"
       ],
-      "example": "Una aplicación y sus dependencias se empaquetan en una imagen de contenedor para facilitar su entrega.",
-      "confusion": "Docker no es un gestor de paquetes del sistema operativo; empaquetar aplicaciones en contenedores es un concepto distinto.",
+      "example": "Situación práctica: Una aplicación necesita entregarse junto con las dependencias que utiliza para ejecutarse. ¿Qué uso de Docker responde a esa necesidad?",
+      "confusion": "Esa es una necesidad de control de versiones, no de empaquetado de la aplicación.",
       "mnemonic": "Docker: aplicación y dependencias en una imagen.",
-      "difficulty": "Foundation",
+      "difficulty": "Applied",
       "tags": [
         "devops",
-        "introduccion"
+        "introduccion",
+        "aplicacion-practica"
       ],
       "sourcePage": 10
     },
@@ -632,20 +658,21 @@
       "domain": "herramientas",
       "service": "Terraform y Ansible",
       "category": "Mapa de herramientas",
-      "question": "¿Qué pareja de herramientas ayuda a automatizar la infraestructura y su configuración?",
-      "answer": "Terraform y Ansible.",
-      "explanation": "Terraform se utiliza para aprovisionar infraestructura mediante código y Ansible para automatizar configuración y otras tareas. Pueden complementarse y no son herramientas idénticas.",
+      "question": "Un equipo quiere aprovisionar recursos y después automatizar la configuración de los servidores. ¿Qué combinación se ajusta mejor a esas dos tareas?",
+      "answer": "Terraform para el aprovisionamiento y Ansible para la configuración.",
+      "explanation": "Estas herramientas pueden complementarse: Terraform se orienta al aprovisionamiento declarativo y Ansible a automatizar configuración y tareas.",
       "keywords": [
         "Terraform y Ansible",
         "DevOps"
       ],
-      "example": "Un equipo combina el aprovisionamiento de infraestructura con la automatización de su configuración.",
-      "confusion": "Terraform y Ansible pueden complementarse, pero no son intercambiables en todos los casos.",
+      "example": "Situación práctica: Un equipo quiere aprovisionar recursos y después automatizar la configuración de los servidores. ¿Qué combinación se ajusta mejor a esas dos tareas?",
+      "confusion": "Git versiona definiciones y Jenkins puede ejecutar tareas, pero no proporcionan por sí mismos esas dos funciones específicas.",
       "mnemonic": "Infraestructura: Terraform y Ansible.",
-      "difficulty": "Foundation",
+      "difficulty": "Applied",
       "tags": [
         "devops",
-        "introduccion"
+        "introduccion",
+        "aplicacion-practica"
       ],
       "sourcePage": 10
     },
@@ -654,20 +681,21 @@
       "domain": "herramientas",
       "service": "Jenkins y GitLab",
       "category": "Mapa de herramientas",
-      "question": "¿Qué herramientas pueden utilizarse para automatizar la integración y entrega continuas?",
-      "answer": "Jenkins y GitLab.",
-      "explanation": "Jenkins y GitLab pueden utilizarse para organizar y automatizar flujos de integración y entrega continuas.",
+      "question": "Las pruebas y los scripts de construcción ya están preparados. Se necesita automatizar cuándo y cómo se ejecutan al entregar cambios. ¿Qué elección se orienta directamente a esa coordinación?",
+      "answer": "Jenkins o las funciones CI/CD de GitLab para organizar las etapas.",
+      "explanation": "Estas soluciones pueden coordinar tareas automatizadas dentro de un flujo de integración y entrega.",
       "keywords": [
         "Jenkins y GitLab",
         "DevOps"
       ],
-      "example": "El equipo busca herramientas para conectar automáticamente partes de su proceso de publicación.",
-      "confusion": "Las herramientas de CI/CD no son lo mismo que proveedores cloud ni herramientas de monitorización.",
+      "example": "Situación práctica: Las pruebas y los scripts de construcción ya están preparados. Se necesita automatizar cuándo y cómo se ejecutan al entregar cambios. ¿Qué elección se orienta directamente a esa coordinación?",
+      "confusion": "El control de versiones puede iniciar o alimentar un pipeline, pero no coordina por sí solo esas etapas.",
       "mnemonic": "CI/CD: Jenkins y GitLab.",
-      "difficulty": "Foundation",
+      "difficulty": "Applied",
       "tags": [
         "devops",
-        "introduccion"
+        "introduccion",
+        "aplicacion-practica"
       ],
       "sourcePage": 10
     },
@@ -676,20 +704,21 @@
       "domain": "herramientas",
       "service": "Kubernetes",
       "category": "Mapa de herramientas",
-      "question": "¿Qué herramienta permite orquestar contenedores?",
-      "answer": "Kubernetes.",
-      "explanation": "Kubernetes permite orquestar contenedores, coordinando su ejecución dentro de un entorno de despliegue.",
+      "question": "La imagen de una aplicación ya está preparada. Ahora se necesita coordinar la ejecución de sus contenedores en un entorno de despliegue. ¿Qué herramienta responde a esa fase?",
+      "answer": "Kubernetes, para orquestar la ejecución de contenedores.",
+      "explanation": "La orquestación coordina la ejecución de contenedores a partir de imágenes ya disponibles.",
       "keywords": [
         "Kubernetes",
         "DevOps"
       ],
-      "example": "Un equipo utiliza Kubernetes para coordinar la ejecución de los contenedores de su aplicación.",
-      "confusion": "Preparar una imagen de contenedor y orquestar la ejecución de contenedores son actividades diferentes.",
+      "example": "Situación práctica: La imagen de una aplicación ya está preparada. Ahora se necesita coordinar la ejecución de sus contenedores en un entorno de despliegue. ¿Qué herramienta responde a esa fase?",
+      "confusion": "Versionar definiciones no ejecuta ni coordina los contenedores.",
       "mnemonic": "Kubernetes: orquestar contenedores.",
-      "difficulty": "Foundation",
+      "difficulty": "Applied",
       "tags": [
         "devops",
-        "introduccion"
+        "introduccion",
+        "aplicacion-practica"
       ],
       "sourcePage": 10
     },
@@ -698,20 +727,21 @@
       "domain": "herramientas",
       "service": "Proveedores cloud",
       "category": "Mapa de herramientas",
-      "question": "¿Qué conjunto está formado por tres proveedores de servicios cloud?",
-      "answer": "AWS, Azure y Google Cloud.",
-      "explanation": "AWS, Azure y Google Cloud son proveedores de servicios cloud; DevOps no exige utilizar un único proveedor.",
+      "question": "Un equipo necesita un proveedor que ofrezca infraestructura cloud para alojar sus aplicaciones, no una herramienta de empaquetado ni de pipeline. ¿Qué elección corresponde a esa categoría?",
+      "answer": "Azure, como proveedor de recursos y servicios cloud.",
+      "explanation": "Azure pertenece a la misma categoría de proveedores cloud que AWS y Google Cloud.",
       "keywords": [
         "Proveedores cloud",
         "DevOps"
       ],
-      "example": "Al planificar dónde ejecutar su aplicación, un equipo compara servicios de AWS, Azure y Google Cloud.",
-      "confusion": "Los proveedores cloud no deben confundirse con lenguajes de programación o herramientas de control de versiones.",
-      "mnemonic": "Cloud: AWS, Azure y Google Cloud.",
-      "difficulty": "Foundation",
+      "example": "Situación práctica: Un equipo necesita un proveedor que ofrezca infraestructura cloud para alojar sus aplicaciones, no una herramienta de empaquetado ni de pipeline. ¿Qué elección corresponde a esa categoría?",
+      "confusion": "Docker facilita el uso de contenedores, pero no equivale a contratar infraestructura a un proveedor cloud.",
+      "mnemonic": "Cloud ofrece recursos; las herramientas los utilizan.",
+      "difficulty": "Applied",
       "tags": [
         "devops",
-        "introduccion"
+        "introduccion",
+        "aplicacion-practica"
       ],
       "sourcePage": 10
     },
@@ -720,20 +750,21 @@
       "domain": "herramientas",
       "service": "Prometheus",
       "category": "Mapa de herramientas",
-      "question": "¿Qué herramienta se utiliza para la monitorización continua?",
-      "answer": "Prometheus.",
-      "explanation": "Prometheus se utiliza para monitorizar sistemas y observar métricas de su funcionamiento.",
+      "question": "El equipo quiere observar métricas de la aplicación una vez desplegada para investigar cambios en su funcionamiento. ¿Qué herramienta se orienta directamente a ese objetivo?",
+      "answer": "Prometheus, para recopilar y consultar métricas de monitorización.",
+      "explanation": "La monitorización permite observar el comportamiento del sistema durante su ejecución.",
       "keywords": [
         "Prometheus",
         "DevOps"
       ],
-      "example": "Después de entregar una versión, el equipo busca herramientas de observación en la categoría de monitorización.",
-      "confusion": "Monitorizar un sistema y automatizar su integración y entrega son responsabilidades distintas.",
+      "example": "Situación práctica: El equipo quiere observar métricas de la aplicación una vez desplegada para investigar cambios en su funcionamiento. ¿Qué herramienta se orienta directamente a ese objetivo?",
+      "confusion": "El historial ayuda a investigar cambios, pero no recopila métricas de la aplicación en ejecución.",
       "mnemonic": "Prometheus: monitorizar.",
-      "difficulty": "Foundation",
+      "difficulty": "Applied",
       "tags": [
         "devops",
-        "introduccion"
+        "introduccion",
+        "aplicacion-practica"
       ],
       "sourcePage": 10
     },
@@ -742,20 +773,21 @@
       "domain": "rol-pipeline",
       "service": "Propósito de las herramientas",
       "category": "Ingeniería DevOps y CI/CD",
-      "question": "¿Qué propósito comparten las herramientas de automatización en DevOps?",
-      "answer": "Sustituir tareas humanas repetitivas por automatización dentro del proceso de entrega.",
-      "explanation": "La automatización reduce tareas manuales repetitivas y conecta actividades del proceso de entrega. Las herramientas apoyan la colaboración y no sustituyen la responsabilidad del equipo.",
+      "question": "Tras automatizar una entrega, el equipo comprueba que todas las etapas se ejecutan sin iniciarlas una a una. ¿Qué mejora refleja mejor el propósito de esas herramientas?",
+      "answer": "Reducir trabajo manual repetitivo mediante etapas conectadas y reproducibles.",
+      "explanation": "La automatización coordina tareas del proceso y reduce la dependencia de repetir acciones manuales.",
       "keywords": [
         "Propósito de las herramientas",
         "DevOps"
       ],
-      "example": "Una tarea manual recurrente de entrega se convierte en una etapa automatizada del pipeline.",
-      "confusion": "Automatizar tareas no elimina la colaboración, el conocimiento ni la responsabilidad del equipo.",
+      "example": "Situación práctica: Tras automatizar una entrega, el equipo comprueba que todas las etapas se ejecutan sin iniciarlas una a una. ¿Qué mejora refleja mejor el propósito de esas herramientas?",
+      "confusion": "Menos herramientas no garantiza un flujo integrado ni menos intervención manual.",
       "mnemonic": "Herramientas al servicio de automatizar.",
       "difficulty": "Applied",
       "tags": [
         "devops",
-        "introduccion"
+        "introduccion",
+        "aplicacion-practica"
       ],
       "sourcePage": 10
     }
@@ -764,27 +796,27 @@
     {
       "id": "intro-devops-001",
       "domain": "roles",
-      "prompt": "¿Cuáles son las responsabilidades principales del equipo de desarrollo?",
+      "prompt": "Un equipo necesita añadir recuperación de contraseña y corregir un error en el formulario. ¿Qué trabajo corresponde directamente a desarrollo?",
       "options": [
         {
           "id": "a",
-          "text": "Mantener únicamente los servidores de producción.",
-          "explanation": "Mantener servidores es una tarea vinculada a operaciones, no la responsabilidad principal de crear funcionalidades."
+          "text": "Configurar el servidor donde se ejecutará la nueva versión.",
+          "explanation": "Preparar el servidor facilita la ejecución, pero no implementa el comportamiento solicitado."
         },
         {
           "id": "b",
-          "text": "Realizar exclusivamente pruebas manuales.",
-          "explanation": "Las pruebas son parte del proceso, pero no sustituyen a programar funcionalidades y corregir errores."
+          "text": "Preparar los casos con los que se validará la nueva versión.",
+          "explanation": "Diseñar pruebas ayuda a validar la solución; no sustituye modificar la aplicación."
         },
         {
           "id": "c",
-          "text": "Aprobar versiones sin escribir software.",
-          "explanation": "El equipo de desarrollo participa creando y modificando el software."
+          "text": "Revisar las métricas de la versión que está en producción.",
+          "explanation": "Observar producción ayuda a detectar problemas, pero no implementa la funcionalidad."
         },
         {
           "id": "d",
-          "text": "Programar funcionalidades nuevas y corregir errores.",
-          "explanation": "El equipo de desarrollo crea nuevas funcionalidades y corrige errores utilizando lenguajes como Java, Python o JavaScript."
+          "text": "Modificar la lógica de la aplicación e implementar las correcciones.",
+          "explanation": "Desarrollo modifica el comportamiento del software para crear funcionalidades y corregir errores."
         }
       ],
       "correctId": "d",
@@ -793,27 +825,27 @@
     {
       "id": "intro-devops-002",
       "domain": "roles",
-      "prompt": "¿Qué se comprueba durante las pruebas de software?",
+      "prompt": "Una actualización cambia el inicio de sesión y comparte código con la recuperación de contraseña. ¿Qué alcance de pruebas reduce mejor el riesgo de regresiones?",
       "options": [
         {
           "id": "a",
-          "text": "Solo el comportamiento de versiones antiguas.",
-          "explanation": "También deben probarse las nuevas funcionalidades."
+          "text": "Probar el inicio de sesión con más usuarios y reutilizar los resultados antiguos del resto.",
+          "explanation": "Ampliar los usuarios de la función nueva no comprueba cómo afecta el código modificado a los otros flujos."
         },
         {
           "id": "b",
-          "text": "Únicamente que haya servidores disponibles.",
-          "explanation": "La disponibilidad de servidores no sustituye a comprobar funcionalidades del software."
+          "text": "Repetir las pruebas de la versión anterior y verificar que la compilación termina.",
+          "explanation": "No comprueba de forma suficiente el comportamiento nuevo del inicio de sesión."
         },
         {
           "id": "c",
-          "text": "Las funcionalidades nuevas y las ya existentes.",
-          "explanation": "Las pruebas verifican tanto las funcionalidades nuevas como el comportamiento existente, que podría verse afectado por los cambios."
+          "text": "Probar el inicio de sesión nuevo y los flujos existentes que podrían verse afectados.",
+          "explanation": "Un cambio puede afectar tanto a lo nuevo como al comportamiento existente, especialmente si comparten código."
         },
         {
           "id": "d",
-          "text": "Solo las funcionalidades nuevas.",
-          "explanation": "También se comprueban las funcionalidades anteriores."
+          "text": "Verificar el despliegue en preproducción y comprobar el tiempo de respuesta global.",
+          "explanation": "El despliegue y la latencia no demuestran que los flujos funcionales sigan siendo correctos."
         }
       ],
       "correctId": "c",
@@ -822,27 +854,27 @@
     {
       "id": "intro-devops-003",
       "domain": "roles",
-      "prompt": "¿Quiénes participan en las pruebas de software?",
+      "prompt": "Desarrolladores conocen la lógica modificada y testers conocen los flujos de uso. ¿Cómo aprovechar mejor ambos conocimientos al validar una funcionalidad?",
       "options": [
         {
           "id": "a",
-          "text": "Solo una herramienta sin participación del equipo.",
-          "explanation": "Operaciones puede colaborar en la calidad, pero las pruebas también involucran a desarrolladores y testers."
+          "text": "Encargar la validación a operaciones y usar el éxito del despliegue como criterio funcional.",
+          "explanation": "El éxito del despliegue no confirma el comportamiento de los flujos de uso."
         },
         {
           "id": "b",
-          "text": "Los desarrolladores y los testers dedicados.",
-          "explanation": "Las pruebas pueden involucrar a desarrolladores y testers dedicados; la calidad no depende exclusivamente de un solo rol."
+          "text": "Combinar comprobaciones de desarrollo con pruebas de los testers sobre los flujos de uso.",
+          "explanation": "Las perspectivas de desarrollo y testing se complementan para validar comportamiento y detectar problemas."
         },
         {
           "id": "c",
-          "text": "Solo el equipo de operaciones.",
-          "explanation": "Las pruebas forman parte del proceso de entrega y no se dejan exclusivamente para los clientes después del lanzamiento."
+          "text": "Revisar el código con desarrollo y sustituir las pruebas de uso por esa revisión.",
+          "explanation": "Una revisión de código no sustituye comprobar cómo se comporta la aplicación."
         },
         {
           "id": "d",
-          "text": "Solo clientes después del lanzamiento.",
-          "explanation": "La automatización requiere participación del equipo; no elimina la responsabilidad humana."
+          "text": "Mantener las pruebas de testers y excluir la validación del cambio durante desarrollo.",
+          "explanation": "Aprovecha una perspectiva, pero pierde las comprobaciones que puede aportar quien implementa la lógica."
         }
       ],
       "correctId": "b",
@@ -851,27 +883,27 @@
     {
       "id": "intro-devops-004",
       "domain": "roles",
-      "prompt": "¿Qué dos modalidades de pruebas se complementan durante el desarrollo?",
+      "prompt": "Una comprobación estable se repite en cada versión, mientras otra requiere explorar una pantalla recién diseñada. ¿Qué enfoque aprovecha mejor las modalidades de prueba?",
       "options": [
         {
           "id": "a",
-          "text": "Pruebas manuales y automatizadas.",
-          "explanation": "Las pruebas manuales y automatizadas se complementan para comprobar el funcionamiento del software."
+          "text": "Automatizar la comprobación repetitiva y complementar con exploración manual de la pantalla.",
+          "explanation": "La automatización es útil para comprobaciones repetibles, y las pruebas manuales permiten explorar comportamientos nuevos."
         },
         {
           "id": "b",
-          "text": "Solo pruebas manuales.",
-          "explanation": "También existen pruebas automatizadas."
+          "text": "Realizar ambas comprobaciones manualmente para mantener un procedimiento uniforme.",
+          "explanation": "Es posible, pero conserva trabajo repetitivo que puede automatizarse."
         },
         {
           "id": "c",
-          "text": "Solo pruebas automatizadas.",
-          "explanation": "También existen pruebas manuales."
+          "text": "Automatizar ambas comprobaciones y usar el éxito del script como sustituto de la exploración.",
+          "explanation": "Una comprobación automatizada preparada no cubre necesariamente lo que descubriría una exploración de la pantalla."
         },
         {
           "id": "d",
-          "text": "Publicación y monitorización como únicas modalidades.",
-          "explanation": "Publicación y monitorización son actividades del proceso, no modalidades de pruebas equivalentes a manuales y automatizadas."
+          "text": "Validar la pantalla manualmente y posponer la comprobación estable hasta el despliegue.",
+          "explanation": "Retrasa una comprobación repetible que podría dar información en cada versión."
         }
       ],
       "correctId": "a",
@@ -880,27 +912,27 @@
     {
       "id": "intro-devops-005",
       "domain": "roles",
-      "prompt": "¿Qué actividades conectan el trabajo de operaciones con la ejecución del software en producción?",
+      "prompt": "La funcionalidad ya está programada y probada. Falta preparar su ejecución, actualizar el entorno y mantenerla funcionando en producción. ¿Qué conjunto de tareas responde a esa necesidad?",
       "options": [
         {
           "id": "a",
-          "text": "Solo diseñar nuevas funcionalidades.",
-          "explanation": "El enfoque DevOps vincula las funcionalidades nuevas con desarrollo."
+          "text": "Refinar los requisitos, modificar la lógica y revisar los cambios de código.",
+          "explanation": "Son actividades útiles de desarrollo, pero no cubren la puesta en producción solicitada."
         },
         {
           "id": "b",
-          "text": "Solo probar interfaces manualmente.",
-          "explanation": "Las responsabilidades enumeradas para operaciones son más amplias y abarcan producción."
+          "text": "Diseñar casos de prueba, comprobar los flujos y registrar los defectos encontrados.",
+          "explanation": "Valida el comportamiento, pero no prepara ni mantiene el entorno de producción."
         },
         {
           "id": "c",
-          "text": "Únicamente almacenar el código fuente.",
-          "explanation": "Gestionar código no cubre las tareas de construir, desplegar, actualizar y ejecutar."
+          "text": "Priorizar funcionalidades, planificar iteraciones y estimar el trabajo pendiente.",
+          "explanation": "Coordina el trabajo futuro, pero no ejecuta ni opera la versión disponible."
         },
         {
           "id": "d",
-          "text": "Construir, desplegar, actualizar y ejecutar el software en producción.",
-          "explanation": "Operaciones participa en construir, desplegar, actualizar y ejecutar el software, conectando la aplicación con sus entornos y servidores."
+          "text": "Preparar el entorno, desplegar la versión y atender su funcionamiento en producción.",
+          "explanation": "Estas actividades conectan el software con el entorno donde se ejecuta y con su operación continuada."
         }
       ],
       "correctId": "d",
@@ -909,27 +941,27 @@
     {
       "id": "intro-devops-006",
       "domain": "silos",
-      "prompt": "¿Qué diferencia de prioridades puede generar tensión entre desarrollo y operaciones?",
+      "prompt": "Desarrollo mide su éxito por funcionalidades publicadas; operaciones lo mide por estabilidad. Las discusiones reaparecen en cada entrega. ¿Qué causa explica mejor la tensión?",
       "options": [
         {
           "id": "a",
-          "text": "Desarrollo solo monitoriza y operaciones solo programa.",
-          "explanation": "Invierte y reduce indebidamente los objetivos descritos."
+          "text": "Los equipos necesitan un repositorio de código con más capacidad de almacenamiento.",
+          "explanation": "El tamaño del repositorio no explica el conflicto entre las prioridades descritas."
         },
         {
           "id": "b",
-          "text": "Operaciones quiere cambiar todo rápido y desarrollo evitar cambios.",
-          "explanation": "Es el contraste opuesto al que presenta el enfoque DevOps."
+          "text": "Las pruebas automatizadas están tardando más de lo previsto en ejecutarse.",
+          "explanation": "Podría ser un problema técnico, pero el caso describe criterios de éxito diferentes."
         },
         {
           "id": "c",
-          "text": "Desarrollo busca nuevas funcionalidades rápidas; operaciones busca estabilidad.",
-          "explanation": "La presión por entregar nuevas funcionalidades rápidamente puede entrar en tensión con la necesidad de mantener sistemas estables."
+          "text": "Cada equipo optimiza una prioridad distinta del mismo proceso de entrega.",
+          "explanation": "La rapidez de cambio y la estabilidad son necesidades válidas que deben coordinarse mediante objetivos compartidos."
         },
         {
           "id": "d",
-          "text": "Ambos equipos se centran únicamente en programar.",
-          "explanation": "Operaciones se describe como centrado en mantener la estabilidad."
+          "text": "Las imágenes de la aplicación utilizan versiones distintas del sistema base.",
+          "explanation": "Podría afectar a la ejecución, pero no explica por sí mismo la tensión recurrente entre objetivos."
         }
       ],
       "correctId": "c",
@@ -938,27 +970,27 @@
     {
       "id": "intro-devops-007",
       "domain": "silos",
-      "prompt": "¿Qué conocimientos suelen utilizarse al desarrollar una aplicación?",
+      "prompt": "Un cambio modifica una consulta de datos y la lógica que la utiliza. ¿Qué combinación de conocimientos permite implementarlo y comprobarlo directamente?",
       "options": [
         {
           "id": "a",
-          "text": "Únicamente despliegues en servidores.",
-          "explanation": "Linux, comandos, scripting y monitorización se relacionan especialmente con operar los entornos."
+          "text": "Sistema operativo, comandos del servidor, métricas y gestión de procesos.",
+          "explanation": "Ayudan a operar el entorno, pero no cubren directamente la implementación y validación de esa lógica."
         },
         {
           "id": "b",
-          "text": "Lenguajes de programación, frameworks de pruebas, bases de datos y control de versiones.",
-          "explanation": "Programar una aplicación requiere trabajar con lenguajes, frameworks de pruebas, bases de datos y control de versiones."
+          "text": "Lenguaje de la aplicación, bases de datos, pruebas y control de versiones.",
+          "explanation": "El cambio necesita comprender la lógica, los datos, su validación y la gestión de las modificaciones."
         },
         {
           "id": "c",
-          "text": "Linux, línea de comandos, scripting y monitorización.",
-          "explanation": "Las reuniones no sustituyen los conocimientos técnicos necesarios para desarrollar software."
+          "text": "Redes de despliegue, configuración del entorno, registros y alarmas.",
+          "explanation": "Ayudan con el funcionamiento del sistema, pero faltan los conocimientos de código, consultas y pruebas solicitados."
         },
         {
           "id": "d",
-          "text": "Solo planificación de reuniones.",
-          "explanation": "Desplegar en servidores no cubre los conocimientos necesarios para desarrollar una aplicación."
+          "text": "Aprovisionamiento, imágenes de contenedor, orquestación y capacidad cloud.",
+          "explanation": "Son relevantes para la infraestructura y entrega, pero no sustituyen entender y probar la consulta y su lógica."
         }
       ],
       "correctId": "b",
@@ -967,27 +999,27 @@
     {
       "id": "intro-devops-008",
       "domain": "silos",
-      "prompt": "¿Qué conocimientos ayudan a preparar y operar los entornos de ejecución?",
+      "prompt": "La aplicación está probada, pero no arranca en un servidor Linux. Antes de cambiar su código, hay que inspeccionar el entorno y el proceso. ¿Qué conocimientos son más directamente útiles?",
       "options": [
         {
           "id": "a",
-          "text": "Sistemas operativos —principalmente Linux—, línea de comandos, scripting y monitorización.",
-          "explanation": "Los sistemas operativos, la línea de comandos, el scripting y la monitorización son conocimientos útiles para operar los entornos de ejecución."
+          "text": "Sistema operativo, línea de comandos, scripting y monitorización.",
+          "explanation": "Esas habilidades permiten inspeccionar y operar el entorno en el que debería ejecutarse la aplicación."
         },
         {
           "id": "b",
-          "text": "Solo lenguajes, frameworks de pruebas y bases de datos.",
-          "explanation": "Ese conjunto se relaciona especialmente con desarrollar aplicaciones; no cubre todos los conocimientos de operación."
+          "text": "Lenguaje de la aplicación, diseño de interfaces, consultas y pruebas unitarias.",
+          "explanation": "Ayudan al desarrollo, pero el primer paso solicitado se centra en inspeccionar el servidor y el proceso."
         },
         {
           "id": "c",
-          "text": "Únicamente diseño visual de interfaces.",
-          "explanation": "El diseño visual no cubre la preparación y operación de entornos."
+          "text": "Planificación de funcionalidades, revisión de requisitos, estimaciones y seguimiento.",
+          "explanation": "Ayudan a coordinar el trabajo, pero no a inspeccionar técnicamente un proceso en Linux."
         },
         {
           "id": "d",
-          "text": "Solo gestión del código fuente.",
-          "explanation": "Gestionar código no sustituye a conocer sistemas, scripting y monitorización."
+          "text": "Ramas de Git, revisión de cambios, convenciones de código y gestión de versiones.",
+          "explanation": "Ayudan a gestionar código, pero no proporcionan por sí mismas la inspección del entorno solicitada."
         }
       ],
       "correctId": "a",
@@ -996,27 +1028,27 @@
     {
       "id": "intro-devops-009",
       "domain": "silos",
-      "prompt": "¿Por qué es importante la comunicación entre desarrollo y operaciones al desplegar?",
+      "prompt": "Una versión funciona en pruebas, pero producción no dispone de una configuración que ahora necesita. ¿Qué práctica reduce directamente este fallo de coordinación?",
       "options": [
         {
           "id": "a",
-          "text": "Porque el código elimina todas las necesidades del entorno.",
-          "explanation": "Es importante recordar que el entorno debe prepararse y que hacen falta configuraciones."
+          "text": "Aumentar las pruebas unitarias sin revisar la configuración de producción.",
+          "explanation": "Las pruebas unitarias no garantizan que producción disponga de la configuración necesaria."
         },
         {
           "id": "b",
-          "text": "Porque operaciones no necesita información del cambio.",
-          "explanation": "Esa separación favorece la falta de comunicación que el enfoque DevOps critica."
+          "text": "Repetir la compilación con la misma configuración utilizada por desarrollo.",
+          "explanation": "Repetirla no prepara el entorno de producción ni comunica el requisito que falta."
         },
         {
           "id": "c",
-          "text": "Porque solo importa avisar después de un fallo.",
-          "explanation": "La coordinación es necesaria para preparar el despliegue, no únicamente para reaccionar."
+          "text": "Asignar más capacidad al servidor antes de repetir el despliegue.",
+          "explanation": "La capacidad no corrige necesariamente una configuración ausente."
         },
         {
           "id": "d",
-          "text": "Porque el despliegue requiere configuraciones y un entorno preparado.",
-          "explanation": "Un despliegue necesita configuraciones y un entorno preparado. La coordinación permite comunicar esas necesidades antes de publicar."
+          "text": "Comunicar los requisitos del entorno y comprobar su preparación antes de desplegar.",
+          "explanation": "Compartir los requisitos del cambio permite preparar el entorno donde deberá ejecutarse."
         }
       ],
       "correctId": "d",
@@ -1025,27 +1057,27 @@
     {
       "id": "intro-devops-010",
       "domain": "silos",
-      "prompt": "¿Cómo se llama el aislamiento que dificulta la comunicación y colaboración entre desarrollo y operaciones?",
+      "prompt": "Desarrollo envía una versión y da su trabajo por terminado; operaciones descubre los requisitos del entorno al intentar desplegarla. ¿Qué problema organizativo refleja esta situación?",
       "options": [
         {
           "id": "a",
-          "text": "Una responsabilidad compartida sobre el proceso.",
-          "explanation": "Compartir responsabilidades ayuda a coordinarse; no describe el aislamiento."
+          "text": "Una separación de entornos que impide reutilizar imágenes de contenedor.",
+          "explanation": "El caso no indica un problema de reutilización de imágenes; sí muestra falta de coordinación."
         },
         {
           "id": "b",
-          "text": "La monitorización continua.",
-          "explanation": "Monitorizar es una práctica DevOps, no el problema de comunicación descrito."
+          "text": "Un sistema de monitorización con pocos indicadores de rendimiento.",
+          "explanation": "Añadir métricas no resuelve por sí mismo el traspaso sin información."
         },
         {
           "id": "c",
-          "text": "El trabajo en silos entre desarrollo y operaciones.",
-          "explanation": "Los silos aparecen cuando los equipos trabajan aislados y dificultan coordinar los cambios con las necesidades del entorno."
+          "text": "Un traspaso entre equipos en silos, sin coordinación suficiente del cambio.",
+          "explanation": "El aislamiento entre equipos deja necesidades importantes fuera de la comunicación durante la entrega."
         },
         {
           "id": "d",
-          "text": "Un pipeline automatizado de entrega.",
-          "explanation": "La automatización se presenta como parte de la solución, no como falta de colaboración."
+          "text": "Un ciclo de pruebas que tarda demasiado en validar las funcionalidades.",
+          "explanation": "No se describe una demora de pruebas, sino información que no llega al equipo receptor."
         }
       ],
       "correctId": "c",
@@ -1054,27 +1086,27 @@
     {
       "id": "intro-devops-011",
       "domain": "silos",
-      "prompt": "¿Qué combinación de tareas manuales puede frenar la publicación de versiones?",
+      "prompt": "Las pruebas terminan en minutos, pero cada versión espera horas a que una persona configure servidores y ejecute el despliegue. ¿Dónde conviene concentrar primero la automatización?",
       "options": [
         {
           "id": "a",
-          "text": "Solo programar en Java o Python.",
-          "explanation": "Los lenguajes se mencionan en desarrollo, no como el conjunto de obstáculos manuales descrito."
+          "text": "En reducir algunos segundos de la duración de las pruebas automatizadas.",
+          "explanation": "Puede ser una mejora, pero no ataca las horas de espera identificadas."
         },
         {
           "id": "b",
-          "text": "Comprobaciones de estabilidad o seguridad, despliegues y configuración del entorno.",
-          "explanation": "Las comprobaciones, configuraciones y publicaciones manuales repetitivas pueden introducir esperas y errores en el proceso de entrega."
+          "text": "En la preparación del entorno y los pasos repetitivos del despliegue.",
+          "explanation": "La mayor espera descrita está en las tareas manuales posteriores a las pruebas; automatizarlas aborda ese cuello de botella."
         },
         {
           "id": "c",
-          "text": "Solo escribir documentación de usuario.",
-          "explanation": "No es la combinación de tareas manuales enumerada en el enfoque DevOps."
+          "text": "En generar más informes sobre las funcionalidades ya implementadas.",
+          "explanation": "Los informes no ejecutan las tareas manuales que están bloqueando la entrega."
         },
         {
           "id": "d",
-          "text": "Únicamente observar la aplicación en producción.",
-          "explanation": "No recoge los despliegues, configuraciones y comprobaciones manuales citados."
+          "text": "En aumentar la frecuencia de commits antes de iniciar las pruebas.",
+          "explanation": "Más commits no eliminan la espera por configuración y despliegue manuales."
         }
       ],
       "correctId": "b",
@@ -1083,27 +1115,27 @@
     {
       "id": "intro-devops-012",
       "domain": "cultura",
-      "prompt": "¿Qué busca DevOps al mejorar el proceso de entrega de software?",
+      "prompt": "Después de mejorar su proceso de entrega, ¿qué resultado refleja mejor el objetivo de DevOps?",
       "options": [
         {
           "id": "a",
-          "text": "Hacer que el proceso de entrega continua sea rápido y tenga el mínimo de errores.",
-          "explanation": "DevOps busca mejorar la colaboración y el flujo de entrega para publicar software con rapidez y minimizar errores."
+          "text": "Cambios que llegan con menos esperas y errores, con desarrollo y operaciones coordinados.",
+          "explanation": "DevOps combina colaboración y mejora del flujo para entregar con rapidez y reducir errores."
         },
         {
           "id": "b",
-          "text": "Adquirir una herramienta sin modificar cómo se trabaja.",
-          "explanation": "Una herramienta por sí sola no establece una cultura de colaboración ni mejora todo el proceso."
+          "text": "Más publicaciones por semana, aunque aumenten las incidencias y el trabajo de recuperación.",
+          "explanation": "Mejora una medida de velocidad a costa de la estabilidad; no equilibra ambos objetivos."
         },
         {
           "id": "c",
-          "text": "Eliminar operaciones para publicar sin controles.",
-          "explanation": "Eliminar operaciones y abandonar los controles de estabilidad no son objetivos de DevOps."
+          "text": "Menos incidencias al acumular cambios durante meses antes de publicarlos.",
+          "explanation": "Reducir la frecuencia puede esconder problemas sin mejorar el flujo de entrega."
         },
         {
           "id": "d",
-          "text": "Garantizar que nunca exista ningún error.",
-          "explanation": "No existe una garantía absoluta de ausencia de errores: se busca reducirlos y aprender de ellos."
+          "text": "Más herramientas instaladas, aunque las aprobaciones y los traspasos sigan bloqueando las entregas.",
+          "explanation": "Adoptar herramientas no demuestra una mejora del proceso ni de la colaboración."
         }
       ],
       "correctId": "a",
@@ -1112,27 +1144,27 @@
     {
       "id": "intro-devops-013",
       "domain": "cultura",
-      "prompt": "¿Qué forma de trabajar dio origen a DevOps?",
+      "prompt": "Una empresa compra herramientas de automatización, pero desarrollo y operaciones siguen sin compartir requisitos ni objetivos. ¿Qué falta para avanzar hacia una cultura DevOps?",
       "options": [
         {
           "id": "a",
-          "text": "Una certificación obligatoria para desarrolladores.",
-          "explanation": "DevOps no es una certificación obligatoria."
+          "text": "Un proveedor cloud diferente que aloje los mismos procedimientos de entrega.",
+          "explanation": "Cambiar de proveedor no establece la colaboración que falta."
         },
         {
           "id": "b",
-          "text": "Un lenguaje de programación.",
-          "explanation": "Un lenguaje común entre equipos se refiere a comunicación compartida, no a un lenguaje de programación."
+          "text": "Un repositorio nuevo donde trasladar el código sin cambiar la coordinación.",
+          "explanation": "El traslado del código no modifica por sí mismo la forma de trabajar."
         },
         {
           "id": "c",
-          "text": "Un servicio exclusivo de un proveedor cloud.",
-          "explanation": "DevOps no pertenece exclusivamente a un proveedor de servicios cloud."
+          "text": "Una imagen de contenedor más pequeña para acelerar la descarga de versiones.",
+          "explanation": "Puede mejorar un aspecto técnico, pero no resuelve la ausencia de objetivos y comunicación compartidos."
         },
         {
           "id": "d",
-          "text": "Una forma de trabajar entre desarrollo y operaciones con un lenguaje común.",
-          "explanation": "DevOps surgió como una forma de colaborar entre desarrollo y operaciones, con comunicación y objetivos compartidos."
+          "text": "Una forma de colaboración y comunicación compartida entre ambos equipos.",
+          "explanation": "Las herramientas apoyan DevOps, pero no sustituyen la colaboración necesaria para mejorar el proceso."
         }
       ],
       "correctId": "d",
@@ -1141,27 +1173,27 @@
     {
       "id": "intro-devops-014",
       "domain": "cultura",
-      "prompt": "¿Qué intenta eliminar DevOps del proceso de publicación?",
+      "prompt": "Cada publicación repite las mismas comprobaciones y comandos manuales, con errores de transcripción. ¿Qué mejora conserva los controles y reduce esa fuente de fallos?",
       "options": [
         {
           "id": "a",
-          "text": "La observación posterior al despliegue.",
-          "explanation": "El ciclo mostrado también incluye observación."
+          "text": "Mantener los comandos manuales y publicar con mayor frecuencia.",
+          "explanation": "Aumentar la frecuencia no elimina la causa de los errores de transcripción."
         },
         {
           "id": "b",
-          "text": "La colaboración entre equipos.",
-          "explanation": "La colaboración es parte del enfoque DevOps, no algo que deba eliminarse."
+          "text": "Reducir las comprobaciones para que haya menos pasos antes de publicar.",
+          "explanation": "Recorta controles en vez de automatizar su ejecución."
         },
         {
           "id": "c",
-          "text": "Obstáculos y procesos manuales ineficientes que ralentizan los ciclos de entrega.",
-          "explanation": "Eliminar obstáculos y automatizar tareas ineficientes ayuda a construir ciclos de publicación más fluidos."
+          "text": "Automatizar las comprobaciones y los comandos repetitivos dentro de un flujo de entrega.",
+          "explanation": "Se mantiene el propósito de los controles y se reduce la ejecución manual que introduce errores."
         },
         {
           "id": "d",
-          "text": "Todas las pruebas del software.",
-          "explanation": "El ciclo mostrado sigue incluyendo pruebas."
+          "text": "Asignar el procedimiento a una persona distinta en cada publicación.",
+          "explanation": "Cambiar de ejecutor no hace el proceso más repetible ni reduce por sí mismo los errores manuales."
         }
       ],
       "correctId": "c",
@@ -1170,27 +1202,27 @@
     {
       "id": "intro-devops-015",
       "domain": "cultura",
-      "prompt": "¿Qué ciclo conecta una idea con la entrega del software y la observación de sus resultados?",
+      "prompt": "Una versión acaba de desplegarse correctamente. ¿Qué actividad cierra el ciclo de aprendizaje y aporta información para el siguiente cambio?",
       "options": [
         {
           "id": "a",
-          "text": "Implementar → construir → olvidar la aplicación.",
-          "explanation": "Esa secuencia omite implementación, pruebas y construcción."
+          "text": "Reconstruir inmediatamente el mismo artefacto con los mismos cambios.",
+          "explanation": "Repetir la construcción no aporta la información de uso que requiere el ciclo."
         },
         {
           "id": "b",
-          "text": "Idea → implementar → probar → construir → desplegar → observar.",
-          "explanation": "El ciclo conecta idea, implementación, pruebas, construcción, despliegue y observación. Lo observado alimenta nuevas mejoras."
+          "text": "Observar su comportamiento en uso y aprovechar los resultados para nuevas mejoras.",
+          "explanation": "La observación posterior al despliegue permite comprobar sus efectos y orientar nuevas ideas."
         },
         {
           "id": "c",
-          "text": "Idea → desplegar → observar, sin implementar ni probar.",
-          "explanation": "Borrar el código no representa un ciclo de mejora y entrega."
+          "text": "Volver a registrar el mismo cambio en el control de versiones.",
+          "explanation": "Repetir el registro no permite conocer cómo se comporta la versión desplegada."
         },
         {
           "id": "d",
-          "text": "Observar → borrar el código → terminar.",
-          "explanation": "Después de construir siguen siendo necesarios entrega y observación; tampoco deben omitirse las pruebas."
+          "text": "Actualizar la planificación utilizando únicamente las estimaciones previas.",
+          "explanation": "Las estimaciones anteriores no sustituyen observar los resultados reales de la entrega."
         }
       ],
       "correctId": "b",
@@ -1199,27 +1231,27 @@
     {
       "id": "intro-devops-016",
       "domain": "cultura",
-      "prompt": "¿Por qué distintas empresas pueden adoptar DevOps con organizaciones diferentes?",
+      "prompt": "Una empresa distribuye las tareas DevOps entre dos equipos y otra utiliza especialistas dedicados. ¿Qué permite evaluar ambas adopciones con el mismo criterio?",
       "options": [
         {
           "id": "a",
-          "text": "Porque pueden adaptar la organización y compartir principios y prácticas comunes.",
-          "explanation": "DevOps se adapta al contexto de cada empresa. Puede haber distintas estructuras organizativas y, a la vez, prácticas comunes de colaboración y automatización."
+          "text": "Comprobar si sus prácticas mejoran la colaboración y automatizan la entrega.",
+          "explanation": "Los principios y prácticas compartidos importan más que imponer una estructura organizativa idéntica."
         },
         {
           "id": "b",
-          "text": "Todas las empresas usaron una estructura idéntica desde el principio.",
-          "explanation": "DevOps permite adaptarse al contexto de cada organización; no exige una estructura idéntica."
+          "text": "Comprobar si ambas usan el mismo nombre para sus departamentos.",
+          "explanation": "El nombre del equipo no demuestra colaboración ni mejora de la entrega."
         },
         {
           "id": "c",
-          "text": "Nunca aparecieron prácticas compartidas.",
-          "explanation": "Existen prácticas compartidas de colaboración, automatización y observación."
+          "text": "Comprobar si ambas han contratado exactamente los mismos perfiles.",
+          "explanation": "Puede haber organizaciones distintas que apliquen principios comunes."
         },
         {
           "id": "d",
-          "text": "Una sola herramienta sustituyó todas las prácticas.",
-          "explanation": "Una única herramienta no sustituye el conjunto de prácticas ni la colaboración."
+          "text": "Comprobar si ambas compraron las mismas herramientas y licencias.",
+          "explanation": "Coincidir en herramientas no garantiza una buena forma de trabajar ni un flujo mejorado."
         }
       ],
       "correctId": "a",
@@ -1228,27 +1260,27 @@
     {
       "id": "intro-devops-017",
       "domain": "practicas",
-      "prompt": "¿Qué pareja de prácticas ayuda a coordinar el trabajo y gestionar los cambios en el código?",
+      "prompt": "Varias personas modifican la aplicación y necesitan coordinar qué se entrega y conservar el historial de cambios. ¿Qué combinación de prácticas responde a ambas necesidades?",
       "options": [
         {
           "id": "a",
-          "text": "Aislar equipos y evitar compartir código.",
-          "explanation": "Contradice la colaboración y la gestión del código fuente mostradas."
+          "text": "Monitorización continua junto con ampliación de la capacidad del entorno.",
+          "explanation": "Ayuda a observar y operar, pero no cubre coordinar el trabajo y registrar el historial del código."
         },
         {
           "id": "b",
-          "text": "Desplegar una sola vez y no observar resultados.",
-          "explanation": "La monitorización continua permite observar los resultados después de cada despliegue."
+          "text": "Orquestación de contenedores junto con gestión de imágenes de aplicación.",
+          "explanation": "Ayuda a ejecutar y empaquetar, pero no sustituye planificar ni gestionar versiones del código."
         },
         {
           "id": "c",
-          "text": "Configurar siempre a mano y eliminar la planificación.",
-          "explanation": "No corresponde a las prácticas enumeradas."
+          "text": "Aprovisionamiento de infraestructura junto con ajuste de alarmas de producción.",
+          "explanation": "Responde a necesidades de infraestructura y operación, no a las dos necesidades descritas."
         },
         {
           "id": "d",
-          "text": "Planificación y colaboración, y gestión del código fuente.",
-          "explanation": "La planificación y colaboración coordinan el trabajo; la gestión del código fuente permite organizar sus cambios."
+          "text": "Planificación y colaboración junto con gestión del código fuente.",
+          "explanation": "La coordinación organiza el trabajo y el control del código mantiene el historial de modificaciones."
         }
       ],
       "correctId": "d",
@@ -1257,27 +1289,27 @@
     {
       "id": "intro-devops-018",
       "domain": "practicas",
-      "prompt": "¿Qué principio permite gestionar la infraestructura mediante definiciones automatizables?",
+      "prompt": "Dos servidores deberían tener la misma configuración, pero los cambios manuales han creado diferencias difíciles de reproducir. ¿Qué enfoque aborda mejor esa causa?",
       "options": [
         {
           "id": "a",
-          "text": "Toda infraestructura debe configurarse manualmente.",
-          "explanation": "No corresponde a la práctica de tratarla como código."
+          "text": "Añadir métricas de uso a ambos servidores y conservar la configuración manual.",
+          "explanation": "Las métricas pueden revelar diferencias, pero no hacen reproducible su configuración."
         },
         {
           "id": "b",
-          "text": "Solo el código de la interfaz puede automatizarse.",
-          "explanation": "DevOps contempla automatización y prácticas también sobre la infraestructura."
+          "text": "Guardar capturas de cada cambio y repetirlo manualmente en el otro servidor.",
+          "explanation": "Documenta acciones, pero conserva la ejecución manual que puede generar divergencias."
         },
         {
           "id": "c",
-          "text": "Tratar la infraestructura como código.",
-          "explanation": "La infraestructura como código permite expresar y gestionar la infraestructura mediante definiciones que pueden automatizarse."
+          "text": "Gestionar la configuración mediante definiciones automatizables de infraestructura como código.",
+          "explanation": "Las definiciones automatizables permiten reproducir la configuración en lugar de depender de acciones manuales divergentes."
         },
         {
           "id": "d",
-          "text": "La infraestructura queda fuera de DevOps.",
-          "explanation": "La infraestructura también forma parte del trabajo DevOps."
+          "text": "Empaquetar la aplicación en una imagen sin gestionar la configuración de los servidores.",
+          "explanation": "Una imagen ayuda con la aplicación, pero no controla por sí sola los cambios manuales de los servidores."
         }
       ],
       "correctId": "c",
@@ -1286,27 +1318,27 @@
     {
       "id": "intro-devops-019",
       "domain": "practicas",
-      "prompt": "¿Qué práctica permite seguir observando el sistema después de desplegar?",
+      "prompt": "El despliegue ha terminado, pero el equipo necesita detectar si la nueva versión empeora el funcionamiento del servicio. ¿Qué práctica responde directamente a esa necesidad?",
       "options": [
         {
           "id": "a",
-          "text": "Solo escribir nuevas funcionalidades.",
-          "explanation": "Eso no cubre observar el funcionamiento del sistema."
+          "text": "Gestión de versiones del código antes de aceptar cambios.",
+          "explanation": "Conserva el historial del código, pero no observa el comportamiento de la versión en ejecución."
         },
         {
           "id": "b",
-          "text": "La monitorización continua.",
-          "explanation": "La monitorización continua mantiene la observación del sistema después de entregar una versión."
+          "text": "Monitorización continua del sistema después de la publicación.",
+          "explanation": "La observación del comportamiento desplegado permite detectar efectos que el éxito del despliegue no garantiza."
         },
         {
           "id": "c",
-          "text": "La ausencia de observación tras publicar.",
-          "explanation": "Es lo contrario de la monitorización continua."
+          "text": "Construcción de una imagen con las dependencias de la aplicación.",
+          "explanation": "Prepara la ejecución, pero no aporta observación continua después de publicar."
         },
         {
           "id": "d",
-          "text": "La gestión de paquetes como sustituto de toda observación.",
-          "explanation": "La gestión de paquetes es otra categoría, no reemplaza la monitorización."
+          "text": "Aprovisionamiento automatizado de los recursos donde se ejecuta.",
+          "explanation": "Prepara recursos, pero no sustituye observar su funcionamiento y el de la aplicación."
         }
       ],
       "correctId": "b",
@@ -1315,27 +1347,27 @@
     {
       "id": "intro-devops-020",
       "domain": "rol-pipeline",
-      "prompt": "¿Quién puede asumir las responsabilidades de DevOps en una organización?",
+      "prompt": "Una empresa pequeña quiere adoptar DevOps sin crear un departamento nuevo. ¿Qué opción es compatible con esa decisión?",
       "options": [
         {
           "id": "a",
-          "text": "Desarrolladores, operaciones o un rol dedicado de DevOps.",
-          "explanation": "Las responsabilidades pueden distribuirse entre desarrollo y operaciones o recaer en un rol dedicado de DevOps."
+          "text": "Repartir responsabilidades DevOps entre desarrollo y operaciones con objetivos compartidos.",
+          "explanation": "Las responsabilidades pueden distribuirse entre roles existentes; no requieren necesariamente un equipo independiente."
         },
         {
           "id": "b",
-          "text": "Únicamente un equipo separado, en todos los casos.",
-          "explanation": "Un equipo dedicado es una opción, pero las responsabilidades también pueden distribuirse."
+          "text": "Asignar la publicación a un proveedor cloud y considerar resuelta la coordinación interna.",
+          "explanation": "Un proveedor no sustituye la coordinación ni las responsabilidades internas del proceso."
         },
         {
           "id": "c",
-          "text": "Solo un proveedor externo de nube.",
-          "explanation": "No es una responsabilidad exclusiva de un proveedor externo."
+          "text": "Cambiar el nombre del equipo de operaciones sin modificar cómo colabora con desarrollo.",
+          "explanation": "La denominación del equipo no cambia por sí misma sus prácticas."
         },
         {
           "id": "d",
-          "text": "Nadie: las herramientas eliminan toda responsabilidad humana.",
-          "explanation": "La automatización no elimina las responsabilidades humanas."
+          "text": "Trasladar todas las comprobaciones al final para reducir los contactos entre equipos.",
+          "explanation": "Disminuir la colaboración y retrasar las comprobaciones no cumple el objetivo de mejorar el flujo compartido."
         }
       ],
       "correctId": "a",
@@ -1344,27 +1376,27 @@
     {
       "id": "intro-devops-021",
       "domain": "rol-pipeline",
-      "prompt": "¿Cuál es una responsabilidad central de un DevOps Engineer?",
+      "prompt": "Una persona conoce muchas herramientas DevOps, pero las versiones siguen dependiendo de varios pasos manuales desconectados. ¿Qué resultado debería priorizar?",
       "options": [
         {
           "id": "a",
-          "text": "Mantener el traspaso manual como objetivo final.",
-          "explanation": "El rol se describe como responsable de un proceso automatizado."
+          "text": "Incorporar una herramienta nueva en cada etapa aunque sigan ejecutándose por separado.",
+          "explanation": "Añade tecnología sin resolver la desconexión y la dependencia manual."
         },
         {
           "id": "b",
-          "text": "Aprender herramientas sin relacionarlas con la entrega.",
-          "explanation": "Las tecnologías están al servicio de los principios y del proceso."
+          "text": "Crear informes más detallados de los pasos manuales sin modificar su ejecución.",
+          "explanation": "Documenta el problema, pero no logra un flujo automatizado."
         },
         {
           "id": "c",
-          "text": "Programar solo funcionalidades de la interfaz.",
-          "explanation": "La responsabilidad descrita cubre el proceso de publicación, no solo una parte del producto."
+          "text": "Repartir cada paso entre más personas para especializar la ejecución manual.",
+          "explanation": "Aumenta los traspasos sin resolver la falta de integración y automatización."
         },
         {
           "id": "d",
-          "text": "Crear un proceso de publicación fluido y completamente automatizado.",
-          "explanation": "Una responsabilidad central es conectar y automatizar las tareas de publicación para lograr un proceso de entrega fluido."
+          "text": "Conectar y automatizar los pasos para producir un flujo de entrega coherente.",
+          "explanation": "El valor del trabajo está en mejorar el proceso de entrega, no en acumular tecnologías sin integrarlas."
         }
       ],
       "correctId": "d",
@@ -1373,27 +1405,27 @@
     {
       "id": "intro-devops-022",
       "domain": "rol-pipeline",
-      "prompt": "¿Qué combinación de conocimientos necesita una persona que trabaja en DevOps?",
+      "prompt": "Hay que investigar por qué un cambio de código falla durante su entrega a un entorno Linux. ¿Qué perfil de conocimientos resulta más adecuado para conectar las posibles causas?",
       "options": [
         {
           "id": "a",
-          "text": "Solo operaciones, sin conocer desarrollo.",
-          "explanation": "También hace falta comprender la operación de los sistemas."
+          "text": "Diseño de interfaces, experiencia de usuario y planificación visual del producto.",
+          "explanation": "Son conocimientos útiles, pero no cubren el entorno Linux ni la automatización de la entrega."
         },
         {
           "id": "b",
-          "text": "Únicamente gestión de reuniones, sin habilidades técnicas.",
-          "explanation": "También hace falta comprender el desarrollo del software."
+          "text": "Ajuste de métricas, diseño de paneles y configuración de alarmas del servicio.",
+          "explanation": "Ayudan a observar el sistema, pero no cubren por completo el código y su pipeline."
         },
         {
           "id": "c",
-          "text": "Conocimientos de desarrollo y operaciones, además de habilidades específicas de DevOps.",
-          "explanation": "El trabajo en DevOps combina conocimientos de desarrollo y operaciones con competencias específicas de automatización y entrega."
+          "text": "Desarrollo, operación de sistemas y automatización del proceso de entrega.",
+          "explanation": "El problema cruza código, entorno y automatización; comprender los tres permite relacionar las etapas."
         },
         {
           "id": "d",
-          "text": "Solo programación, sin conocimientos de operaciones.",
-          "explanation": "Coordinar personas no sustituye los conocimientos técnicos del rol."
+          "text": "Consultas de negocio, análisis de datos y generación de informes del producto.",
+          "explanation": "No abarca directamente las tres áreas implicadas en el fallo descrito."
         }
       ],
       "correctId": "c",
@@ -1402,27 +1434,27 @@
     {
       "id": "intro-devops-023",
       "domain": "rol-pipeline",
-      "prompt": "¿Qué mecanismo conecta las etapas de un proceso automatizado de entrega de software?",
+      "prompt": "El repositorio, las pruebas, la construcción y el despliegue ya existen, pero alguien debe iniciar cada herramienta por separado. ¿Qué elemento falta para conectar el proceso?",
       "options": [
         {
           "id": "a",
-          "text": "Únicamente el repositorio de código.",
-          "explanation": "El pipeline busca conectar y automatizar tareas, en lugar de mantener una secuencia manual inconexa."
+          "text": "Un repositorio adicional para guardar otra copia del código.",
+          "explanation": "Otra copia del código no coordina la ejecución de pruebas, construcción y despliegue."
         },
         {
           "id": "b",
-          "text": "El pipeline CI/CD.",
-          "explanation": "Un pipeline CI/CD conecta las etapas automatizadas que transforman un cambio en una versión lista para entregar o desplegar."
+          "text": "Un pipeline CI/CD que coordine la ejecución de esas etapas.",
+          "explanation": "El pipeline conecta las actividades existentes en un flujo automatizado de entrega."
         },
         {
           "id": "c",
-          "text": "Una lista de despliegues manuales sin conexión.",
-          "explanation": "Monitorizar es importante, pero una herramienta de monitorización no cubre todo el flujo de entrega."
+          "text": "Un panel de métricas que muestre cuánto tarda cada tarea manual.",
+          "explanation": "Observar los tiempos no ejecuta ni conecta automáticamente las etapas."
         },
         {
           "id": "d",
-          "text": "Una herramienta de monitorización utilizada de forma aislada.",
-          "explanation": "El repositorio contiene código y sus cambios; el pipeline conecta además pruebas, construcción y despliegue."
+          "text": "Un entorno cloud con más capacidad para ejecutar la aplicación.",
+          "explanation": "La capacidad no sustituye la coordinación de las herramientas del proceso."
         }
       ],
       "correctId": "b",
@@ -1431,27 +1463,27 @@
     {
       "id": "intro-devops-024",
       "domain": "rol-pipeline",
-      "prompt": "En un pipeline que prueba el código antes de construirlo, ¿qué secuencia lleva un cambio hasta su despliegue?",
+      "prompt": "Las pruebas han pasado y se ha construido una imagen. El servidor de despliegue necesita obtenerla de un registro. ¿Qué debe ocurrir antes de desplegarla desde ese registro?",
       "options": [
         {
           "id": "a",
-          "text": "Commit del código → TEST → BUILD → PUSH → DEPLOY.",
-          "explanation": "Una posible secuencia es confirmar código, probarlo, construir el resultado, publicarlo y desplegarlo. El orden concreto de un pipeline depende del proyecto."
+          "text": "Publicar la imagen construida en el registro que utilizará el despliegue.",
+          "explanation": "Si el despliegue obtiene la imagen de un registro, el resultado construido debe estar disponible allí antes de recuperarlo."
         },
         {
           "id": "b",
-          "text": "Commit → DEPLOY → TEST → BUILD → PUSH.",
-          "explanation": "En el flujo de la pregunta, las pruebas y la construcción deben preceder al despliegue."
+          "text": "Volver a confirmar el código sin transferir el resultado de la construcción.",
+          "explanation": "Confirmar código no publica la imagen que el servidor necesita recuperar."
         },
         {
           "id": "c",
-          "text": "BUILD → DEPLOY → Commit → TEST.",
-          "explanation": "Esta secuencia no sigue el flujo que comienza con confirmar el cambio y probarlo antes de construirlo."
+          "text": "Desplegar usando el nombre de una imagen que todavía permanece en la máquina de construcción.",
+          "explanation": "El registro no puede entregar una imagen que aún no se ha publicado en él."
         },
         {
           "id": "d",
-          "text": "Commit → TEST → terminar, sin más etapas.",
-          "explanation": "Probar es solo una etapa: todavía faltan construir, publicar y desplegar."
+          "text": "Ejecutar las pruebas otra vez y conservar la imagen en el directorio local.",
+          "explanation": "Repetir pruebas no hace que la imagen esté disponible en el registro."
         }
       ],
       "correctId": "a",
@@ -1460,27 +1492,27 @@
     {
       "id": "intro-devops-025",
       "domain": "herramientas",
-      "prompt": "¿Qué herramienta permite gestionar las versiones del código fuente?",
+      "prompt": "Dos personas modificaron el código y necesitan comparar cambios, conservar su historial y combinar el trabajo. ¿Qué herramienta responde directamente a esa necesidad?",
       "options": [
         {
           "id": "a",
-          "text": "Prometheus.",
-          "explanation": "Prometheus se utiliza para monitorización."
+          "text": "Jenkins, para ejecutar etapas automatizadas del proceso de entrega.",
+          "explanation": "Jenkins puede automatizar tareas usando un repositorio, pero no sustituye al control de versiones solicitado."
         },
         {
           "id": "b",
-          "text": "Kubernetes.",
-          "explanation": "Kubernetes se utiliza para orquestación de contenedores."
+          "text": "Docker, para empaquetar la aplicación con sus dependencias.",
+          "explanation": "Empaquetar no mantiene por sí mismo el historial ni combina cambios de código."
         },
         {
           "id": "c",
-          "text": "AWS.",
-          "explanation": "AWS es un proveedor de servicios cloud."
+          "text": "Terraform, para definir y aprovisionar recursos de infraestructura.",
+          "explanation": "Gestiona infraestructura, no el historial y la combinación de modificaciones del código fuente."
         },
         {
           "id": "d",
-          "text": "Git.",
-          "explanation": "Git es una herramienta de control de versiones que permite gestionar el código fuente y sus cambios."
+          "text": "Git, para gestionar versiones y cambios del código fuente.",
+          "explanation": "Git mantiene el historial y permite gestionar cambios en el código; es una función distinta de ejecutar pipelines o infraestructura."
         }
       ],
       "correctId": "d",
@@ -1489,27 +1521,27 @@
     {
       "id": "intro-devops-026",
       "domain": "herramientas",
-      "prompt": "¿Cómo ayuda Docker a preparar una aplicación para su entrega?",
+      "prompt": "Una aplicación necesita entregarse junto con las dependencias que utiliza para ejecutarse. ¿Qué uso de Docker responde a esa necesidad?",
       "options": [
         {
           "id": "a",
-          "text": "Gestión del código fuente.",
-          "explanation": "Monitorizar sistemas es una función distinta de empaquetar aplicaciones."
+          "text": "Crear un historial de commits para recuperar versiones anteriores del código.",
+          "explanation": "Esa es una necesidad de control de versiones, no de empaquetado de la aplicación."
         },
         {
           "id": "b",
-          "text": "Orquestación de contenedores.",
-          "explanation": "El control de versiones del código se realiza con herramientas como Git."
+          "text": "Definir un panel que observe el rendimiento de cada instancia desplegada.",
+          "explanation": "La monitorización permite observar, pero no prepara el paquete ejecutable solicitado."
         },
         {
           "id": "c",
-          "text": "Empaquetando la aplicación y sus dependencias en imágenes de contenedor.",
-          "explanation": "Docker permite empaquetar una aplicación y sus dependencias en imágenes de contenedor para facilitar su entrega y ejecución."
+          "text": "Construir una imagen que empaquete la aplicación y sus dependencias.",
+          "explanation": "Una imagen de contenedor reúne el software y sus dependencias para facilitar su distribución y ejecución."
         },
         {
           "id": "d",
-          "text": "Monitorización continua.",
-          "explanation": "La orquestación coordina contenedores y es una función distinta del empaquetado que pregunta el enunciado."
+          "text": "Coordinar las réplicas de contenedores ya distribuidos en varios servidores.",
+          "explanation": "La orquestación coordina la ejecución; antes debe existir una imagen con la aplicación."
         }
       ],
       "correctId": "c",
@@ -1518,27 +1550,27 @@
     {
       "id": "intro-devops-027",
       "domain": "herramientas",
-      "prompt": "¿Qué pareja de herramientas ayuda a automatizar la infraestructura y su configuración?",
+      "prompt": "Un equipo quiere aprovisionar recursos y después automatizar la configuración de los servidores. ¿Qué combinación se ajusta mejor a esas dos tareas?",
       "options": [
         {
           "id": "a",
-          "text": "Git y Prometheus.",
-          "explanation": "Jenkins y GitLab se orientan a flujos de integración y entrega continuas."
+          "text": "Git para el aprovisionamiento y Jenkins para definir la configuración del sistema.",
+          "explanation": "Git versiona definiciones y Jenkins puede ejecutar tareas, pero no proporcionan por sí mismos esas dos funciones específicas."
         },
         {
           "id": "b",
-          "text": "Terraform y Ansible.",
-          "explanation": "Terraform se utiliza para aprovisionar infraestructura mediante código y Ansible para automatizar configuración y otras tareas. Pueden complementarse y no son herramientas idénticas."
+          "text": "Terraform para el aprovisionamiento y Ansible para la configuración.",
+          "explanation": "Estas herramientas pueden complementarse: Terraform se orienta al aprovisionamiento declarativo y Ansible a automatizar configuración y tareas."
         },
         {
           "id": "c",
-          "text": "Jenkins y GitLab.",
-          "explanation": "AWS y Azure son proveedores cloud, no la pareja de herramientas de automatización solicitada."
+          "text": "Docker para el aprovisionamiento y Prometheus para aplicar la configuración.",
+          "explanation": "Docker empaqueta y ejecuta contenedores; Prometheus monitoriza, no aplica configuración a servidores."
         },
         {
           "id": "d",
-          "text": "AWS y Azure.",
-          "explanation": "Git gestiona versiones de código y Prometheus se utiliza para monitorización."
+          "text": "Kubernetes para definir máquinas virtuales y Git para aplicar paquetes del sistema.",
+          "explanation": "Kubernetes se orienta a contenedores y Git a versiones; no corresponde a la pareja de tareas planteada."
         }
       ],
       "correctId": "b",
@@ -1547,27 +1579,27 @@
     {
       "id": "intro-devops-028",
       "domain": "herramientas",
-      "prompt": "¿Qué herramientas pueden utilizarse para automatizar la integración y entrega continuas?",
+      "prompt": "Las pruebas y los scripts de construcción ya están preparados. Se necesita automatizar cuándo y cómo se ejecutan al entregar cambios. ¿Qué elección se orienta directamente a esa coordinación?",
       "options": [
         {
           "id": "a",
-          "text": "Jenkins y GitLab.",
-          "explanation": "Jenkins y GitLab pueden utilizarse para organizar y automatizar flujos de integración y entrega continuas."
+          "text": "Jenkins o las funciones CI/CD de GitLab para organizar las etapas.",
+          "explanation": "Estas soluciones pueden coordinar tareas automatizadas dentro de un flujo de integración y entrega."
         },
         {
           "id": "b",
-          "text": "Terraform y Ansible.",
-          "explanation": "Terraform y Ansible se orientan a automatización de infraestructura y configuración."
+          "text": "Git para registrar cambios y mantener el historial del repositorio.",
+          "explanation": "El control de versiones puede iniciar o alimentar un pipeline, pero no coordina por sí solo esas etapas."
         },
         {
           "id": "c",
-          "text": "AWS y Google Cloud.",
-          "explanation": "AWS y Google Cloud son proveedores de servicios cloud."
+          "text": "Docker para construir imágenes que contengan aplicación y dependencias.",
+          "explanation": "La construcción de una imagen es una posible etapa, no la coordinación de todo el flujo."
         },
         {
           "id": "d",
-          "text": "Kubernetes y Prometheus.",
-          "explanation": "Kubernetes se orienta a orquestación y Prometheus a monitorización."
+          "text": "Prometheus para recopilar métricas de los procesos en ejecución.",
+          "explanation": "Observar las tareas no define ni coordina su ejecución en un pipeline."
         }
       ],
       "correctId": "a",
@@ -1576,27 +1608,27 @@
     {
       "id": "intro-devops-029",
       "domain": "herramientas",
-      "prompt": "¿Qué herramienta permite orquestar contenedores?",
+      "prompt": "La imagen de una aplicación ya está preparada. Ahora se necesita coordinar la ejecución de sus contenedores en un entorno de despliegue. ¿Qué herramienta responde a esa fase?",
       "options": [
         {
           "id": "a",
-          "text": "Git.",
-          "explanation": "Git se utiliza para control de versiones del código."
+          "text": "Git, para gestionar las versiones de las definiciones de la aplicación.",
+          "explanation": "Versionar definiciones no ejecuta ni coordina los contenedores."
         },
         {
           "id": "b",
-          "text": "Jenkins.",
-          "explanation": "Jenkins se utiliza para automatizar flujos como los de CI/CD."
+          "text": "Jenkins, para coordinar tareas dentro del pipeline de entrega.",
+          "explanation": "Puede iniciar un despliegue, pero su función de pipeline no sustituye al orquestador que mantiene la ejecución."
         },
         {
           "id": "c",
-          "text": "Prometheus.",
-          "explanation": "Prometheus se utiliza para monitorización."
+          "text": "Prometheus, para observar las métricas del entorno desplegado.",
+          "explanation": "La monitorización observa la ejecución, pero no la orquesta."
         },
         {
           "id": "d",
-          "text": "Kubernetes.",
-          "explanation": "Kubernetes permite orquestar contenedores, coordinando su ejecución dentro de un entorno de despliegue."
+          "text": "Kubernetes, para orquestar la ejecución de contenedores.",
+          "explanation": "La orquestación coordina la ejecución de contenedores a partir de imágenes ya disponibles."
         }
       ],
       "correctId": "d",
@@ -1605,27 +1637,27 @@
     {
       "id": "intro-devops-030",
       "domain": "herramientas",
-      "prompt": "¿Qué conjunto está formado por tres proveedores de servicios cloud?",
+      "prompt": "Un equipo necesita un proveedor que ofrezca infraestructura cloud para alojar sus aplicaciones, no una herramienta de empaquetado ni de pipeline. ¿Qué elección corresponde a esa categoría?",
       "options": [
         {
           "id": "a",
-          "text": "Docker, Ansible y Kubernetes.",
-          "explanation": "Estas son herramientas de control de versiones, automatización y monitorización, respectivamente."
+          "text": "Docker, como herramienta para preparar y ejecutar contenedores.",
+          "explanation": "Docker facilita el uso de contenedores, pero no equivale a contratar infraestructura a un proveedor cloud."
         },
         {
           "id": "b",
-          "text": "Java, Python y JavaScript.",
-          "explanation": "Estas son tecnologías de contenedores, configuración y orquestación, no tres proveedores cloud."
+          "text": "Jenkins, como herramienta para coordinar tareas de entrega.",
+          "explanation": "Automatiza tareas del proceso, pero no es un proveedor de infraestructura cloud."
         },
         {
           "id": "c",
-          "text": "AWS, Azure y Google Cloud.",
-          "explanation": "AWS, Azure y Google Cloud son proveedores de servicios cloud; DevOps no exige utilizar un único proveedor."
+          "text": "Azure, como proveedor de recursos y servicios cloud.",
+          "explanation": "Azure pertenece a la misma categoría de proveedores cloud que AWS y Google Cloud."
         },
         {
           "id": "d",
-          "text": "Git, Jenkins y Prometheus.",
-          "explanation": "Estos son lenguajes de programación."
+          "text": "Ansible, como herramienta para automatizar configuración y tareas.",
+          "explanation": "Puede configurar recursos alojados en la nube, pero no es el proveedor de esos recursos."
         }
       ],
       "correctId": "c",
@@ -1634,27 +1666,27 @@
     {
       "id": "intro-devops-031",
       "domain": "herramientas",
-      "prompt": "¿Qué herramienta se utiliza para la monitorización continua?",
+      "prompt": "El equipo quiere observar métricas de la aplicación una vez desplegada para investigar cambios en su funcionamiento. ¿Qué herramienta se orienta directamente a ese objetivo?",
       "options": [
         {
           "id": "a",
-          "text": "GitLab.",
-          "explanation": "Git se utiliza para control de versiones."
+          "text": "Git, para revisar el historial de cambios del código fuente.",
+          "explanation": "El historial ayuda a investigar cambios, pero no recopila métricas de la aplicación en ejecución."
         },
         {
           "id": "b",
-          "text": "Prometheus.",
-          "explanation": "Prometheus se utiliza para monitorizar sistemas y observar métricas de su funcionamiento."
+          "text": "Prometheus, para recopilar y consultar métricas de monitorización.",
+          "explanation": "La monitorización permite observar el comportamiento del sistema durante su ejecución."
         },
         {
           "id": "c",
-          "text": "Git.",
-          "explanation": "Terraform se utiliza para gestionar infraestructura mediante código."
+          "text": "Jenkins, para ejecutar tareas del proceso de construcción y entrega.",
+          "explanation": "El pipeline ayuda a entregar cambios, pero no sustituye la monitorización del servicio desplegado."
         },
         {
           "id": "d",
-          "text": "Terraform.",
-          "explanation": "GitLab puede utilizarse para integración y entrega continuas."
+          "text": "Terraform, para describir y aprovisionar los recursos del entorno.",
+          "explanation": "Define infraestructura, pero no recopila por sí mismo las métricas solicitadas."
         }
       ],
       "correctId": "b",
@@ -1663,27 +1695,27 @@
     {
       "id": "intro-devops-032",
       "domain": "rol-pipeline",
-      "prompt": "¿Qué propósito comparten las herramientas de automatización en DevOps?",
+      "prompt": "Tras automatizar una entrega, el equipo comprueba que todas las etapas se ejecutan sin iniciarlas una a una. ¿Qué mejora refleja mejor el propósito de esas herramientas?",
       "options": [
         {
           "id": "a",
-          "text": "Sustituir tareas humanas repetitivas por automatización dentro del proceso de entrega.",
-          "explanation": "La automatización reduce tareas manuales repetitivas y conecta actividades del proceso de entrega. Las herramientas apoyan la colaboración y no sustituyen la responsabilidad del equipo."
+          "text": "Reducir trabajo manual repetitivo mediante etapas conectadas y reproducibles.",
+          "explanation": "La automatización coordina tareas del proceso y reduce la dependencia de repetir acciones manuales."
         },
         {
           "id": "b",
-          "text": "Mantener siempre manuales todas las tareas de entrega.",
-          "explanation": "Mantener todas las tareas manuales contradice el objetivo de automatizar el proceso."
+          "text": "Reducir el número de herramientas aunque las tareas sigan desconectadas.",
+          "explanation": "Menos herramientas no garantiza un flujo integrado ni menos intervención manual."
         },
         {
           "id": "c",
-          "text": "Evitar que desarrollo y operaciones se comuniquen.",
-          "explanation": "La automatización debe apoyar la colaboración, no evitar la comunicación entre equipos."
+          "text": "Cambiar el proveedor cloud manteniendo los mismos traspasos manuales.",
+          "explanation": "Cambiar el entorno no elimina por sí mismo las acciones repetitivas del proceso."
         },
         {
           "id": "d",
-          "text": "Elegir una sola tecnología para sustituir todo el proceso.",
-          "explanation": "Las distintas tecnologías cubren necesidades complementarias dentro del proceso de entrega."
+          "text": "Asignar más personas a cada tarea para acelerar su ejecución manual.",
+          "explanation": "Puede aumentar capacidad humana, pero no logra la automatización descrita."
         }
       ],
       "correctId": "a",
@@ -1694,6 +1726,7 @@
     "file": "01 - Intro to DevOps Handout.pdf",
     "pages": 11,
     "note": "Adaptado del documento original. La procedencia y las páginas se conservan como metadatos; las preguntas y explicaciones son autónomas. Las descripciones de Docker, Terraform y Ansible se han precisado para evitar confundir categorías introductorias con definiciones técnicas.",
-    "author": "Nana Janashia"
+    "author": "Nana Janashia",
+    "assessmentNote": "Preguntas de aplicación elaboradas a partir de los conceptos introductorios, con ejemplos didácticos adicionales. No son preguntas oficiales ni una evaluación de DevOps avanzado."
   }
 }
