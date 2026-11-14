@@ -3,7 +3,7 @@
   "id": "intro-devops-handout-es",
   "title": "Introducción a DevOps · Del equipo al pipeline",
   "description": "32 situaciones prácticas de introducción a DevOps: roles, colaboración, cultura, automatización, CI/CD y herramientas. Alternativas plausibles con explicación de cada decisión.",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "domains": [
     {
       "id": "roles",
@@ -67,8 +67,8 @@
         "Desarrollo",
         "DevOps"
       ],
-      "example": "Situación práctica: Un equipo necesita añadir recuperación de contraseña y corregir un error en el formulario. ¿Qué trabajo corresponde directamente a desarrollo?",
-      "confusion": "Preparar el servidor facilita la ejecución, pero no implementa el comportamiento solicitado.",
+      "example": "Una tienda incorpora cupones de descuento. Desarrollo modifica el cálculo del total, añade pruebas para los nuevos importes y entrega el cambio para su publicación. Así, la funcionalidad existe antes de preparar su ejecución en producción.",
+      "confusion": "Implementar cambia lo que hace la aplicación; desplegar cambia qué versión se ejecuta en un entorno. Son actividades relacionadas, pero no equivalentes.",
       "mnemonic": "Desarrollo crea y corrige.",
       "difficulty": "Applied",
       "tags": [
@@ -90,8 +90,8 @@
         "Pruebas",
         "DevOps"
       ],
-      "example": "Situación práctica: Una actualización cambia el inicio de sesión y comparte código con la recuperación de contraseña. ¿Qué alcance de pruebas reduce mejor el riesgo de regresiones?",
-      "confusion": "Ampliar los usuarios de la función nueva no comprueba cómo afecta el código modificado a los otros flujos.",
+      "example": "Al modificar un componente compartido del carrito, el equipo prueba el descuento nuevo y vuelve a comprobar envíos, impuestos y pedidos sin descuento. Detecta que una compra sin cupón calculaba mal los impuestos y lo corrige antes de publicar.",
+      "confusion": "Las pruebas de la función nueva validan lo añadido; las de regresión buscan efectos no deseados sobre funciones que ya existían.",
       "mnemonic": "Nuevo y anterior: ambos se prueban.",
       "difficulty": "Applied",
       "tags": [
@@ -113,8 +113,8 @@
         "Participantes en las pruebas",
         "DevOps"
       ],
-      "example": "Situación práctica: Desarrolladores conocen la lógica modificada y testers conocen los flujos de uso. ¿Cómo aprovechar mejor ambos conocimientos al validar una funcionalidad?",
-      "confusion": "El éxito del despliegue no confirma el comportamiento de los flujos de uso.",
+      "example": "En una pantalla de registro, desarrollo comprueba las reglas de validación y un tester recorre flujos como corregir un correo y reenviar el formulario. Las dos perspectivas descubren fallos diferentes antes de entregar la versión.",
+      "confusion": "Conocer la implementación y conocer los recorridos de uso aportan perspectivas complementarias. Compartir la calidad no significa que todos tengan la misma especialidad.",
       "mnemonic": "Desarrolladores y testers comprueban.",
       "difficulty": "Applied",
       "tags": [
@@ -136,8 +136,8 @@
         "Modalidades de pruebas",
         "DevOps"
       ],
-      "example": "Situación práctica: Una comprobación estable se repite en cada versión, mientras otra requiere explorar una pantalla recién diseñada. ¿Qué enfoque aprovecha mejor las modalidades de prueba?",
-      "confusion": "Es posible, pero conserva trabajo repetitivo que puede automatizarse.",
+      "example": "En cada cambio se ejecuta automáticamente una prueba de cálculo de impuestos. Al rediseñar el pago, una persona explora además errores de navegación y mensajes confusos. El equipo conserva comprobaciones repetibles sin renunciar a descubrir comportamientos nuevos.",
+      "confusion": "Una prueba automatizada comprueba condiciones que se han definido; una exploración manual puede descubrir problemas que todavía no estaban incluidos en esas condiciones.",
       "mnemonic": "Manual o automática: comprobar sigue siendo la meta.",
       "difficulty": "Applied",
       "tags": [
@@ -159,8 +159,8 @@
         "Operaciones",
         "DevOps"
       ],
-      "example": "Situación práctica: La funcionalidad ya está programada y probada. Falta preparar su ejecución, actualizar el entorno y mantenerla funcionando en producción. ¿Qué conjunto de tareas responde a esa necesidad?",
-      "confusion": "Son actividades útiles de desarrollo, pero no cubren la puesta en producción solicitada.",
+      "example": "Para publicar una nueva API, operaciones prepara la configuración del entorno, ejecuta el despliegue y comprueba que el proceso inicia correctamente. Después atiende un problema de permisos del servicio para mantenerlo funcionando.",
+      "confusion": "Que una función esté programada y probada no demuestra que pueda ejecutarse correctamente en producción. La operación se ocupa también de su entorno y continuidad.",
       "mnemonic": "Operaciones lleva el software a producción y lo mantiene.",
       "difficulty": "Applied",
       "tags": [
@@ -182,8 +182,8 @@
         "Objetivos tradicionales",
         "DevOps"
       ],
-      "example": "Situación práctica: Desarrollo mide su éxito por funcionalidades publicadas; operaciones lo mide por estabilidad. Las discusiones reaparecen en cada entrega. ¿Qué causa explica mejor la tensión?",
-      "confusion": "El tamaño del repositorio no explica el conflicto entre las prioridades descritas.",
+      "example": "Un equipo quiere publicar una mejora antes de una campaña, mientras otro teme afectar al servicio. Acuerdan revisar juntos la preparación del cambio y sus resultados en producción, en lugar de medir el éxito de cada grupo de forma aislada.",
+      "confusion": "Velocidad de cambio y estabilidad son objetivos del mismo servicio. Optimizar uno sin considerar el otro puede trasladar el problema a otro equipo.",
       "mnemonic": "DEV: velocidad. OPS: estabilidad.",
       "difficulty": "Applied",
       "tags": [
@@ -205,8 +205,8 @@
         "Conocimientos de desarrollo",
         "DevOps"
       ],
-      "example": "Situación práctica: Un cambio modifica una consulta de datos y la lógica que la utiliza. ¿Qué combinación de conocimientos permite implementarlo y comprobarlo directamente?",
-      "confusion": "Ayudan a operar el entorno, pero no cubren directamente la implementación y validación de esa lógica.",
+      "example": "Una desarrolladora cambia la consulta que busca pedidos pendientes, adapta la lógica que usa el resultado y añade pruebas para pedidos vacíos y duplicados. Guarda los cambios en Git para que puedan revisarse junto con su historial.",
+      "confusion": "Programar, consultar datos y probar resuelve el comportamiento de la aplicación; administrar procesos y servidores resuelve necesidades de su entorno de ejecución.",
       "mnemonic": "Código, pruebas, datos y versiones.",
       "difficulty": "Applied",
       "tags": [
@@ -228,8 +228,8 @@
         "Conocimientos de operaciones",
         "DevOps"
       ],
-      "example": "Situación práctica: La aplicación está probada, pero no arranca en un servidor Linux. Antes de cambiar su código, hay que inspeccionar el entorno y el proceso. ¿Qué conocimientos son más directamente útiles?",
-      "confusion": "Ayudan al desarrollo, pero el primer paso solicitado se centra en inspeccionar el servidor y el proceso.",
+      "example": "Un servicio no inicia tras instalarse en Linux. La persona de guardia revisa registros y permisos desde la terminal, descubre que el proceso no puede leer su configuración y corrige el permiso. El servicio arranca sin modificar su lógica.",
+      "confusion": "Un fallo visible en una aplicación puede proceder del código o del entorno. Inspeccionar procesos, registros y permisos ayuda a distinguir ambas causas antes de intervenir.",
       "mnemonic": "Sistema, comandos, scripts y observación.",
       "difficulty": "Applied",
       "tags": [
@@ -251,8 +251,8 @@
         "Comunicación y entornos",
         "DevOps"
       ],
-      "example": "Situación práctica: Una versión funciona en pruebas, pero producción no dispone de una configuración que ahora necesita. ¿Qué práctica reduce directamente este fallo de coordinación?",
-      "confusion": "Las pruebas unitarias no garantizan que producción disponga de la configuración necesaria.",
+      "example": "Una API nueva necesita la variable de configuración de un servicio externo. Antes de publicar, desarrollo comunica el requisito y operaciones confirma su disponibilidad en el entorno de destino. La versión puede iniciar con la configuración que espera.",
+      "confusion": "Validar el código comprueba su comportamiento bajo unas condiciones; preparar el entorno garantiza que esas condiciones estén disponibles donde se va a ejecutar.",
       "mnemonic": "Desplegar exige preparar y comunicar.",
       "difficulty": "Applied",
       "tags": [
@@ -274,8 +274,8 @@
         "Silos organizativos",
         "DevOps"
       ],
-      "example": "Situación práctica: Desarrollo envía una versión y da su trabajo por terminado; operaciones descubre los requisitos del entorno al intentar desplegarla. ¿Qué problema organizativo refleja esta situación?",
-      "confusion": "El caso no indica un problema de reutilización de imágenes; sí muestra falta de coordinación.",
+      "example": "Una versión llega a operaciones sin indicar que necesita un puerto adicional. El despliegue queda detenido mientras se busca a quien implementó el cambio. Al preparar juntos los requisitos de las siguientes entregas, ambos equipos reducen ese traspaso incompleto.",
+      "confusion": "Separar responsabilidades permite especializarse; trabajar en silos impide compartir la información necesaria para completar un proceso común.",
       "mnemonic": "Silo: cada equipo aislado.",
       "difficulty": "Applied",
       "tags": [
@@ -297,8 +297,8 @@
         "Trabajo manual",
         "DevOps"
       ],
-      "example": "Situación práctica: Las pruebas terminan en minutos, pero cada versión espera horas a que una persona configure servidores y ejecute el despliegue. ¿Dónde conviene concentrar primero la automatización?",
-      "confusion": "Puede ser una mejora, pero no ataca las horas de espera identificadas.",
+      "example": "Las pruebas de una aplicación duran cinco minutos, pero un operador dedica una hora a repetir la configuración y copiar la versión. El equipo automatiza esos pasos y deja de depender de que alguien los ejecute a mano para cada entrega.",
+      "confusion": "El cuello de botella es la etapa que concentra la espera. Acelerar una etapa que ya es breve puede tener poco efecto sobre el tiempo total de entrega.",
       "mnemonic": "Repetición manual: cuello de botella.",
       "difficulty": "Applied",
       "tags": [
@@ -320,8 +320,8 @@
         "Definición de DevOps",
         "DevOps"
       ],
-      "example": "Situación práctica: Después de mejorar su proceso de entrega, ¿qué resultado refleja mejor el objetivo de DevOps?",
-      "confusion": "Mejora una medida de velocidad a costa de la estabilidad; no equilibra ambos objetivos.",
+      "example": "Un equipo conecta sus pruebas y despliegues, y coordina con operaciones los requisitos de cada cambio. Evalúa si las versiones llegan con menos espera y menos incidencias, en vez de valorar únicamente cuántas publicaciones realiza.",
+      "confusion": "Frecuencia de entrega, fiabilidad y colaboración deben evaluarse juntas. Un aumento de velocidad que genera más fallos no demuestra por sí mismo una mejora del proceso.",
       "mnemonic": "Entrega rápida, errores mínimos.",
       "difficulty": "Applied",
       "tags": [
@@ -343,8 +343,8 @@
         "Origen cultural",
         "DevOps"
       ],
-      "example": "Situación práctica: Una empresa compra herramientas de automatización, pero desarrollo y operaciones siguen sin compartir requisitos ni objetivos. ¿Qué falta para avanzar hacia una cultura DevOps?",
-      "confusion": "Cambiar de proveedor no establece la colaboración que falta.",
+      "example": "Una empresa instala Jenkins, pero las versiones siguen bloqueadas porque nadie comunica los cambios de configuración. Los equipos acuerdan cómo compartir esos requisitos y quién prepara cada paso; la herramienta puede entonces apoyar un flujo coordinado.",
+      "confusion": "Una herramienta automatiza tareas; una cultura compartida establece cómo las personas colaboran y asumen las responsabilidades del proceso.",
       "mnemonic": "Primero una forma de trabajar.",
       "difficulty": "Applied",
       "tags": [
@@ -366,8 +366,8 @@
         "Mejora del proceso",
         "DevOps"
       ],
-      "example": "Situación práctica: Cada publicación repite las mismas comprobaciones y comandos manuales, con errores de transcripción. ¿Qué mejora conserva los controles y reduce esa fuente de fallos?",
-      "confusion": "Aumentar la frecuencia no elimina la causa de los errores de transcripción.",
+      "example": "En una publicación manual se copiaba con frecuencia una ruta equivocada. El equipo convierte la copia y sus comprobaciones en pasos automatizados. Los mismos controles se ejecutan en cada entrega sin depender de transcribir el comando correctamente.",
+      "confusion": "Eliminar un control reduce comprobaciones; automatizarlo mantiene su objetivo y cambia cómo se ejecuta. Reducir pasos y reducir errores no son necesariamente lo mismo.",
       "mnemonic": "Quitar obstáculos, mejorar el flujo.",
       "difficulty": "Applied",
       "tags": [
@@ -389,8 +389,8 @@
         "Ciclo de entrega",
         "DevOps"
       ],
-      "example": "Situación práctica: Una versión acaba de desplegarse correctamente. ¿Qué actividad cierra el ciclo de aprendizaje y aporta información para el siguiente cambio?",
-      "confusion": "Repetir la construcción no aporta la información de uso que requiere el ciclo.",
+      "example": "Después de desplegar una búsqueda nueva, el equipo observa que las peticiones tardan más con consultas amplias. Utiliza ese resultado para priorizar una mejora de la consulta en la siguiente iteración, cerrando el ciclo entre entrega y aprendizaje.",
+      "confusion": "Construir y desplegar hacen disponible una versión; observar permite comprobar sus efectos reales. El aprendizaje posterior al despliegue orienta las próximas mejoras.",
       "mnemonic": "Desplegar, observar y aprender.",
       "difficulty": "Applied",
       "tags": [
@@ -412,8 +412,8 @@
         "Patrones comunes",
         "DevOps"
       ],
-      "example": "Situación práctica: Una empresa distribuye las tareas DevOps entre dos equipos y otra utiliza especialistas dedicados. ¿Qué permite evaluar ambas adopciones con el mismo criterio?",
-      "confusion": "El nombre del equipo no demuestra colaboración ni mejora de la entrega.",
+      "example": "Una startup distribuye las tareas de entrega entre desarrollo y operaciones. Una empresa mayor cuenta con especialistas que ayudan a ambos equipos. Las dos pueden mejorar su flujo si coordinan responsabilidades y automatizan las tareas repetitivas.",
+      "confusion": "La estructura del organigrama describe cómo se distribuyen las personas; las prácticas DevOps describen cómo colaboran y entregan software.",
       "mnemonic": "Estructuras distintas, principios compartidos.",
       "difficulty": "Applied",
       "tags": [
@@ -435,8 +435,8 @@
         "Prácticas DevOps",
         "DevOps"
       ],
-      "example": "Situación práctica: Varias personas modifican la aplicación y necesitan coordinar qué se entrega y conservar el historial de cambios. ¿Qué combinación de prácticas responde a ambas necesidades?",
-      "confusion": "Ayuda a observar y operar, pero no cubre coordinar el trabajo y registrar el historial del código.",
+      "example": "Dos personas trabajan en partes de un proceso de pago. Acuerdan el alcance de la entrega, registran sus cambios en Git y revisan cómo se combinan. Pueden coordinar qué publicar y conservar el historial de lo que se modificó.",
+      "confusion": "Planificar coordina el trabajo que se quiere realizar; el control de versiones registra cómo cambia el código. Una práctica no sustituye a la otra.",
       "mnemonic": "Planificar, colaborar y versionar.",
       "difficulty": "Applied",
       "tags": [
@@ -458,8 +458,8 @@
         "Infraestructura como código",
         "DevOps"
       ],
-      "example": "Situación práctica: Dos servidores deberían tener la misma configuración, pero los cambios manuales han creado diferencias difíciles de reproducir. ¿Qué enfoque aborda mejor esa causa?",
-      "confusion": "Las métricas pueden revelar diferencias, pero no hacen reproducible su configuración.",
+      "example": "Dos servidores se habían configurado a mano y uno quedó con una opción diferente. El equipo expresa la configuración esperada mediante definiciones automatizables y las utiliza para preparar ambos entornos. Ya no depende de recordar cada paso manual.",
+      "confusion": "Documentar una configuración describe lo que se espera; una definición ejecutable permite aplicarla de forma reproducible. Tener métricas tampoco equivale a gestionar esa configuración.",
       "mnemonic": "Infraestructura también se expresa como código.",
       "difficulty": "Applied",
       "tags": [
@@ -481,8 +481,8 @@
         "Monitorización continua",
         "DevOps"
       ],
-      "example": "Situación práctica: El despliegue ha terminado, pero el equipo necesita detectar si la nueva versión empeora el funcionamiento del servicio. ¿Qué práctica responde directamente a esa necesidad?",
-      "confusion": "Conserva el historial del código, pero no observa el comportamiento de la versión en ejecución.",
+      "example": "Tras publicar una API, el equipo observa sus métricas y detecta un aumento de errores. Investiga el cambio antes de seguir con otra entrega. El despliegue había terminado correctamente, pero la observación revela un problema durante el uso.",
+      "confusion": "Un despliegue correcto confirma que se ejecutaron sus pasos; la monitorización ayuda a conocer cómo se comporta el servicio después.",
       "mnemonic": "Entregar y seguir observando.",
       "difficulty": "Applied",
       "tags": [
@@ -504,8 +504,8 @@
         "Organización del trabajo DevOps",
         "DevOps"
       ],
-      "example": "Situación práctica: Una empresa pequeña quiere adoptar DevOps sin crear un departamento nuevo. ¿Qué opción es compatible con esa decisión?",
-      "confusion": "Un proveedor no sustituye la coordinación ni las responsabilidades internas del proceso.",
+      "example": "En una empresa pequeña, desarrollo mantiene las pruebas automatizadas y operaciones prepara el despliegue. Ambos acuerdan cómo conectar esas tareas y comunicar cambios del entorno. Pueden mejorar el proceso sin crear un departamento adicional.",
+      "confusion": "Un puesto dedicado es una forma de repartir el trabajo, no una condición suficiente ni obligatoria para adoptar prácticas DevOps.",
       "mnemonic": "DEV, OPS o un rol dedicado.",
       "difficulty": "Applied",
       "tags": [
@@ -527,8 +527,8 @@
         "Ingeniería DevOps",
         "DevOps"
       ],
-      "example": "Situación práctica: Una persona conoce muchas herramientas DevOps, pero las versiones siguen dependiendo de varios pasos manuales desconectados. ¿Qué resultado debería priorizar?",
-      "confusion": "Añade tecnología sin resolver la desconexión y la dependencia manual.",
+      "example": "Un equipo ya tiene comandos para probar, construir y desplegar, pero los ejecuta manualmente. La persona de DevOps conecta esas tareas en un flujo y comprueba que el resultado de cada etapa llega a la siguiente. El avance está en el proceso integrado, no en añadir otra tecnología.",
+      "confusion": "Conocer herramientas es una capacidad; lograr una entrega coordinada y automatizada es un resultado. El número de tecnologías adoptadas no mide por sí mismo ese resultado.",
       "mnemonic": "Automatizar el camino hacia la entrega.",
       "difficulty": "Applied",
       "tags": [
@@ -550,8 +550,8 @@
         "Habilidades del rol",
         "DevOps"
       ],
-      "example": "Situación práctica: Hay que investigar por qué un cambio de código falla durante su entrega a un entorno Linux. ¿Qué perfil de conocimientos resulta más adecuado para conectar las posibles causas?",
-      "confusion": "Son conocimientos útiles, pero no cubren el entorno Linux ni la automatización de la entrega.",
+      "example": "Un pipeline falla al ejecutar las pruebas en Linux. La persona que lo investiga revisa el cambio de código, los comandos de ejecución y la configuración del entorno; encuentra una ruta incorrecta en el script y permite continuar la entrega.",
+      "confusion": "Código, sistema y pipeline son capas relacionadas. Comprenderlas permite investigar dónde se origina el fallo en lugar de atribuirlo automáticamente a una sola herramienta.",
       "mnemonic": "DEV + OPS + habilidades DevOps.",
       "difficulty": "Applied",
       "tags": [
@@ -573,8 +573,8 @@
         "Pipeline CI/CD",
         "DevOps"
       ],
-      "example": "Situación práctica: El repositorio, las pruebas, la construcción y el despliegue ya existen, pero alguien debe iniciar cada herramienta por separado. ¿Qué elemento falta para conectar el proceso?",
-      "confusion": "Otra copia del código no coordina la ejecución de pruebas, construcción y despliegue.",
+      "example": "En un proyecto, un commit activa las pruebas; si pasan, el pipeline construye una imagen, la publica en un registro y ejecuta el despliegue. La configuración del flujo conecta cada resultado con la etapa siguiente y evita iniciar las herramientas una a una.",
+      "confusion": "El repositorio conserva los cambios; el pipeline coordina su procesamiento. Un panel observa el flujo y la infraestructura lo ejecuta, pero ninguno sustituye por sí solo esa coordinación.",
       "mnemonic": "CI/CD conecta la entrega.",
       "difficulty": "Applied",
       "tags": [
@@ -596,8 +596,8 @@
         "Etapas del pipeline",
         "DevOps"
       ],
-      "example": "Situación práctica: Las pruebas han pasado y se ha construido una imagen. El servidor de despliegue necesita obtenerla de un registro. ¿Qué debe ocurrir antes de desplegarla desde ese registro?",
-      "confusion": "Confirmar código no publica la imagen que el servidor necesita recuperar.",
+      "example": "El pipeline construye la imagen de una API y la guarda inicialmente en su máquina de trabajo. Después la publica en un registro accesible al entorno de destino. Solo entonces el despliegue puede recuperarla de ese registro y ejecutarla.",
+      "confusion": "Un commit registra código, una construcción produce un artefacto y una publicación lo pone a disposición de otros entornos. Son resultados distintos dentro de la entrega.",
       "mnemonic": "Construir, publicar y después desplegar.",
       "difficulty": "Applied",
       "tags": [
@@ -619,8 +619,8 @@
         "Git",
         "DevOps"
       ],
-      "example": "Situación práctica: Dos personas modificaron el código y necesitan comparar cambios, conservar su historial y combinar el trabajo. ¿Qué herramienta responde directamente a esa necesidad?",
-      "confusion": "Jenkins puede automatizar tareas usando un repositorio, pero no sustituye al control de versiones solicitado.",
+      "example": "Dos desarrolladores cambian partes de una aplicación. Registran sus modificaciones en Git, comparan los cambios y resuelven un conflicto al combinarlos. Después el pipeline utiliza esa versión del código para ejecutar sus tareas.",
+      "confusion": "El control de versiones gestiona el historial del código; la automatización de entrega procesa una versión de ese código. Registrar un cambio no equivale a desplegarlo.",
       "mnemonic": "Git: gestionar código.",
       "difficulty": "Applied",
       "tags": [
@@ -642,8 +642,8 @@
         "Docker",
         "DevOps"
       ],
-      "example": "Situación práctica: Una aplicación necesita entregarse junto con las dependencias que utiliza para ejecutarse. ¿Qué uso de Docker responde a esa necesidad?",
-      "confusion": "Esa es una necesidad de control de versiones, no de empaquetado de la aplicación.",
+      "example": "Una API necesita una versión concreta de su entorno de ejecución y varias bibliotecas. El equipo construye una imagen con esos elementos y la publica para su despliegue. La aplicación viaja junto con las dependencias incluidas en la imagen.",
+      "confusion": "Una imagen es el paquete preparado para ejecutar la aplicación; un contenedor es una ejecución de esa imagen. Preparar ese paquete y coordinar múltiples ejecuciones son tareas diferentes.",
       "mnemonic": "Docker: aplicación y dependencias en una imagen.",
       "difficulty": "Applied",
       "tags": [
@@ -665,8 +665,8 @@
         "Terraform y Ansible",
         "DevOps"
       ],
-      "example": "Situación práctica: Un equipo quiere aprovisionar recursos y después automatizar la configuración de los servidores. ¿Qué combinación se ajusta mejor a esas dos tareas?",
-      "confusion": "Git versiona definiciones y Jenkins puede ejecutar tareas, pero no proporcionan por sí mismos esas dos funciones específicas.",
+      "example": "Un equipo utiliza Terraform para aprovisionar recursos de una aplicación y Ansible para aplicar la configuración necesaria en los servidores. Cada herramienta resuelve una parte del trabajo, y el equipo coordina el orden en que deben ejecutarse.",
+      "confusion": "Aprovisionar crea o gestiona recursos; configurar prepara su estado para un uso concreto. Las herramientas pueden complementarse sin ser equivalentes en todas sus funciones.",
       "mnemonic": "Infraestructura: Terraform y Ansible.",
       "difficulty": "Applied",
       "tags": [
@@ -688,8 +688,8 @@
         "Jenkins y GitLab",
         "DevOps"
       ],
-      "example": "Situación práctica: Las pruebas y los scripts de construcción ya están preparados. Se necesita automatizar cuándo y cómo se ejecutan al entregar cambios. ¿Qué elección se orienta directamente a esa coordinación?",
-      "confusion": "El control de versiones puede iniciar o alimentar un pipeline, pero no coordina por sí solo esas etapas.",
+      "example": "Los scripts de pruebas y construcción de una aplicación ya funcionan por separado. El equipo configura un pipeline en GitLab para ejecutarlos tras un cambio y detener la entrega si fallan las pruebas. La herramienta coordina tareas que antes había que iniciar manualmente.",
+      "confusion": "Un script ejecuta una tarea; una plataforma de CI/CD coordina cuándo se ejecutan las tareas y cómo dependen unas de otras.",
       "mnemonic": "CI/CD: Jenkins y GitLab.",
       "difficulty": "Applied",
       "tags": [
@@ -711,8 +711,8 @@
         "Kubernetes",
         "DevOps"
       ],
-      "example": "Situación práctica: La imagen de una aplicación ya está preparada. Ahora se necesita coordinar la ejecución de sus contenedores en un entorno de despliegue. ¿Qué herramienta responde a esa fase?",
-      "confusion": "Versionar definiciones no ejecuta ni coordina los contenedores.",
+      "example": "Un equipo ya dispone de una imagen de su aplicación y utiliza Kubernetes para coordinar la ejecución de sus contenedores. Cuando publica otra versión, prepara la imagen correspondiente y actualiza el despliegue para utilizarla.",
+      "confusion": "Construir una imagen prepara el contenido que se ejecutará; orquestar coordina cómo se ejecutan los contenedores en el entorno.",
       "mnemonic": "Kubernetes: orquestar contenedores.",
       "difficulty": "Applied",
       "tags": [
@@ -734,8 +734,8 @@
         "Proveedores cloud",
         "DevOps"
       ],
-      "example": "Situación práctica: Un equipo necesita un proveedor que ofrezca infraestructura cloud para alojar sus aplicaciones, no una herramienta de empaquetado ni de pipeline. ¿Qué elección corresponde a esa categoría?",
-      "confusion": "Docker facilita el uso de contenedores, pero no equivale a contratar infraestructura a un proveedor cloud.",
+      "example": "Un equipo contrata recursos de Azure para alojar una aplicación, prepara su imagen con Docker y automatiza tareas con Jenkins. El proveedor aporta infraestructura cloud y las herramientas cumplen funciones distintas dentro de la entrega.",
+      "confusion": "Un proveedor cloud ofrece recursos y servicios; una herramienta de empaquetado o automatización puede utilizar esos recursos sin convertirse por ello en un proveedor cloud.",
       "mnemonic": "Cloud ofrece recursos; las herramientas los utilizan.",
       "difficulty": "Applied",
       "tags": [
@@ -757,8 +757,8 @@
         "Prometheus",
         "DevOps"
       ],
-      "example": "Situación práctica: El equipo quiere observar métricas de la aplicación una vez desplegada para investigar cambios en su funcionamiento. ¿Qué herramienta se orienta directamente a ese objetivo?",
-      "confusion": "El historial ayuda a investigar cambios, pero no recopila métricas de la aplicación en ejecución.",
+      "example": "Después de publicar una API, el equipo consulta métricas recogidas por Prometheus y detecta que una operación tarda más que antes. Usa esa señal para investigar la versión desplegada y orientar la siguiente corrección.",
+      "confusion": "El historial de código indica qué cambió; las métricas indican cómo se comporta el sistema en ejecución. Ambos ayudan a investigar, pero aportan información diferente.",
       "mnemonic": "Prometheus: monitorizar.",
       "difficulty": "Applied",
       "tags": [
@@ -780,8 +780,8 @@
         "Propósito de las herramientas",
         "DevOps"
       ],
-      "example": "Situación práctica: Tras automatizar una entrega, el equipo comprueba que todas las etapas se ejecutan sin iniciarlas una a una. ¿Qué mejora refleja mejor el propósito de esas herramientas?",
-      "confusion": "Menos herramientas no garantiza un flujo integrado ni menos intervención manual.",
+      "example": "Antes de cada entrega, una persona iniciaba pruebas, copiaba resultados y lanzaba la construcción. El equipo conecta esas actividades en un flujo automatizado. En las siguientes entregas, las tareas se ejecutan sin repetir cada acción manual y la atención se concentra en los fallos que aparezcan.",
+      "confusion": "Automatizar modifica cómo se realiza el trabajo repetitivo; añadir personas o cambiar herramientas sin conectar las tareas puede conservar las mismas dependencias manuales.",
       "mnemonic": "Herramientas al servicio de automatizar.",
       "difficulty": "Applied",
       "tags": [
@@ -1727,6 +1727,7 @@
     "pages": 11,
     "note": "Adaptado del documento original. La procedencia y las páginas se conservan como metadatos; las preguntas y explicaciones son autónomas. Las descripciones de Docker, Terraform y Ansible se han precisado para evitar confundir categorías introductorias con definiciones técnicas.",
     "author": "Nana Janashia",
-    "assessmentNote": "Preguntas de aplicación elaboradas a partir de los conceptos introductorios, con ejemplos didácticos adicionales. No son preguntas oficiales ni una evaluación de DevOps avanzado."
+    "assessmentNote": "Preguntas de aplicación elaboradas a partir de los conceptos introductorios, con ejemplos didácticos adicionales. No son preguntas oficiales ni una evaluación de DevOps avanzado.",
+    "exampleNote": "Los casos de aplicación son ejemplos hipotéticos redactados con fines didácticos; no son relatos de incidentes reales ni citas del material de origen."
   }
 }

@@ -141,3 +141,17 @@ Los cursos importados se pueden eliminar con confirmación. Por defecto solo se 
 La eliminación vuelve a leer el catálogo guardado para conservar cambios de otras pestañas. Si falla el borrado del progreso, restaura el catálogo y muestra el error; los cursos ajenos nunca se borran.
 
 Los ejemplos que ya están instalados ofrecen **Abrir curso** en lugar de invitar a importarlos de nuevo.
+
+### Contenido de las explicaciones
+
+El contrato JSON valida tipos, campos y referencias, pero eso no garantiza calidad pedagógica. Los campos de apoyo de cada tarjeta se comparten con la explicación del reto que tiene el mismo ID. Cada campo tiene una función distinta:
+
+| Campo | Uso |
+| --- | --- |
+| `explanation` | Explicar por qué la respuesta es correcta. |
+| `example` | Mostrar una aplicación concreta con acción y resultado; se presenta como «En la vida real». Los casos hipotéticos son ilustrativos, no afirmaciones de incidentes reales. |
+| `confusion` | Contrastar conceptos que se pueden confundir; se presenta como «La distinción clave». |
+| `mnemonic` | Ofrecer una pista breve para recordar el concepto. |
+| `challenges[].options[].explanation` | Explicar específicamente por qué esa alternativa encaja o falla. |
+
+No se debe rellenar `example` repitiendo `question` ni copiar la explicación de un distractor en `confusion`. El paquete introductorio de DevOps incluye comprobaciones de contenido para detectar esas regresiones; no se bloquean automáticamente otros paquetes por coincidencias textuales. Las fuentes quedan como metadatos del paquete.

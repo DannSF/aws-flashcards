@@ -12,10 +12,14 @@ export interface Flashcard {
   category: string;
   question: string;
   answer: string;
+  /** Why the answer is correct; shown before the supplementary learning blocks. */
   explanation: string;
   keywords: string[];
+  /** A concrete, illustrative application and its outcome, not a restatement of the prompt. */
   example: string;
+  /** A transferable conceptual distinction, not feedback copied from a distractor. */
   confusion: string;
+  /** A short memory cue for the concept. */
   mnemonic: string;
   difficulty: "Foundation" | "Applied";
   tags: string[];
