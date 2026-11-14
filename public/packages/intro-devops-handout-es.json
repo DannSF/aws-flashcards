@@ -1,0 +1,1731 @@
+{
+  "schemaVersion": 1,
+  "id": "intro-devops-handout-es",
+  "title": "Introducción a DevOps · Del equipo al pipeline",
+  "description": "Curso en español basado en «01 - Intro to DevOps Handout.pdf»: roles, silos, cultura, prácticas, CI/CD y herramientas. Incluye referencias a las páginas del PDF.",
+  "version": "1.0.0",
+  "domains": [
+    {
+      "id": "roles",
+      "name": "Roles del proceso de entrega",
+      "short": "Roles del proceso de entrega",
+      "weight": 16,
+      "color": "#4375bc",
+      "description": "Desarrollo, pruebas y operaciones."
+    },
+    {
+      "id": "silos",
+      "name": "Problemas del modelo tradicional",
+      "short": "Problemas del modelo tradicional",
+      "weight": 19,
+      "color": "#a87332",
+      "description": "Prioridades, comunicación y trabajo manual."
+    },
+    {
+      "id": "cultura",
+      "name": "Cultura DevOps",
+      "short": "Cultura DevOps",
+      "weight": 16,
+      "color": "#7754d3",
+      "description": "Colaboración y mejora del ciclo de entrega."
+    },
+    {
+      "id": "practicas",
+      "name": "Prácticas compartidas",
+      "short": "Prácticas compartidas",
+      "weight": 9,
+      "color": "#36816e",
+      "description": "Planificación, infraestructura y observación."
+    },
+    {
+      "id": "rol-pipeline",
+      "name": "Ingeniería DevOps y CI/CD",
+      "short": "Ingeniería DevOps y CI/CD",
+      "weight": 19,
+      "color": "#5168b5",
+      "description": "Responsabilidades, habilidades y pipeline."
+    },
+    {
+      "id": "herramientas",
+      "name": "Mapa de herramientas",
+      "short": "Mapa de herramientas",
+      "weight": 21,
+      "color": "#9a568e",
+      "description": "Tecnologías y categorías del PDF."
+    }
+  ],
+  "cards": [
+    {
+      "id": "intro-devops-001",
+      "domain": "roles",
+      "service": "Desarrollo",
+      "category": "Roles del proceso de entrega",
+      "question": "¿Qué responsabilidades atribuye el documento al equipo de desarrollo?",
+      "answer": "Programar funcionalidades nuevas y corregir errores.",
+      "explanation": "El desarrollo crea el software utilizando lenguajes como Java, Python o JavaScript. Fuente: PDF, página 2.",
+      "keywords": [
+        "Desarrollo",
+        "DevOps"
+      ],
+      "example": "Una aplicación necesita recuperar contraseñas: desarrollo implementa la funcionalidad y corrige errores detectados.",
+      "confusion": "Operar el software en producción se presenta como una responsabilidad de operaciones.",
+      "mnemonic": "Desarrollo crea y corrige.",
+      "difficulty": "Foundation",
+      "tags": [
+        "devops",
+        "introduccion",
+        "pdf-p2"
+      ],
+      "sourcePage": 2
+    },
+    {
+      "id": "intro-devops-002",
+      "domain": "roles",
+      "service": "Pruebas",
+      "category": "Roles del proceso de entrega",
+      "question": "¿Qué se comprueba durante las pruebas de software?",
+      "answer": "Las funcionalidades nuevas y las ya existentes.",
+      "explanation": "Las pruebas abarcan tanto lo añadido como el comportamiento anterior del software. Fuente: PDF, página 2.",
+      "keywords": [
+        "Pruebas",
+        "DevOps"
+      ],
+      "example": "Tras añadir un inicio de sesión, se prueba esa función y se comprueba que las funciones anteriores siguen funcionando.",
+      "confusion": "Probar solo la novedad deja sin comprobar el comportamiento anterior.",
+      "mnemonic": "Nuevo y anterior: ambos se prueban.",
+      "difficulty": "Foundation",
+      "tags": [
+        "devops",
+        "introduccion",
+        "pdf-p2"
+      ],
+      "sourcePage": 2
+    },
+    {
+      "id": "intro-devops-003",
+      "domain": "roles",
+      "service": "Participantes en las pruebas",
+      "category": "Roles del proceso de entrega",
+      "question": "¿Quiénes realizan pruebas según el PDF?",
+      "answer": "Los desarrolladores y los testers dedicados.",
+      "explanation": "El documento menciona a ambos participantes, sin limitar las pruebas a un único rol. Fuente: PDF, página 2.",
+      "keywords": [
+        "Participantes en las pruebas",
+        "DevOps"
+      ],
+      "example": "Una persona de desarrollo prueba su cambio y un tester dedicado evalúa otros comportamientos de la aplicación.",
+      "confusion": "Las pruebas no son una actividad exclusiva de testers dedicados.",
+      "mnemonic": "Desarrolladores y testers comprueban.",
+      "difficulty": "Foundation",
+      "tags": [
+        "devops",
+        "introduccion",
+        "pdf-p2"
+      ],
+      "sourcePage": 2
+    },
+    {
+      "id": "intro-devops-004",
+      "domain": "roles",
+      "service": "Modalidades de pruebas",
+      "category": "Roles del proceso de entrega",
+      "question": "¿Qué dos modalidades de pruebas menciona el documento?",
+      "answer": "Pruebas manuales y automatizadas.",
+      "explanation": "La introducción contempla ambas modalidades en el trabajo de pruebas. Fuente: PDF, página 2.",
+      "keywords": [
+        "Modalidades de pruebas",
+        "DevOps"
+      ],
+      "example": "Un tester recorre manualmente una pantalla y una herramienta ejecuta otras comprobaciones automáticamente.",
+      "confusion": "El documento no afirma que todas las pruebas sean manuales ni que toda prueba deba desaparecer al automatizar.",
+      "mnemonic": "Manual o automática: comprobar sigue siendo la meta.",
+      "difficulty": "Foundation",
+      "tags": [
+        "devops",
+        "introduccion",
+        "pdf-p2"
+      ],
+      "sourcePage": 2
+    },
+    {
+      "id": "intro-devops-005",
+      "domain": "roles",
+      "service": "Operaciones",
+      "category": "Roles del proceso de entrega",
+      "question": "¿Qué actividades asigna el PDF al equipo de operaciones?",
+      "answer": "Construir, desplegar, actualizar y ejecutar el software en producción.",
+      "explanation": "Estas tareas conectan la aplicación con los servidores y con su funcionamiento en producción. Fuente: PDF, página 2.",
+      "keywords": [
+        "Operaciones",
+        "DevOps"
+      ],
+      "example": "Tras recibir un cambio, operaciones prepara su despliegue y mantiene la aplicación ejecutándose.",
+      "confusion": "Escribir nuevas funcionalidades se presenta como tarea de desarrollo; operar producción es otra responsabilidad.",
+      "mnemonic": "Operaciones lleva el software a producción y lo mantiene.",
+      "difficulty": "Foundation",
+      "tags": [
+        "devops",
+        "introduccion",
+        "pdf-p2"
+      ],
+      "sourcePage": 2
+    },
+    {
+      "id": "intro-devops-006",
+      "domain": "silos",
+      "service": "Objetivos tradicionales",
+      "category": "Problemas del modelo tradicional",
+      "question": "¿Qué contraste tradicional describe el documento entre desarrollo y operaciones?",
+      "answer": "Desarrollo busca nuevas funcionalidades rápidas; operaciones busca estabilidad.",
+      "explanation": "El contraste ayuda a entender por qué el traspaso de versiones puede generar tensión. Fuente: PDF, página 3.",
+      "keywords": [
+        "Objetivos tradicionales",
+        "DevOps"
+      ],
+      "example": "Desarrollo quiere publicar hoy y operaciones necesita comprobar el efecto del cambio sobre la estabilidad.",
+      "confusion": "El problema no se describe como falta de interés de operaciones por el producto, sino como prioridades diferentes.",
+      "mnemonic": "DEV: velocidad. OPS: estabilidad.",
+      "difficulty": "Foundation",
+      "tags": [
+        "devops",
+        "introduccion",
+        "pdf-p3"
+      ],
+      "sourcePage": 3
+    },
+    {
+      "id": "intro-devops-007",
+      "domain": "silos",
+      "service": "Conocimientos de desarrollo",
+      "category": "Problemas del modelo tradicional",
+      "question": "¿Qué conjunto de conocimientos se asocia a desarrollo en la comparación tradicional?",
+      "answer": "Lenguajes de programación, frameworks de pruebas, bases de datos y control de versiones.",
+      "explanation": "El PDF usa este conjunto para mostrar diferencias de conocimientos y herramientas entre equipos. Fuente: PDF, página 4.",
+      "keywords": [
+        "Conocimientos de desarrollo",
+        "DevOps"
+      ],
+      "example": "Una persona que implementa una función trabaja con el lenguaje, su framework de pruebas y el repositorio de versiones.",
+      "confusion": "La comparación explica perfiles tradicionales; no establece que otros equipos nunca puedan aprender esas habilidades.",
+      "mnemonic": "Código, pruebas, datos y versiones.",
+      "difficulty": "Foundation",
+      "tags": [
+        "devops",
+        "introduccion",
+        "pdf-p4"
+      ],
+      "sourcePage": 4
+    },
+    {
+      "id": "intro-devops-008",
+      "domain": "silos",
+      "service": "Conocimientos de operaciones",
+      "category": "Problemas del modelo tradicional",
+      "question": "¿Qué conjunto de conocimientos se asocia a operaciones en la comparación tradicional?",
+      "answer": "Sistemas operativos —principalmente Linux—, línea de comandos, scripting y monitorización.",
+      "explanation": "Estas habilidades se relacionan con preparar y operar los entornos donde se ejecuta el software. Fuente: PDF, página 4.",
+      "keywords": [
+        "Conocimientos de operaciones",
+        "DevOps"
+      ],
+      "example": "Para investigar un problema de un servidor, el equipo utiliza Linux, comandos y herramientas de monitorización.",
+      "confusion": "La comparación no implica que un ingeniero de DevOps deba ignorar los conocimientos de desarrollo.",
+      "mnemonic": "Sistema, comandos, scripts y observación.",
+      "difficulty": "Foundation",
+      "tags": [
+        "devops",
+        "introduccion",
+        "pdf-p4"
+      ],
+      "sourcePage": 4
+    },
+    {
+      "id": "intro-devops-009",
+      "domain": "silos",
+      "service": "Comunicación y entornos",
+      "category": "Problemas del modelo tradicional",
+      "question": "¿Por qué es importante la comunicación entre desarrollo y operaciones al desplegar?",
+      "answer": "Porque el despliegue requiere configuraciones y un entorno preparado.",
+      "explanation": "El software debe llegar a un entorno adecuado; la coordinación permite comunicar esas necesidades. Fuente: PDF, página 5.",
+      "keywords": [
+        "Comunicación y entornos",
+        "DevOps"
+      ],
+      "example": "Un cambio necesita una configuración nueva: los equipos deben acordarla antes del despliegue.",
+      "confusion": "Entregar el código no garantiza por sí mismo que el entorno esté preparado.",
+      "mnemonic": "Desplegar exige preparar y comunicar.",
+      "difficulty": "Applied",
+      "tags": [
+        "devops",
+        "introduccion",
+        "pdf-p5"
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "intro-devops-010",
+      "domain": "silos",
+      "service": "Silos organizativos",
+      "category": "Problemas del modelo tradicional",
+      "question": "¿Qué problema describe el PDF como falta de comunicación y colaboración entre departamentos?",
+      "answer": "El trabajo en silos entre desarrollo y operaciones.",
+      "explanation": "Los silos dificultan coordinar las necesidades de los cambios y del entorno. Fuente: PDF, página 5.",
+      "keywords": [
+        "Silos organizativos",
+        "DevOps"
+      ],
+      "example": "Un equipo cambia requisitos de ejecución sin comunicarlos al equipo que prepara producción.",
+      "confusion": "Tener equipos con responsabilidades diferentes no obliga a que trabajen aislados.",
+      "mnemonic": "Silo: cada equipo aislado.",
+      "difficulty": "Foundation",
+      "tags": [
+        "devops",
+        "introduccion",
+        "pdf-p5"
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "intro-devops-011",
+      "domain": "silos",
+      "service": "Trabajo manual",
+      "category": "Problemas del modelo tradicional",
+      "question": "¿Qué combinación de tareas manuales puede frenar la publicación de versiones?",
+      "answer": "Comprobaciones de estabilidad o seguridad, despliegues y configuración del entorno.",
+      "explanation": "El documento señala el trabajo manual y las listas de comprobación como obstáculos para la rapidez de entrega. Fuente: PDF, página 5.",
+      "keywords": [
+        "Trabajo manual",
+        "DevOps"
+      ],
+      "example": "Cada versión espera una configuración manual del servidor, un despliegue manual y comprobaciones repetitivas.",
+      "confusion": "Automatizar no significa dejar de comprobar estabilidad o seguridad; busca evitar procesos ineficientes.",
+      "mnemonic": "Repetición manual: cuello de botella.",
+      "difficulty": "Applied",
+      "tags": [
+        "devops",
+        "introduccion",
+        "pdf-p5"
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "intro-devops-012",
+      "domain": "cultura",
+      "service": "Definición de DevOps",
+      "category": "Cultura DevOps",
+      "question": "¿Qué definición más completa de DevOps propone el documento?",
+      "answer": "Hacer que el proceso de entrega continua sea rápido y tenga el mínimo de errores.",
+      "explanation": "La idea va más allá de juntar nombres de equipos: busca mejorar el proceso de entrega y eliminar obstáculos. Fuente: PDF, página 6.",
+      "keywords": [
+        "Definición de DevOps",
+        "DevOps"
+      ],
+      "example": "Un equipo revisa cómo pasar de una idea a producción con menos esperas y errores.",
+      "confusion": "La intersección entre desarrollo y operaciones es la definición simple, pero el PDF propone una visión centrada en el proceso.",
+      "mnemonic": "Entrega rápida, errores mínimos.",
+      "difficulty": "Foundation",
+      "tags": [
+        "devops",
+        "introduccion",
+        "pdf-p6"
+      ],
+      "sourcePage": 6
+    },
+    {
+      "id": "intro-devops-013",
+      "domain": "cultura",
+      "service": "Origen cultural",
+      "category": "Cultura DevOps",
+      "question": "¿Cómo describe el PDF el origen de DevOps?",
+      "answer": "Una forma de trabajar entre desarrollo y operaciones con un lenguaje común.",
+      "explanation": "La colaboración y la comunicación compartida aparecen antes de su evolución hacia un rol específico. Fuente: PDF, página 6.",
+      "keywords": [
+        "Origen cultural",
+        "DevOps"
+      ],
+      "example": "Los equipos acuerdan cómo comunicar necesidades del despliegue y coordinar los ciclos de entrega.",
+      "confusion": "DevOps no se presenta inicialmente como un puesto de trabajo ni como un producto único.",
+      "mnemonic": "Primero una forma de trabajar.",
+      "difficulty": "Foundation",
+      "tags": [
+        "devops",
+        "introduccion",
+        "pdf-p6"
+      ],
+      "sourcePage": 6
+    },
+    {
+      "id": "intro-devops-014",
+      "domain": "cultura",
+      "service": "Mejora del proceso",
+      "category": "Cultura DevOps",
+      "question": "¿Qué intenta eliminar DevOps del proceso de publicación?",
+      "answer": "Obstáculos y procesos manuales ineficientes que ralentizan los ciclos de entrega.",
+      "explanation": "El objetivo es construir procesos de publicación fluidos y automatizados. Fuente: PDF, página 6.",
+      "keywords": [
+        "Mejora del proceso",
+        "DevOps"
+      ],
+      "example": "En lugar de repetir un despliegue manual cada semana, el equipo busca un proceso automatizado y consistente.",
+      "confusion": "La mejora del flujo no equivale a omitir pruebas ni a aceptar errores sin investigarlos.",
+      "mnemonic": "Quitar obstáculos, mejorar el flujo.",
+      "difficulty": "Applied",
+      "tags": [
+        "devops",
+        "introduccion",
+        "pdf-p6"
+      ],
+      "sourcePage": 6
+    },
+    {
+      "id": "intro-devops-015",
+      "domain": "cultura",
+      "service": "Ciclo de entrega",
+      "category": "Cultura DevOps",
+      "question": "¿Qué secuencia representa el ciclo DevOps mostrado en el PDF?",
+      "answer": "Idea → implementar → probar → construir → desplegar → observar.",
+      "explanation": "La representación conecta la implementación con las pruebas, el despliegue y la observación posterior. Fuente: PDF, página 6.",
+      "keywords": [
+        "Ciclo de entrega",
+        "DevOps"
+      ],
+      "example": "Tras desplegar, el equipo observa el comportamiento y utiliza lo aprendido para orientar nuevas ideas.",
+      "confusion": "Publicar no es el final de la observación del software.",
+      "mnemonic": "Idea, implementa, prueba, construye, despliega y observa.",
+      "difficulty": "Foundation",
+      "tags": [
+        "devops",
+        "introduccion",
+        "pdf-p6"
+      ],
+      "sourcePage": 6
+    },
+    {
+      "id": "intro-devops-016",
+      "domain": "cultura",
+      "service": "Patrones comunes",
+      "category": "Cultura DevOps",
+      "question": "¿Cómo evolucionaron las implementaciones de DevOps según el documento?",
+      "answer": "Cada empresa lo aplicó de distintas formas y después surgieron patrones comunes.",
+      "explanation": "El PDF describe una evolución gradual hacia prácticas reconocibles compartidas por distintas implementaciones. Fuente: PDF, página 7.",
+      "keywords": [
+        "Patrones comunes",
+        "DevOps"
+      ],
+      "example": "Dos organizaciones organizan sus equipos de forma diferente, pero ambas adoptan integración y monitorización continuas.",
+      "confusion": "Patrones comunes no significa una estructura organizativa única para todas las empresas.",
+      "mnemonic": "Distintas formas, patrones compartidos.",
+      "difficulty": "Foundation",
+      "tags": [
+        "devops",
+        "introduccion",
+        "pdf-p7"
+      ],
+      "sourcePage": 7
+    },
+    {
+      "id": "intro-devops-017",
+      "domain": "practicas",
+      "service": "Prácticas DevOps",
+      "category": "Prácticas compartidas",
+      "question": "¿Qué pareja de prácticas figura entre los patrones DevOps del PDF?",
+      "answer": "Planificación y colaboración, y gestión del código fuente.",
+      "explanation": "El mapa de prácticas comienza con coordinar el trabajo y gestionar su código, además de otras actividades posteriores. Fuente: PDF, página 7.",
+      "keywords": [
+        "Prácticas DevOps",
+        "DevOps"
+      ],
+      "example": "Antes de entregar cambios, el equipo coordina lo que hará y mantiene el código bajo gestión.",
+      "confusion": "DevOps no abarca únicamente el momento del despliegue.",
+      "mnemonic": "Planificar, colaborar y versionar.",
+      "difficulty": "Foundation",
+      "tags": [
+        "devops",
+        "introduccion",
+        "pdf-p7"
+      ],
+      "sourcePage": 7
+    },
+    {
+      "id": "intro-devops-018",
+      "domain": "practicas",
+      "service": "Infraestructura como código",
+      "category": "Prácticas compartidas",
+      "question": "¿Qué idea sobre la infraestructura aparece entre los patrones DevOps?",
+      "answer": "Tratar la infraestructura como código.",
+      "explanation": "El PDF incluye Infrastructure as Code entre las prácticas que dan forma concreta a DevOps. Fuente: PDF, página 7.",
+      "keywords": [
+        "Infraestructura como código",
+        "DevOps"
+      ],
+      "example": "El equipo busca gestionar la configuración de su infraestructura mediante definiciones que puedan automatizarse.",
+      "confusion": "La introducción nombra la práctica, pero no desarrolla sintaxis ni comandos de una herramienta específica.",
+      "mnemonic": "Infraestructura también se expresa como código.",
+      "difficulty": "Foundation",
+      "tags": [
+        "devops",
+        "introduccion",
+        "pdf-p7"
+      ],
+      "sourcePage": 7
+    },
+    {
+      "id": "intro-devops-019",
+      "domain": "practicas",
+      "service": "Monitorización continua",
+      "category": "Prácticas compartidas",
+      "question": "¿Qué práctica mantiene la observación del sistema dentro del mapa DevOps?",
+      "answer": "La monitorización continua.",
+      "explanation": "La monitorización forma parte de los patrones comunes y complementa la entrega del software. Fuente: PDF, página 7.",
+      "keywords": [
+        "Monitorización continua",
+        "DevOps"
+      ],
+      "example": "Después del despliegue, el equipo sigue observando el comportamiento de la aplicación.",
+      "confusion": "Desplegar no elimina la necesidad de observar lo que ocurre después.",
+      "mnemonic": "Entregar y seguir observando.",
+      "difficulty": "Foundation",
+      "tags": [
+        "devops",
+        "introduccion",
+        "pdf-p7"
+      ],
+      "sourcePage": 7
+    },
+    {
+      "id": "intro-devops-020",
+      "domain": "rol-pipeline",
+      "service": "Organización del trabajo DevOps",
+      "category": "Ingeniería DevOps y CI/CD",
+      "question": "¿Quién puede asumir las responsabilidades DevOps según el PDF?",
+      "answer": "Desarrolladores, operaciones o un rol dedicado de DevOps.",
+      "explanation": "El documento muestra las tres posibilidades organizativas. Fuente: PDF, página 8.",
+      "keywords": [
+        "Organización del trabajo DevOps",
+        "DevOps"
+      ],
+      "example": "Una empresa distribuye estas tareas entre equipos y otra contrata un rol dedicado; ambas configuraciones aparecen en la introducción.",
+      "confusion": "No existe en el PDF una obligación de crear siempre un equipo separado.",
+      "mnemonic": "DEV, OPS o un rol dedicado.",
+      "difficulty": "Foundation",
+      "tags": [
+        "devops",
+        "introduccion",
+        "pdf-p8"
+      ],
+      "sourcePage": 8
+    },
+    {
+      "id": "intro-devops-021",
+      "domain": "rol-pipeline",
+      "service": "Ingeniería DevOps",
+      "category": "Ingeniería DevOps y CI/CD",
+      "question": "¿Qué responsabilidad principal asigna el PDF al DevOps Engineer?",
+      "answer": "Crear un proceso de publicación fluido y completamente automatizado.",
+      "explanation": "Las tecnologías DevOps sirven para implementar principios y automatizar el proceso de entrega. Fuente: PDF, página 8.",
+      "keywords": [
+        "Ingeniería DevOps",
+        "DevOps"
+      ],
+      "example": "La persona responsable conecta las tareas de prueba, construcción y despliegue en un flujo automatizado.",
+      "confusion": "El objetivo no es simplemente acumular herramientas sin mejorar el proceso.",
+      "mnemonic": "Automatizar el camino hacia la entrega.",
+      "difficulty": "Foundation",
+      "tags": [
+        "devops",
+        "introduccion",
+        "pdf-p8"
+      ],
+      "sourcePage": 8
+    },
+    {
+      "id": "intro-devops-022",
+      "domain": "rol-pipeline",
+      "service": "Habilidades del rol",
+      "category": "Ingeniería DevOps y CI/CD",
+      "question": "¿Qué combinación de conocimientos necesita el rol DevOps según el documento?",
+      "answer": "Conocimientos de desarrollo y operaciones, además de habilidades específicas de DevOps.",
+      "explanation": "El PDF representa la unión de conocimientos de ambos equipos y añade competencias propias del área. Fuente: PDF, página 9.",
+      "keywords": [
+        "Habilidades del rol",
+        "DevOps"
+      ],
+      "example": "Una persona necesita entender tanto el cambio en el software como su ejecución y las herramientas de automatización.",
+      "confusion": "Conocer únicamente un lado no resume el perfil mostrado.",
+      "mnemonic": "DEV + OPS + habilidades DevOps.",
+      "difficulty": "Foundation",
+      "tags": [
+        "devops",
+        "introduccion",
+        "pdf-p9"
+      ],
+      "sourcePage": 9
+    },
+    {
+      "id": "intro-devops-023",
+      "domain": "rol-pipeline",
+      "service": "Pipeline CI/CD",
+      "category": "Ingeniería DevOps y CI/CD",
+      "question": "¿Qué identifica el PDF como el núcleo de DevOps para automatizar la publicación?",
+      "answer": "El pipeline CI/CD.",
+      "explanation": "El documento sitúa el pipeline CI/CD en el centro del proceso automatizado de entrega. Fuente: PDF, página 10.",
+      "keywords": [
+        "Pipeline CI/CD",
+        "DevOps"
+      ],
+      "example": "Un commit inicia un flujo que conecta comprobaciones, construcción y despliegue.",
+      "confusion": "Una herramienta aislada no representa por sí sola todo el flujo de publicación.",
+      "mnemonic": "CI/CD conecta la entrega.",
+      "difficulty": "Foundation",
+      "tags": [
+        "devops",
+        "introduccion",
+        "pdf-p10"
+      ],
+      "sourcePage": 10
+    },
+    {
+      "id": "intro-devops-024",
+      "domain": "rol-pipeline",
+      "service": "Etapas del pipeline",
+      "category": "Ingeniería DevOps y CI/CD",
+      "question": "¿En qué orden aparecen las etapas del pipeline de la diapositiva 10?",
+      "answer": "Commit del código → TEST → BUILD → PUSH → DEPLOY.",
+      "explanation": "Ese es el orden del esquema concreto presentado. El PDF no desarrolla los detalles internos de cada etapa. Fuente: PDF, página 10.",
+      "keywords": [
+        "Etapas del pipeline",
+        "DevOps"
+      ],
+      "example": "Tras confirmar el código, el flujo del ejemplo pasa por pruebas, construcción, publicación del resultado y despliegue.",
+      "confusion": "Este orden corresponde al esquema del PDF; no se presenta como la única configuración posible para cualquier pipeline.",
+      "mnemonic": "Commit, prueba, construye, publica y despliega.",
+      "difficulty": "Foundation",
+      "tags": [
+        "devops",
+        "introduccion",
+        "pdf-p10"
+      ],
+      "sourcePage": 10
+    },
+    {
+      "id": "intro-devops-025",
+      "domain": "herramientas",
+      "service": "Git",
+      "category": "Mapa de herramientas",
+      "question": "¿Qué herramienta asocia el PDF con Source Code Management?",
+      "answer": "Git.",
+      "explanation": "Git aparece bajo la categoría de gestión del código fuente. Fuente: PDF, página 10.",
+      "keywords": [
+        "Git",
+        "DevOps"
+      ],
+      "example": "El equipo necesita gestionar el código de la aplicación y sus cambios.",
+      "confusion": "En el mapa, Prometheus se asocia a monitorización, no a gestión del código fuente.",
+      "mnemonic": "Git: gestionar código.",
+      "difficulty": "Foundation",
+      "tags": [
+        "devops",
+        "introduccion",
+        "pdf-p10"
+      ],
+      "sourcePage": 10
+    },
+    {
+      "id": "intro-devops-026",
+      "domain": "herramientas",
+      "service": "Docker",
+      "category": "Mapa de herramientas",
+      "question": "¿En qué categoría sitúa el PDF a Docker?",
+      "answer": "Package Management, dentro del mapa introductorio de herramientas.",
+      "explanation": "La diapositiva coloca Docker bajo esa etiqueta. Es una clasificación del material; no desarrolla una definición técnica completa de Docker. Fuente: PDF, página 10.",
+      "keywords": [
+        "Docker",
+        "DevOps"
+      ],
+      "example": "Al estudiar el mapa, relaciona Docker con el empaquetado que se incluye en el proceso de entrega.",
+      "confusion": "No confundir la categoría del mapa con afirmar que Docker sea un gestor de paquetes como los de un sistema operativo.",
+      "mnemonic": "En este mapa: Docker y empaquetado.",
+      "difficulty": "Foundation",
+      "tags": [
+        "devops",
+        "introduccion",
+        "pdf-p10"
+      ],
+      "sourcePage": 10
+    },
+    {
+      "id": "intro-devops-027",
+      "domain": "herramientas",
+      "service": "Terraform y Ansible",
+      "category": "Mapa de herramientas",
+      "question": "¿Qué pareja coloca el mapa bajo Infrastructure as Code?",
+      "answer": "Terraform y Ansible.",
+      "explanation": "El PDF agrupa ambas herramientas bajo esa categoría introductoria, sin detallar sus diferencias. Fuente: PDF, página 10.",
+      "keywords": [
+        "Terraform y Ansible",
+        "DevOps"
+      ],
+      "example": "El equipo consulta el mapa para identificar tecnologías relacionadas con automatizar la infraestructura.",
+      "confusion": "Compartir una categoría en el mapa no significa que ambas herramientas sean idénticas o intercambiables en cualquier caso.",
+      "mnemonic": "Infraestructura: Terraform y Ansible.",
+      "difficulty": "Foundation",
+      "tags": [
+        "devops",
+        "introduccion",
+        "pdf-p10"
+      ],
+      "sourcePage": 10
+    },
+    {
+      "id": "intro-devops-028",
+      "domain": "herramientas",
+      "service": "Jenkins y GitLab",
+      "category": "Mapa de herramientas",
+      "question": "¿Qué herramientas asocia el PDF con Continuous Integration/Delivery?",
+      "answer": "Jenkins y GitLab.",
+      "explanation": "Ambas aparecen en la categoría de integración y entrega continuas del mapa. Fuente: PDF, página 10.",
+      "keywords": [
+        "Jenkins y GitLab",
+        "DevOps"
+      ],
+      "example": "El equipo busca herramientas para conectar automáticamente partes de su proceso de publicación.",
+      "confusion": "El mapa no las clasifica como proveedores de nube ni como herramientas de monitorización.",
+      "mnemonic": "CI/CD: Jenkins y GitLab.",
+      "difficulty": "Foundation",
+      "tags": [
+        "devops",
+        "introduccion",
+        "pdf-p10"
+      ],
+      "sourcePage": 10
+    },
+    {
+      "id": "intro-devops-029",
+      "domain": "herramientas",
+      "service": "Kubernetes",
+      "category": "Mapa de herramientas",
+      "question": "¿Qué herramienta se vincula a Container Orchestration en el mapa?",
+      "answer": "Kubernetes.",
+      "explanation": "El PDF presenta Kubernetes como ejemplo de orquestación de contenedores. Fuente: PDF, página 10.",
+      "keywords": [
+        "Kubernetes",
+        "DevOps"
+      ],
+      "example": "Al relacionar categorías y tecnologías, se conecta la orquestación de contenedores con Kubernetes.",
+      "confusion": "Docker aparece en otra categoría del mapa; no es la respuesta a esta asociación concreta.",
+      "mnemonic": "Kubernetes: orquestar contenedores.",
+      "difficulty": "Foundation",
+      "tags": [
+        "devops",
+        "introduccion",
+        "pdf-p10"
+      ],
+      "sourcePage": 10
+    },
+    {
+      "id": "intro-devops-030",
+      "domain": "herramientas",
+      "service": "Proveedores cloud",
+      "category": "Mapa de herramientas",
+      "question": "¿Qué tres proveedores aparecen en la categoría Cloud del PDF?",
+      "answer": "AWS, Azure y Google Cloud.",
+      "explanation": "El mapa enumera esas tres opciones de nube sin exigir un proveedor único. Fuente: PDF, página 10.",
+      "keywords": [
+        "Proveedores cloud",
+        "DevOps"
+      ],
+      "example": "Un equipo puede reconocer distintas plataformas de nube dentro del panorama DevOps introductorio.",
+      "confusion": "Los proveedores de nube no son lo mismo que herramientas de control de versiones u orquestación.",
+      "mnemonic": "Cloud: AWS, Azure y Google Cloud.",
+      "difficulty": "Foundation",
+      "tags": [
+        "devops",
+        "introduccion",
+        "pdf-p10"
+      ],
+      "sourcePage": 10
+    },
+    {
+      "id": "intro-devops-031",
+      "domain": "herramientas",
+      "service": "Prometheus",
+      "category": "Mapa de herramientas",
+      "question": "¿Qué herramienta asocia el PDF con Continuous Monitoring?",
+      "answer": "Prometheus.",
+      "explanation": "Prometheus aparece como ejemplo de herramienta de monitorización continua. Fuente: PDF, página 10.",
+      "keywords": [
+        "Prometheus",
+        "DevOps"
+      ],
+      "example": "Después de entregar una versión, el equipo busca herramientas de observación en la categoría de monitorización.",
+      "confusion": "Jenkins se ubica en CI/CD y no es la respuesta a la asociación de monitorización del mapa.",
+      "mnemonic": "Prometheus: monitorizar.",
+      "difficulty": "Foundation",
+      "tags": [
+        "devops",
+        "introduccion",
+        "pdf-p10"
+      ],
+      "sourcePage": 10
+    },
+    {
+      "id": "intro-devops-032",
+      "domain": "rol-pipeline",
+      "service": "Propósito de las herramientas",
+      "category": "Ingeniería DevOps y CI/CD",
+      "question": "¿Qué propósito común atribuye el PDF a las herramientas DevOps?",
+      "answer": "Sustituir tareas humanas repetitivas por automatización dentro del proceso de entrega.",
+      "explanation": "La introducción conecta las tecnologías con implementar principios y automatizar la publicación del software. Fuente: PDF, página 10.",
+      "keywords": [
+        "Propósito de las herramientas",
+        "DevOps"
+      ],
+      "example": "Una tarea manual recurrente de entrega se convierte en una etapa automatizada del pipeline.",
+      "confusion": "Automatizar tareas no significa que desaparezcan la colaboración, la responsabilidad o el conocimiento del equipo.",
+      "mnemonic": "Herramientas al servicio de automatizar.",
+      "difficulty": "Applied",
+      "tags": [
+        "devops",
+        "introduccion",
+        "pdf-p10"
+      ],
+      "sourcePage": 10
+    }
+  ],
+  "challenges": [
+    {
+      "id": "intro-devops-001",
+      "domain": "roles",
+      "prompt": "¿Qué responsabilidades atribuye el documento al equipo de desarrollo?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Mantener únicamente los servidores de producción.",
+          "explanation": "El documento asigna la ejecución en producción a operaciones."
+        },
+        {
+          "id": "b",
+          "text": "Realizar exclusivamente pruebas manuales.",
+          "explanation": "Las pruebas no sustituyen a la programación de funcionalidades y correcciones."
+        },
+        {
+          "id": "c",
+          "text": "Aprobar versiones sin escribir software.",
+          "explanation": "Desarrollo participa creando el software; no se limita a aprobar versiones."
+        },
+        {
+          "id": "d",
+          "text": "Programar funcionalidades nuevas y corregir errores.",
+          "explanation": "El desarrollo crea el software utilizando lenguajes como Java, Python o JavaScript. Fuente: PDF, página 2."
+        }
+      ],
+      "correctId": "d",
+      "sourcePage": 2
+    },
+    {
+      "id": "intro-devops-002",
+      "domain": "roles",
+      "prompt": "¿Qué se comprueba durante las pruebas de software?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Solo el comportamiento de versiones antiguas.",
+          "explanation": "También deben probarse las nuevas funcionalidades."
+        },
+        {
+          "id": "b",
+          "text": "Únicamente que haya servidores disponibles.",
+          "explanation": "La disponibilidad de servidores no sustituye a comprobar funcionalidades del software."
+        },
+        {
+          "id": "c",
+          "text": "Las funcionalidades nuevas y las ya existentes.",
+          "explanation": "Las pruebas abarcan tanto lo añadido como el comportamiento anterior del software. Fuente: PDF, página 2."
+        },
+        {
+          "id": "d",
+          "text": "Solo las funcionalidades nuevas.",
+          "explanation": "El documento incluye expresamente las funcionalidades anteriores."
+        }
+      ],
+      "correctId": "c",
+      "sourcePage": 2
+    },
+    {
+      "id": "intro-devops-003",
+      "domain": "roles",
+      "prompt": "¿Quiénes realizan pruebas según el PDF?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Solo una herramienta sin participación del equipo.",
+          "explanation": "Se mencionan roles humanos y pruebas tanto manuales como automatizadas."
+        },
+        {
+          "id": "b",
+          "text": "Los desarrolladores y los testers dedicados.",
+          "explanation": "El documento menciona a ambos participantes, sin limitar las pruebas a un único rol. Fuente: PDF, página 2."
+        },
+        {
+          "id": "c",
+          "text": "Solo el equipo de operaciones.",
+          "explanation": "El PDF identifica a desarrolladores y testers como participantes en las pruebas."
+        },
+        {
+          "id": "d",
+          "text": "Solo clientes después del lanzamiento.",
+          "explanation": "El documento sitúa las pruebas dentro del proceso de desarrollo y entrega."
+        }
+      ],
+      "correctId": "b",
+      "sourcePage": 2
+    },
+    {
+      "id": "intro-devops-004",
+      "domain": "roles",
+      "prompt": "¿Qué dos modalidades de pruebas menciona el documento?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Pruebas manuales y automatizadas.",
+          "explanation": "La introducción contempla ambas modalidades en el trabajo de pruebas. Fuente: PDF, página 2."
+        },
+        {
+          "id": "b",
+          "text": "Solo pruebas manuales.",
+          "explanation": "El PDF también menciona las pruebas automatizadas."
+        },
+        {
+          "id": "c",
+          "text": "Solo pruebas automatizadas.",
+          "explanation": "El PDF también menciona las pruebas manuales."
+        },
+        {
+          "id": "d",
+          "text": "Publicación y monitorización como únicas modalidades.",
+          "explanation": "Son actividades del proceso, pero no son las dos modalidades de pruebas indicadas."
+        }
+      ],
+      "correctId": "a",
+      "sourcePage": 2
+    },
+    {
+      "id": "intro-devops-005",
+      "domain": "roles",
+      "prompt": "¿Qué actividades asigna el PDF al equipo de operaciones?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Solo diseñar nuevas funcionalidades.",
+          "explanation": "El documento vincula las funcionalidades nuevas con desarrollo."
+        },
+        {
+          "id": "b",
+          "text": "Solo probar interfaces manualmente.",
+          "explanation": "Las responsabilidades enumeradas para operaciones son más amplias y abarcan producción."
+        },
+        {
+          "id": "c",
+          "text": "Únicamente almacenar el código fuente.",
+          "explanation": "Gestionar código no cubre las tareas de construir, desplegar, actualizar y ejecutar."
+        },
+        {
+          "id": "d",
+          "text": "Construir, desplegar, actualizar y ejecutar el software en producción.",
+          "explanation": "Estas tareas conectan la aplicación con los servidores y con su funcionamiento en producción. Fuente: PDF, página 2."
+        }
+      ],
+      "correctId": "d",
+      "sourcePage": 2
+    },
+    {
+      "id": "intro-devops-006",
+      "domain": "silos",
+      "prompt": "¿Qué contraste tradicional describe el documento entre desarrollo y operaciones?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Desarrollo solo monitoriza y operaciones solo programa.",
+          "explanation": "Invierte y reduce indebidamente los objetivos descritos."
+        },
+        {
+          "id": "b",
+          "text": "Operaciones quiere cambiar todo rápido y desarrollo evitar cambios.",
+          "explanation": "Es el contraste opuesto al que presenta el PDF."
+        },
+        {
+          "id": "c",
+          "text": "Desarrollo busca nuevas funcionalidades rápidas; operaciones busca estabilidad.",
+          "explanation": "El contraste ayuda a entender por qué el traspaso de versiones puede generar tensión. Fuente: PDF, página 3."
+        },
+        {
+          "id": "d",
+          "text": "Ambos equipos se centran únicamente en programar.",
+          "explanation": "Operaciones se describe como centrado en mantener la estabilidad."
+        }
+      ],
+      "correctId": "c",
+      "sourcePage": 3
+    },
+    {
+      "id": "intro-devops-007",
+      "domain": "silos",
+      "prompt": "¿Qué conjunto de conocimientos se asocia a desarrollo en la comparación tradicional?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Únicamente despliegues en servidores.",
+          "explanation": "No corresponde al conjunto de habilidades de desarrollo mostrado."
+        },
+        {
+          "id": "b",
+          "text": "Lenguajes de programación, frameworks de pruebas, bases de datos y control de versiones.",
+          "explanation": "El PDF usa este conjunto para mostrar diferencias de conocimientos y herramientas entre equipos. Fuente: PDF, página 4."
+        },
+        {
+          "id": "c",
+          "text": "Linux, línea de comandos, scripting y monitorización.",
+          "explanation": "Ese es el conjunto que el PDF asocia a operaciones."
+        },
+        {
+          "id": "d",
+          "text": "Solo planificación de reuniones.",
+          "explanation": "La comparación enumera conocimientos técnicos concretos de desarrollo."
+        }
+      ],
+      "correctId": "b",
+      "sourcePage": 4
+    },
+    {
+      "id": "intro-devops-008",
+      "domain": "silos",
+      "prompt": "¿Qué conjunto de conocimientos se asocia a operaciones en la comparación tradicional?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sistemas operativos —principalmente Linux—, línea de comandos, scripting y monitorización.",
+          "explanation": "Estas habilidades se relacionan con preparar y operar los entornos donde se ejecuta el software. Fuente: PDF, página 4."
+        },
+        {
+          "id": "b",
+          "text": "Solo lenguajes, frameworks de pruebas y bases de datos.",
+          "explanation": "Ese conjunto se presenta en el lado de desarrollo."
+        },
+        {
+          "id": "c",
+          "text": "Únicamente diseño visual de interfaces.",
+          "explanation": "No corresponde a los conocimientos de operaciones enumerados."
+        },
+        {
+          "id": "d",
+          "text": "Solo gestión del código fuente.",
+          "explanation": "El PDF destaca sistemas operativos, comandos, scripting y monitorización."
+        }
+      ],
+      "correctId": "a",
+      "sourcePage": 4
+    },
+    {
+      "id": "intro-devops-009",
+      "domain": "silos",
+      "prompt": "¿Por qué es importante la comunicación entre desarrollo y operaciones al desplegar?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Porque el código elimina todas las necesidades del entorno.",
+          "explanation": "El PDF afirma que el entorno debe prepararse y que hacen falta configuraciones."
+        },
+        {
+          "id": "b",
+          "text": "Porque operaciones no necesita información del cambio.",
+          "explanation": "Esa separación favorece la falta de comunicación que el documento critica."
+        },
+        {
+          "id": "c",
+          "text": "Porque solo importa avisar después de un fallo.",
+          "explanation": "La coordinación es necesaria para preparar el despliegue, no únicamente para reaccionar."
+        },
+        {
+          "id": "d",
+          "text": "Porque el despliegue requiere configuraciones y un entorno preparado.",
+          "explanation": "El software debe llegar a un entorno adecuado; la coordinación permite comunicar esas necesidades. Fuente: PDF, página 5."
+        }
+      ],
+      "correctId": "d",
+      "sourcePage": 5
+    },
+    {
+      "id": "intro-devops-010",
+      "domain": "silos",
+      "prompt": "¿Qué problema describe el PDF como falta de comunicación y colaboración entre departamentos?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Una responsabilidad compartida sobre el proceso.",
+          "explanation": "Compartir responsabilidades ayuda a coordinarse; no describe el aislamiento."
+        },
+        {
+          "id": "b",
+          "text": "La monitorización continua.",
+          "explanation": "Monitorizar es una práctica DevOps, no el problema de comunicación descrito."
+        },
+        {
+          "id": "c",
+          "text": "El trabajo en silos entre desarrollo y operaciones.",
+          "explanation": "Los silos dificultan coordinar las necesidades de los cambios y del entorno. Fuente: PDF, página 5."
+        },
+        {
+          "id": "d",
+          "text": "Un pipeline automatizado de entrega.",
+          "explanation": "La automatización se presenta como parte de la solución, no como falta de colaboración."
+        }
+      ],
+      "correctId": "c",
+      "sourcePage": 5
+    },
+    {
+      "id": "intro-devops-011",
+      "domain": "silos",
+      "prompt": "¿Qué combinación de tareas manuales puede frenar la publicación de versiones?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Solo programar en Java o Python.",
+          "explanation": "Los lenguajes se mencionan en desarrollo, no como el conjunto de obstáculos manuales descrito."
+        },
+        {
+          "id": "b",
+          "text": "Comprobaciones de estabilidad o seguridad, despliegues y configuración del entorno.",
+          "explanation": "El documento señala el trabajo manual y las listas de comprobación como obstáculos para la rapidez de entrega. Fuente: PDF, página 5."
+        },
+        {
+          "id": "c",
+          "text": "Solo escribir documentación de usuario.",
+          "explanation": "No es la combinación de tareas manuales enumerada en el PDF."
+        },
+        {
+          "id": "d",
+          "text": "Únicamente observar la aplicación en producción.",
+          "explanation": "No recoge los despliegues, configuraciones y comprobaciones manuales citados."
+        }
+      ],
+      "correctId": "b",
+      "sourcePage": 5
+    },
+    {
+      "id": "intro-devops-012",
+      "domain": "cultura",
+      "prompt": "¿Qué definición más completa de DevOps propone el documento?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Hacer que el proceso de entrega continua sea rápido y tenga el mínimo de errores.",
+          "explanation": "La idea va más allá de juntar nombres de equipos: busca mejorar el proceso de entrega y eliminar obstáculos. Fuente: PDF, página 6."
+        },
+        {
+          "id": "b",
+          "text": "Adquirir una herramienta sin modificar cómo se trabaja.",
+          "explanation": "El PDF empieza por una forma de trabajar y por mejorar el proceso."
+        },
+        {
+          "id": "c",
+          "text": "Eliminar operaciones para publicar sin controles.",
+          "explanation": "No se plantea eliminar operaciones ni abandonar la estabilidad."
+        },
+        {
+          "id": "d",
+          "text": "Garantizar que nunca exista ningún error.",
+          "explanation": "El documento habla de minimizar errores, no de una garantía absoluta de ausencia de fallos."
+        }
+      ],
+      "correctId": "a",
+      "sourcePage": 6
+    },
+    {
+      "id": "intro-devops-013",
+      "domain": "cultura",
+      "prompt": "¿Cómo describe el PDF el origen de DevOps?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Una certificación obligatoria para desarrolladores.",
+          "explanation": "El PDF no presenta DevOps como una certificación."
+        },
+        {
+          "id": "b",
+          "text": "Un lenguaje de programación.",
+          "explanation": "El lenguaje común alude a la comunicación entre equipos."
+        },
+        {
+          "id": "c",
+          "text": "Un servicio exclusivo de un proveedor cloud.",
+          "explanation": "La idea se refiere a colaboración y proceso, no a un proveedor exclusivo."
+        },
+        {
+          "id": "d",
+          "text": "Una forma de trabajar entre desarrollo y operaciones con un lenguaje común.",
+          "explanation": "La colaboración y la comunicación compartida aparecen antes de su evolución hacia un rol específico. Fuente: PDF, página 6."
+        }
+      ],
+      "correctId": "d",
+      "sourcePage": 6
+    },
+    {
+      "id": "intro-devops-014",
+      "domain": "cultura",
+      "prompt": "¿Qué intenta eliminar DevOps del proceso de publicación?",
+      "options": [
+        {
+          "id": "a",
+          "text": "La observación posterior al despliegue.",
+          "explanation": "El ciclo mostrado también incluye observación."
+        },
+        {
+          "id": "b",
+          "text": "La colaboración entre equipos.",
+          "explanation": "La colaboración es parte del enfoque DevOps, no algo que deba eliminarse."
+        },
+        {
+          "id": "c",
+          "text": "Obstáculos y procesos manuales ineficientes que ralentizan los ciclos de entrega.",
+          "explanation": "El objetivo es construir procesos de publicación fluidos y automatizados. Fuente: PDF, página 6."
+        },
+        {
+          "id": "d",
+          "text": "Todas las pruebas del software.",
+          "explanation": "El ciclo mostrado sigue incluyendo pruebas."
+        }
+      ],
+      "correctId": "c",
+      "sourcePage": 6
+    },
+    {
+      "id": "intro-devops-015",
+      "domain": "cultura",
+      "prompt": "¿Qué secuencia representa el ciclo DevOps mostrado en el PDF?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Implementar → construir → olvidar la aplicación.",
+          "explanation": "Omite pruebas, despliegue y observación."
+        },
+        {
+          "id": "b",
+          "text": "Idea → implementar → probar → construir → desplegar → observar.",
+          "explanation": "La representación conecta la implementación con las pruebas, el despliegue y la observación posterior. Fuente: PDF, página 6."
+        },
+        {
+          "id": "c",
+          "text": "Idea → desplegar → observar, sin implementar ni probar.",
+          "explanation": "Omite actividades expresamente mostradas en el ciclo."
+        },
+        {
+          "id": "d",
+          "text": "Observar → borrar el código → terminar.",
+          "explanation": "No representa las etapas del ciclo presentado."
+        }
+      ],
+      "correctId": "b",
+      "sourcePage": 6
+    },
+    {
+      "id": "intro-devops-016",
+      "domain": "cultura",
+      "prompt": "¿Cómo evolucionaron las implementaciones de DevOps según el documento?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Cada empresa lo aplicó de distintas formas y después surgieron patrones comunes.",
+          "explanation": "El PDF describe una evolución gradual hacia prácticas reconocibles compartidas por distintas implementaciones. Fuente: PDF, página 7."
+        },
+        {
+          "id": "b",
+          "text": "Todas las empresas usaron una estructura idéntica desde el principio.",
+          "explanation": "El documento señala que las implementaciones fueron diferentes."
+        },
+        {
+          "id": "c",
+          "text": "Nunca aparecieron prácticas compartidas.",
+          "explanation": "El PDF afirma que surgieron patrones comunes."
+        },
+        {
+          "id": "d",
+          "text": "Una sola herramienta sustituyó todas las prácticas.",
+          "explanation": "Se muestran varias prácticas y categorías de herramientas."
+        }
+      ],
+      "correctId": "a",
+      "sourcePage": 7
+    },
+    {
+      "id": "intro-devops-017",
+      "domain": "practicas",
+      "prompt": "¿Qué pareja de prácticas figura entre los patrones DevOps del PDF?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Aislar equipos y evitar compartir código.",
+          "explanation": "Contradice la colaboración y la gestión del código fuente mostradas."
+        },
+        {
+          "id": "b",
+          "text": "Desplegar una sola vez y no observar resultados.",
+          "explanation": "El mapa incluye monitorización continua."
+        },
+        {
+          "id": "c",
+          "text": "Configurar siempre a mano y eliminar la planificación.",
+          "explanation": "No corresponde a las prácticas enumeradas."
+        },
+        {
+          "id": "d",
+          "text": "Planificación y colaboración, y gestión del código fuente.",
+          "explanation": "El mapa de prácticas comienza con coordinar el trabajo y gestionar su código, además de otras actividades posteriores. Fuente: PDF, página 7."
+        }
+      ],
+      "correctId": "d",
+      "sourcePage": 7
+    },
+    {
+      "id": "intro-devops-018",
+      "domain": "practicas",
+      "prompt": "¿Qué idea sobre la infraestructura aparece entre los patrones DevOps?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Toda infraestructura debe configurarse manualmente.",
+          "explanation": "No corresponde a la práctica de tratarla como código."
+        },
+        {
+          "id": "b",
+          "text": "Solo el código de la interfaz puede automatizarse.",
+          "explanation": "El PDF contempla automatización y prácticas también sobre la infraestructura."
+        },
+        {
+          "id": "c",
+          "text": "Tratar la infraestructura como código.",
+          "explanation": "El PDF incluye Infrastructure as Code entre las prácticas que dan forma concreta a DevOps. Fuente: PDF, página 7."
+        },
+        {
+          "id": "d",
+          "text": "La infraestructura queda fuera de DevOps.",
+          "explanation": "El documento la incluye explícitamente."
+        }
+      ],
+      "correctId": "c",
+      "sourcePage": 7
+    },
+    {
+      "id": "intro-devops-019",
+      "domain": "practicas",
+      "prompt": "¿Qué práctica mantiene la observación del sistema dentro del mapa DevOps?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Solo escribir nuevas funcionalidades.",
+          "explanation": "Eso no cubre observar el funcionamiento del sistema."
+        },
+        {
+          "id": "b",
+          "text": "La monitorización continua.",
+          "explanation": "La monitorización forma parte de los patrones comunes y complementa la entrega del software. Fuente: PDF, página 7."
+        },
+        {
+          "id": "c",
+          "text": "La ausencia de observación tras publicar.",
+          "explanation": "Es lo contrario de la monitorización continua."
+        },
+        {
+          "id": "d",
+          "text": "La gestión de paquetes como sustituto de toda observación.",
+          "explanation": "La gestión de paquetes es otra categoría, no reemplaza la monitorización."
+        }
+      ],
+      "correctId": "b",
+      "sourcePage": 7
+    },
+    {
+      "id": "intro-devops-020",
+      "domain": "rol-pipeline",
+      "prompt": "¿Quién puede asumir las responsabilidades DevOps según el PDF?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Desarrolladores, operaciones o un rol dedicado de DevOps.",
+          "explanation": "El documento muestra las tres posibilidades organizativas. Fuente: PDF, página 8."
+        },
+        {
+          "id": "b",
+          "text": "Únicamente un equipo separado, en todos los casos.",
+          "explanation": "El documento también contempla desarrolladores y operaciones haciendo DevOps."
+        },
+        {
+          "id": "c",
+          "text": "Solo un proveedor externo de nube.",
+          "explanation": "Las posibilidades mostradas son roles dentro del trabajo de desarrollo y operaciones."
+        },
+        {
+          "id": "d",
+          "text": "Nadie: las herramientas eliminan toda responsabilidad humana.",
+          "explanation": "El PDF describe quién puede asumir esas responsabilidades."
+        }
+      ],
+      "correctId": "a",
+      "sourcePage": 8
+    },
+    {
+      "id": "intro-devops-021",
+      "domain": "rol-pipeline",
+      "prompt": "¿Qué responsabilidad principal asigna el PDF al DevOps Engineer?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Mantener el traspaso manual como objetivo final.",
+          "explanation": "El rol se describe como responsable de un proceso automatizado."
+        },
+        {
+          "id": "b",
+          "text": "Aprender herramientas sin relacionarlas con la entrega.",
+          "explanation": "Las tecnologías están al servicio de los principios y del proceso."
+        },
+        {
+          "id": "c",
+          "text": "Programar solo funcionalidades de la interfaz.",
+          "explanation": "La responsabilidad descrita cubre el proceso de publicación, no solo una parte del producto."
+        },
+        {
+          "id": "d",
+          "text": "Crear un proceso de publicación fluido y completamente automatizado.",
+          "explanation": "Las tecnologías DevOps sirven para implementar principios y automatizar el proceso de entrega. Fuente: PDF, página 8."
+        }
+      ],
+      "correctId": "d",
+      "sourcePage": 8
+    },
+    {
+      "id": "intro-devops-022",
+      "domain": "rol-pipeline",
+      "prompt": "¿Qué combinación de conocimientos necesita el rol DevOps según el documento?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Solo operaciones, sin conocer desarrollo.",
+          "explanation": "La diapositiva incluye también conocimientos de desarrollo."
+        },
+        {
+          "id": "b",
+          "text": "Únicamente gestión de reuniones, sin habilidades técnicas.",
+          "explanation": "El documento subraya conocimientos técnicos de desarrollo, operaciones y DevOps."
+        },
+        {
+          "id": "c",
+          "text": "Conocimientos de desarrollo y operaciones, además de habilidades específicas de DevOps.",
+          "explanation": "El PDF representa la unión de conocimientos de ambos equipos y añade competencias propias del área. Fuente: PDF, página 9."
+        },
+        {
+          "id": "d",
+          "text": "Solo programación, sin conocimientos de operaciones.",
+          "explanation": "El PDF exige cierta familiaridad con ambos lados."
+        }
+      ],
+      "correctId": "c",
+      "sourcePage": 9
+    },
+    {
+      "id": "intro-devops-023",
+      "domain": "rol-pipeline",
+      "prompt": "¿Qué identifica el PDF como el núcleo de DevOps para automatizar la publicación?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Únicamente el repositorio de código.",
+          "explanation": "El código inicia el flujo, pero el pipeline incluye más etapas."
+        },
+        {
+          "id": "b",
+          "text": "El pipeline CI/CD.",
+          "explanation": "El documento sitúa el pipeline CI/CD en el centro del proceso automatizado de entrega. Fuente: PDF, página 10."
+        },
+        {
+          "id": "c",
+          "text": "Una lista de despliegues manuales sin conexión.",
+          "explanation": "El núcleo descrito es un pipeline automatizado."
+        },
+        {
+          "id": "d",
+          "text": "Una herramienta de monitorización utilizada de forma aislada.",
+          "explanation": "La monitorización es una categoría importante, pero no es el pipeline completo."
+        }
+      ],
+      "correctId": "b",
+      "sourcePage": 10
+    },
+    {
+      "id": "intro-devops-024",
+      "domain": "rol-pipeline",
+      "prompt": "¿En qué orden aparecen las etapas del pipeline de la diapositiva 10?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Commit del código → TEST → BUILD → PUSH → DEPLOY.",
+          "explanation": "Ese es el orden del esquema concreto presentado. El PDF no desarrolla los detalles internos de cada etapa. Fuente: PDF, página 10."
+        },
+        {
+          "id": "b",
+          "text": "Commit → DEPLOY → TEST → BUILD → PUSH.",
+          "explanation": "Sitúa el despliegue antes de las pruebas y construcción, distinto del esquema mostrado."
+        },
+        {
+          "id": "c",
+          "text": "BUILD → DEPLOY → Commit → TEST.",
+          "explanation": "Cambia el punto de inicio y el orden del esquema."
+        },
+        {
+          "id": "d",
+          "text": "Commit → TEST → terminar, sin más etapas.",
+          "explanation": "Omite BUILD, PUSH y DEPLOY, presentes en la diapositiva."
+        }
+      ],
+      "correctId": "a",
+      "sourcePage": 10
+    },
+    {
+      "id": "intro-devops-025",
+      "domain": "herramientas",
+      "prompt": "¿Qué herramienta asocia el PDF con Source Code Management?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Prometheus.",
+          "explanation": "Se asocia a monitorización continua."
+        },
+        {
+          "id": "b",
+          "text": "Kubernetes.",
+          "explanation": "Se asocia a orquestación de contenedores."
+        },
+        {
+          "id": "c",
+          "text": "AWS.",
+          "explanation": "Se enumera en la categoría de nube."
+        },
+        {
+          "id": "d",
+          "text": "Git.",
+          "explanation": "Git aparece bajo la categoría de gestión del código fuente. Fuente: PDF, página 10."
+        }
+      ],
+      "correctId": "d",
+      "sourcePage": 10
+    },
+    {
+      "id": "intro-devops-026",
+      "domain": "herramientas",
+      "prompt": "¿En qué categoría sitúa el PDF a Docker?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Gestión del código fuente.",
+          "explanation": "El PDF sitúa ahí a Git."
+        },
+        {
+          "id": "b",
+          "text": "Orquestación de contenedores.",
+          "explanation": "En esa categoría aparece Kubernetes."
+        },
+        {
+          "id": "c",
+          "text": "Package Management, dentro del mapa introductorio de herramientas.",
+          "explanation": "La diapositiva coloca Docker bajo esa etiqueta. Es una clasificación del material; no desarrolla una definición técnica completa de Docker. Fuente: PDF, página 10."
+        },
+        {
+          "id": "d",
+          "text": "Monitorización continua.",
+          "explanation": "El PDF sitúa ahí a Prometheus."
+        }
+      ],
+      "correctId": "c",
+      "sourcePage": 10
+    },
+    {
+      "id": "intro-devops-027",
+      "domain": "herramientas",
+      "prompt": "¿Qué pareja coloca el mapa bajo Infrastructure as Code?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Git y Prometheus.",
+          "explanation": "Se asocian a gestión del código y monitorización, respectivamente."
+        },
+        {
+          "id": "b",
+          "text": "Terraform y Ansible.",
+          "explanation": "El PDF agrupa ambas herramientas bajo esa categoría introductoria, sin detallar sus diferencias. Fuente: PDF, página 10."
+        },
+        {
+          "id": "c",
+          "text": "Jenkins y GitLab.",
+          "explanation": "En el mapa se asocian a integración y entrega continuas."
+        },
+        {
+          "id": "d",
+          "text": "AWS y Azure.",
+          "explanation": "En el mapa aparecen como proveedores de nube."
+        }
+      ],
+      "correctId": "b",
+      "sourcePage": 10
+    },
+    {
+      "id": "intro-devops-028",
+      "domain": "herramientas",
+      "prompt": "¿Qué herramientas asocia el PDF con Continuous Integration/Delivery?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Jenkins y GitLab.",
+          "explanation": "Ambas aparecen en la categoría de integración y entrega continuas del mapa. Fuente: PDF, página 10."
+        },
+        {
+          "id": "b",
+          "text": "Terraform y Ansible.",
+          "explanation": "Se agrupan bajo Infrastructure as Code."
+        },
+        {
+          "id": "c",
+          "text": "AWS y Google Cloud.",
+          "explanation": "Se enumeran como opciones de nube."
+        },
+        {
+          "id": "d",
+          "text": "Kubernetes y Prometheus.",
+          "explanation": "Corresponden a orquestación y monitorización, respectivamente."
+        }
+      ],
+      "correctId": "a",
+      "sourcePage": 10
+    },
+    {
+      "id": "intro-devops-029",
+      "domain": "herramientas",
+      "prompt": "¿Qué herramienta se vincula a Container Orchestration en el mapa?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Git.",
+          "explanation": "Se vincula a gestión del código fuente."
+        },
+        {
+          "id": "b",
+          "text": "Jenkins.",
+          "explanation": "Se vincula a integración y entrega continuas."
+        },
+        {
+          "id": "c",
+          "text": "Prometheus.",
+          "explanation": "Se vincula a monitorización continua."
+        },
+        {
+          "id": "d",
+          "text": "Kubernetes.",
+          "explanation": "El PDF presenta Kubernetes como ejemplo de orquestación de contenedores. Fuente: PDF, página 10."
+        }
+      ],
+      "correctId": "d",
+      "sourcePage": 10
+    },
+    {
+      "id": "intro-devops-030",
+      "domain": "herramientas",
+      "prompt": "¿Qué tres proveedores aparecen en la categoría Cloud del PDF?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Docker, Ansible y Kubernetes.",
+          "explanation": "Se asocian a empaquetado, infraestructura y orquestación."
+        },
+        {
+          "id": "b",
+          "text": "Java, Python y JavaScript.",
+          "explanation": "Se mencionan como lenguajes de programación, no como proveedores cloud."
+        },
+        {
+          "id": "c",
+          "text": "AWS, Azure y Google Cloud.",
+          "explanation": "El mapa enumera esas tres opciones de nube sin exigir un proveedor único. Fuente: PDF, página 10."
+        },
+        {
+          "id": "d",
+          "text": "Git, Jenkins y Prometheus.",
+          "explanation": "Son herramientas asociadas a otras categorías, no los tres proveedores cloud mostrados."
+        }
+      ],
+      "correctId": "c",
+      "sourcePage": 10
+    },
+    {
+      "id": "intro-devops-031",
+      "domain": "herramientas",
+      "prompt": "¿Qué herramienta asocia el PDF con Continuous Monitoring?",
+      "options": [
+        {
+          "id": "a",
+          "text": "GitLab.",
+          "explanation": "Se enumera en integración y entrega continuas."
+        },
+        {
+          "id": "b",
+          "text": "Prometheus.",
+          "explanation": "Prometheus aparece como ejemplo de herramienta de monitorización continua. Fuente: PDF, página 10."
+        },
+        {
+          "id": "c",
+          "text": "Git.",
+          "explanation": "Se asocia a gestión del código fuente."
+        },
+        {
+          "id": "d",
+          "text": "Terraform.",
+          "explanation": "Se agrupa bajo infraestructura como código."
+        }
+      ],
+      "correctId": "b",
+      "sourcePage": 10
+    },
+    {
+      "id": "intro-devops-032",
+      "domain": "rol-pipeline",
+      "prompt": "¿Qué propósito común atribuye el PDF a las herramientas DevOps?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sustituir tareas humanas repetitivas por automatización dentro del proceso de entrega.",
+          "explanation": "La introducción conecta las tecnologías con implementar principios y automatizar la publicación del software. Fuente: PDF, página 10."
+        },
+        {
+          "id": "b",
+          "text": "Mantener siempre manuales todas las tareas de entrega.",
+          "explanation": "Es lo contrario del propósito expuesto."
+        },
+        {
+          "id": "c",
+          "text": "Evitar que desarrollo y operaciones se comuniquen.",
+          "explanation": "La cultura DevOps promueve una forma común de trabajar."
+        },
+        {
+          "id": "d",
+          "text": "Elegir una sola tecnología para sustituir todo el proceso.",
+          "explanation": "El documento muestra distintas categorías conectadas en un proceso."
+        }
+      ],
+      "correctId": "a",
+      "sourcePage": 10
+    }
+  ],
+  "source": {
+    "file": "01 - Intro to DevOps Handout.pdf",
+    "pages": 11,
+    "note": "Preguntas y ejemplos didácticos redactados en español a partir del documento. Los ejemplos son ilustrativos; las clasificaciones de herramientas corresponden al mapa introductorio del PDF.",
+    "author": "Nana Janashia"
+  }
+}
