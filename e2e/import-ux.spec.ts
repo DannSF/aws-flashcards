@@ -22,13 +22,13 @@ test('example preview can be cancelled, then added and opened; duplicates preser
   await page.getByRole('navigation', {name:'Gestión de cursos'}).getByRole('button', {name:'Explorar ejemplos',exact:true}).click();
   await page.getByRole('button', {name:'Vista previa de Python desde cero'}).click();
   await page.getByRole('button', {name:'Añadir y abrir curso'}).click();
-  await expect(page.getByLabel('Curso activo',{exact:true})).toHaveValue('python-fundamentos');
+  await expect(page.getByRole('button',{name:'Cambiar curso: Python desde cero',exact:true})).toBeVisible();
   await expect(page.getByRole('dialog')).toHaveCount(0);
   await expect(page.getByRole('status')).toContainText('Curso añadido');
   const saved = await page.evaluate(() => localStorage.getItem('cloudrecall.packages.v2'));
   await page.getByRole('button', {name:'Mis cursos',exact:true}).click();
-  await page.getByRole('navigation', {name:'Gestión de cursos'}).getByRole('button', {name:'Explorar ejemplos',exact:true}).click();
-  await page.getByRole('button', {name:'Vista previa de Python desde cero'}).click();
+  await page.getByRole('button', {name:'Añadir curso',exact:true}).click();
+  await page.getByLabel('Importar paquete JSON',{exact:true}).setInputFiles('public/packages/python-fundamentos.json');
   await expect(page.getByRole('alert')).toContainText('ya está en tus cursos');
   expect(await page.evaluate(() => localStorage.getItem('cloudrecall.packages.v2'))).toBe(saved);
 });

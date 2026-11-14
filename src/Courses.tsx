@@ -108,9 +108,9 @@ export default function Courses() {
     } catch (e) { setError(e instanceof Error ? e.message : 'No se pudo restaurar.'); }
   };
   const management = <section className="courses-page" aria-label="Gestión de cursos">
-      <div className="page-heading"><div><div className="eyebrow">TU BIBLIOTECA PERSONAL</div><h1>Mis cursos<span className="heading-dot">.</span></h1><p>Aprende lo que te interesa. Cada materia, a tu ritmo.</p></div><span className="courses-total"><BookOpen size={18} />{all.length} {all.length === 1 ? 'curso' : 'cursos'}</span></div>
+      <div className="page-heading"><div><div className="eyebrow">TU BIBLIOTECA PERSONAL</div><h1>Mis cursos<span className="heading-dot">.</span></h1><p>Aprende lo que te interesa. Cada materia, a tu ritmo.</p></div>{!deleting && <Button onClick={() => switchTab('import')} aria-pressed={tab === 'import'}><Plus size={16} />Añadir curso</Button>}</div>
       <div className="course-import-flow">
-        {!deleting && <nav className="course-tabs" aria-label="Gestión de cursos">{([['courses', 'Mi biblioteca'], ['import', 'Importar archivo'], ['examples', 'Explorar ejemplos']] as const).map(([id, label]) => <button key={id} aria-current={tab === id ? 'page' : undefined} onClick={() => switchTab(id)}>{label}</button>)}</nav>}
+        {!deleting && <nav className="course-tabs" aria-label="Gestión de cursos">{([['courses', 'Mi biblioteca'], ['examples', 'Explorar ejemplos']] as const).map(([id, label]) => <button key={id} aria-current={tab === id ? 'page' : undefined} onClick={() => switchTab(id)}>{label}</button>)}</nav>}
         {success && <p className="course-success" role="status">{success}{undo && <button className="text-button" onClick={restore}>Deshacer</button>}</p>}
         {deleting ? <section className="course-delete" aria-label="Confirmar eliminación">
           <button className="text-button" onClick={() => { setDeleting(null); setError(''); }}><ArrowLeft size={15} />Volver a mi biblioteca</button>
@@ -121,7 +121,7 @@ export default function Courses() {
           {selected === deleting.id && <p>Es tu curso activo. Al eliminarlo, abriremos el curso incluido de CLF-C02.</p>}
           <div className="dialog-actions"><Button variant="outline" onClick={() => setDeleting(null)}>Cancelar</Button><Button className="course-danger" onClick={erase}>Eliminar curso{eraseProgress ? ' y progreso' : ''}</Button></div>
         </section> : tab === 'courses' ? <section className="course-library" aria-label="Mi biblioteca de cursos">
-          <div className="course-library-heading"><div><h3>Todo lo que estás aprendiendo.</h3><p>{all.length} {all.length === 1 ? 'curso' : 'cursos'} · Un progreso independiente para cada materia</p></div><Button onClick={() => switchTab('import')}><Plus size={16} />Importar curso</Button></div>
+          <div className="course-library-heading"><div><h3>Todo lo que estás aprendiendo.</h3><p>{all.length} {all.length === 1 ? 'curso' : 'cursos'} · Un progreso independiente para cada materia</p></div></div>
           <label className="course-search"><Search size={16} /><input aria-label="Buscar cursos" placeholder="Buscar por nombre o materia…" value={search} onChange={e => setSearch(e.target.value)} /></label>
           <div className="course-list">{all.filter(c => `${c.title} ${c.description}`.toLowerCase().includes(search.toLowerCase())).map(c => {
             const summary = courseSummary(c.id);
@@ -136,21 +136,21 @@ export default function Courses() {
             </article>;
           })}</div>
           {!all.some(c => `${c.title} ${c.description}`.toLowerCase().includes(search.toLowerCase())) && <div className="course-empty"><Search size={24} /><h4>No encontramos ese curso</h4><p>Prueba otro nombre o importa un nuevo paquete.</p><Button variant="outline" onClick={() => setSearch('')}>Limpiar búsqueda</Button></div>}
-          {packages.length === 0 && <div className="course-empty"><h4>Tu biblioteca puede crecer</h4><p>Importa tu propio material o prueba Python, arquitectura y DevOps.</p><Button variant="outline" onClick={() => switchTab('examples')}>Explorar ejemplos</Button></div>}
+          {packages.length === 0 && <div className="course-empty"><h4>Tu biblioteca puede crecer</h4><p>Importa tu propio material o prueba Python, arquitectura y DevOps.</p></div>}
         </section> : <>
         <ol className="import-steps" aria-label="Pasos de importación"><li className={!preview ? 'current' : ''}>1 · Elegir contenido</li><li className={preview ? 'current' : ''}>2 · Revisar y añadir</li></ol>
         {!preview ? <>
           {tab === 'import' && <><div className="import-intro"><h3>Tu próxima materia empieza aquí.</h3><p>Un paquete añade flashcards y preguntas de opción múltiple. Cada curso conserva su propio progreso.</p></div>
           <div className={`import-dropzone ${dragging ? 'dragging' : ''}`} onDragOver={e => { e.preventDefault(); setDragging(true); }} onDragLeave={() => setDragging(false)} onDrop={e => { e.preventDefault(); setDragging(false); if (!catalog.error) void inspect(e.dataTransfer.files[0]); }}>
             <Upload size={26} aria-hidden="true" /><h4>Arrastra aquí tu paquete JSON</h4><p>Hasta 5 MB · Se validará antes de guardarlo</p>
-            <Button variant="outline" disabled={busy || !!catalog.error} onClick={() => input.current?.click()}>Elegir archivo</Button>
+            <Button variant="outline" disabled={busy || !!catalog.error} onClick={() => input.current?.click()}>Elegir archivo JSON</Button>
             <input ref={input} className="sr-only" aria-label="Importar paquete JSON" type="file" accept=".json,application/json" disabled={!!catalog.error} onChange={e => { void inspect(e.target.files?.[0]); e.target.value = ''; }} />
           </div>
-          <button className="text-button" onClick={() => switchTab('examples')}>¿No tienes un archivo? Explorar ejemplos<ArrowRight size={14} /></button></>}
+          </>}
           {tab === 'examples' && <><div className="import-example-heading"><h3>¿Quieres probar primero?</h3><p>Abre un ejemplo o descarga el JSON para importarlo tú.</p></div>
           <div className="import-examples">{examples.map(item => <article key={item.id}>
             <FileJson size={20} aria-hidden="true" /><div><h4>{item.title}</h4><p>{item.detail}</p></div>
-            <button className="text-button" disabled={busy || !!catalog.error} onClick={() => void example(item.id)}>Vista previa<span className="sr-only"> de {item.title}</span></button>
+            {all.some(c => c.id === item.id) ? <button className="text-button" aria-label={`Abrir curso de ${item.title}`} onClick={() => { changeCourse(all.find(c => c.id === item.id)!); close(); setSuccess(''); }}>Abrir curso<span className="sr-only"> de {item.title}</span><CheckCircle2 size={14} aria-label="Ya añadido" /></button> : <button className="text-button" disabled={busy || !!catalog.error} onClick={() => void example(item.id)}>Vista previa<span className="sr-only"> de {item.title}</span></button>}
             <a className="icon-button" href={`${import.meta.env.BASE_URL}packages/${item.id}.json`} download aria-label={`Descargar JSON de ${item.title}`}><Download size={17} /></a>
           </article>)}</div></>}
         </> : <section className="package-preview" aria-label="Vista previa del paquete">

@@ -25,21 +25,22 @@ test('manage, search, cancel deletion, preserve progress, undo and permanently d
   expect(await page.evaluate(key => localStorage.getItem(key),key)).toBe(before);
   await page.getByRole('button',{name:'Eliminar Python desde cero',exact:true}).click();
   await page.getByRole('button',{name:'Eliminar curso',exact:true}).click();
-  await expect(page.getByLabel('Curso activo',{exact:true})).toHaveValue('clf-c02');
+  await expect(page.getByRole('button',{name:'Cambiar curso: AWS Cloud Practitioner',exact:true})).toBeVisible();
   expect(await page.evaluate(key => localStorage.getItem(key),key)).toBe(before);
   await expect(page.locator('.managed-course')).toHaveCount(0);
   await page.getByRole('button',{name:'Deshacer',exact:true}).click();
   await expect(page.locator('.managed-course')).toHaveCount(1);
   await page.getByRole('button',{name:'Abrir curso',exact:true}).click();
-  await expect(page.getByLabel('Curso activo',{exact:true})).toHaveValue('python-fundamentos');
+  await expect(page.getByRole('button',{name:'Cambiar curso: Python desde cero',exact:true})).toBeVisible();
   await manager(page);
   await page.getByRole('button',{name:'Eliminar Python desde cero',exact:true}).click();
   await page.getByLabel('Eliminar también sus repasos, retos y progreso guardados').check();
   await page.getByRole('button',{name:'Eliminar curso y progreso',exact:true}).click();
   expect(await page.evaluate(key => localStorage.getItem(key),key)).toBeNull();
   await page.getByRole('button', {name:'Mi dashboard',exact:true}).click(); await page.reload();
-  await expect(page.getByLabel('Curso activo',{exact:true})).toHaveValue('clf-c02');
-  await expect(page.getByLabel('Curso activo',{exact:true}).locator('option')).toHaveCount(1);
+  await expect(page.getByRole('button',{name:'Cambiar curso: AWS Cloud Practitioner',exact:true})).toBeVisible();
+  await page.getByRole('button',{name:/^Cambiar curso:/}).click();
+  await expect(page.getByRole('region',{name:'Cambiar de curso'}).getByRole('button', {name:/^Cambiar a /})).toHaveCount(1);
 });
 test('reimporting a removed package resumes retained progress', async ({page}) => {
   await page.goto('/'); await addPython(page);

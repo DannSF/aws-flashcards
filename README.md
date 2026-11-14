@@ -20,13 +20,13 @@ npm run preview
 
 ## Segundo MVP: cursos y paquetes
 
-El selector **Curso activo** cambia toda la biblioteca, los filtros, las sesiones FSRS, las estadísticas y los retos. Recuerda el curso seleccionado al recargar. El curso original conserva sus 114 tarjetas, IDs y la clave `cloudrecall.progress.v1`: no se migra ni elimina ningún progreso existente.
+El cambiador **Curso activo** cambia toda la biblioteca, los filtros, las sesiones FSRS, las estadísticas y los retos. Recuerda el curso seleccionado al recargar. El curso original conserva sus 114 tarjetas, IDs y la clave `cloudrecall.progress.v1`: no se migra ni elimina ningún progreso existente.
 
-1. Pulsa **Mis cursos → Importar archivo**. Arrastra un paquete JSON o usa **Elegir archivo**; también puedes abrir un ejemplo sin descargarlo.
+1. Pulsa **Mis cursos → Añadir curso**. Arrastra un paquete JSON o usa **Elegir archivo JSON**; también puedes abrir un ejemplo sin descargarlo.
 2. Revisa la vista previa: validación, temas, cantidades y una tarjeta de muestra. Los detalles técnicos quedan en un desplegable.
 3. Pulsa **Añadir y abrir curso** para comenzar directamente. Cambiar de sección o salir de la página antes de confirmar no escribe datos. Un ID existente se rechaza para conservar su contenido y progreso.
 
-La sección Explorar ejemplos permite descargar cada JSON. **Python desde cero** incluye ocho tarjetas y ocho retos sobre tipos, funciones, archivos y errores; CLF-C02 avanzado, SAA-C03 y DevOps incluyen seis de cada uno. Son muestras, no temarios completos. Para probar la importación manual, descarga `public/packages/python-fundamentos.json` y selecciónalo en **Elegir archivo**.
+La sección Explorar ejemplos permite descargar cada JSON. **Python desde cero** incluye ocho tarjetas y ocho retos sobre tipos, funciones, archivos y errores; CLF-C02 avanzado, SAA-C03 y DevOps incluyen seis de cada uno. Son muestras, no temarios completos. Para probar la importación manual, descarga `public/packages/python-fundamentos.json` y selecciónalo en **Elegir archivo JSON**.
 
 La preferencia de tema se aplica en el `<head>` antes de cargar React y el CSS, con un fondo inicial coherente para evitar destellos blancos al recargar en modo oscuro.
 
@@ -134,8 +134,10 @@ The exam interfaces are reserved for these later phases. This version rejects ba
 
 ## Gestionar cursos
 
-**Mis cursos** reúne tres secciones: **Mi biblioteca**, **Importar archivo** y **Explorar ejemplos**. La biblioteca permite buscar por título o descripción, ver tarjetas estudiadas y repasos por curso, abrir un curso y exportar su paquete de contenido JSON (el progreso se exporta desde Ajustes). El selector **Curso activo** está en la barra lateral, junto a la navegación de estudio. **Mis cursos** es una página propia (`#courses`) que se conserva al recargar y funciona con Atrás/Adelante del navegador. En móvil se accede desde el menú de navegación.
+**Mis cursos** reúne dos secciones: **Mi biblioteca** y **Explorar ejemplos**, con una única acción principal **Añadir curso** para importar un JSON. La biblioteca permite buscar por título o descripción, ver tarjetas estudiadas y repasos por curso, abrir un curso y exportar su paquete de contenido JSON (el progreso se exporta desde Ajustes). La tarjeta **Curso activo** abre una lista con búsqueda, descripciones y una marca en el curso actual. Permite cambiar con Tab/Enter y cerrar con Escape o al pulsar fuera. **Mis cursos** es una página propia (`#courses`) que se conserva al recargar y funciona con Atrás/Adelante del navegador. En móvil se accede desde el menú de navegación.
 
 Los cursos importados se pueden eliminar con confirmación. Por defecto solo se quita el paquete: su progreso se conserva y se recupera al reimportar el mismo paquete. **Deshacer** restaura el último paquete eliminado mientras siga abierta la sesión. La casilla **Eliminar también sus repasos, retos y progreso guardados** permite borrar permanentemente ese progreso; no ofrece Deshacer. Al eliminar el curso activo se abre CLF-C02. El curso incluido se mantiene protegido y su progreso se gestiona desde Ajustes.
 
 La eliminación vuelve a leer el catálogo guardado para conservar cambios de otras pestañas. Si falla el borrado del progreso, restaura el catálogo y muestra el error; los cursos ajenos nunca se borran.
+
+Los ejemplos que ya están instalados ofrecen **Abrir curso** en lugar de invitar a importarlos de nuevo.
