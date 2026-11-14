@@ -1,11 +1,12 @@
 import { createEmptyCard, fsrs, State } from "ts-fsrs";
 import type { Card } from "ts-fsrs";
-import { cards } from "../data/cards";
+import { activeCourse, originalCourse, cards } from "./catalog";
 import type { RecallRating, UserProgress } from "../types";
 
 import { parseChallenges } from "./challenge";
 
-export const STORAGE_KEY = "cloudrecall.progress.v1";
+export { storageKey as STORAGE_KEY } from "./catalog";
+import { storageKey as STORAGE_KEY } from "./catalog";
 export const scheduler = fsrs({ enable_fuzz: false, request_retention: 0.9 });
 export const emptyProgress = (): UserProgress => ({
   version: 1,
@@ -15,7 +16,7 @@ export const emptyProgress = (): UserProgress => ({
   exams: [],
   dailyGoal: 20,
 });
-const ids = new Set(cards.map((c) => c.id));
+
 const record = (v: unknown): v is Record<string, unknown> =>
   !!v && typeof v === "object" && !Array.isArray(v);
 const date = (v: unknown) =>
@@ -24,10 +25,12 @@ const date = (v: unknown) =>
 const number = (v: unknown, min = 0, max = Number.MAX_SAFE_INTEGER) =>
   typeof v === "number" && Number.isFinite(v) && v >= min && v <= max;
 export function parseProgress(raw: string): UserProgress {
+  const ids = new Set(cards.map((c) => c.id));
   const v: unknown = JSON.parse(raw);
   if (
     !record(v) ||
     v.version !== 1 ||
+    (v.courseId !== undefined ? v.courseId !== activeCourse.id : activeCourse.id !== originalCourse.id) ||
     !record(v.cards) ||
     !Array.isArray(v.history) ||
     !Array.isArray(v.sessions) ||
@@ -127,7 +130,7 @@ export function loadProgress(): {
   }
 }
 export function saveProgress(progress: UserProgress) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
+  localStorage.setItem(STORAGE_KEY, JSON.stringify({ ...progress, courseId: activeCourse.id }));
 }
 export function review(
   progress: UserProgress,

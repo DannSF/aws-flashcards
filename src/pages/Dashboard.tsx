@@ -18,8 +18,8 @@ import {
 } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Stat, WeekActivity } from "../components/StudyWidgets";
-import { cards } from "../data/cards";
-import { domains } from "../data/domains";
+import { activeCourse, cards } from "../lib/catalog";
+import { domains } from "../lib/catalog";
 import { cardStatus, localDay, streak } from "../lib/progress";
 import type { DomainId, UserProgress } from "../types";
 interface Props {
@@ -183,7 +183,7 @@ export function Dashboard({ progress, now, onStudy, onNavigate }: Props) {
             <div className="section-heading">
               <div>
                 <h2>Tu ruta de aprendizaje</h2>
-                <p>Cuatro dominios. Una base sólida en AWS.</p>
+                <p>Explora los temas de tu curso.</p>
               </div>
               <button
                 className="text-button"
@@ -202,7 +202,7 @@ export function Dashboard({ progress, now, onStudy, onNavigate }: Props) {
                     c.domain === d.id &&
                     cardStatus(progress.cards[c.id], now) === "mastered",
                 ).length;
-                const Icon = [Cloud, ShieldCheck, Layers3, BarChart3][i];
+                const Icon = [Cloud, ShieldCheck, Layers3, BarChart3][i % 4];
                 return (
                   <button
                     key={d.id}
@@ -323,12 +323,12 @@ export function Dashboard({ progress, now, onStudy, onNavigate }: Props) {
               {progress.history.length} repasos en total
             </div>
           </section>
-          <div className="exam-note">
+          {activeCourse.id === "clf-c02" && <div className="exam-note">
             <span className="aws-text">
               aws<span>⌣</span>
             </span>
             <div>
-              <strong>Tu meta: CLF-C02</strong>
+              <strong>Tu meta: {activeCourse.title}</strong>
               <p>
                 Contenido de práctica original.
                 <br />
@@ -342,7 +342,7 @@ export function Dashboard({ progress, now, onStudy, onNavigate }: Props) {
                 Explorar la certificación <ExternalLink size={12} />
               </a>
             </div>
-          </div>
+          </div>}
         </aside>
       </div>
     </>

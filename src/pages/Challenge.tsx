@@ -13,9 +13,9 @@ import {
   XCircle,
 } from "lucide-react";
 import { Button } from "../components/ui/button";
-import { challengeQuestions } from "../data/challenges";
-import { cards, CONTENT_VERSION } from "../data/cards";
-import { domains } from "../data/domains";
+import { challengeQuestions } from "../lib/catalog";
+import { cards, contentVersion as CONTENT_VERSION } from "../lib/catalog";
+import { domains } from "../lib/catalog";
 import {
   advanceChallenge,
   answerChallenge,

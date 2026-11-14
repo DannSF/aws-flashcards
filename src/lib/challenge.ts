@@ -1,8 +1,8 @@
-import { challengeQuestions } from "../data/challenges";
-import { cards, CONTENT_VERSION } from "../data/cards";
-import { domains } from "../data/domains";
+import { challengeQuestions } from "./catalog";
+import { cards, contentVersion as CONTENT_VERSION } from "./catalog";
+import { domains } from "./catalog";
 import type { ChallengeAttempt, DomainId } from "../types";
-const questionMap = new Map(challengeQuestions.map((q) => [q.id, q]));
+const questionMap = { get: (id: string) => challengeQuestions.find(q => q.id === id), has: (id: string) => challengeQuestions.some(q => q.id === id) };
 export function shuffle<T>(values: readonly T[], random = Math.random): T[] {
   const result = [...values];
   for (let i = result.length - 1; i > 0; i--) {

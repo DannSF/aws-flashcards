@@ -1,5 +1,5 @@
 import type { Card } from "ts-fsrs";
-export type DomainId = "cloud" | "security" | "technology" | "billing";
+export type DomainId = string;
 export interface AWSService {
   id: string;
   name: string;

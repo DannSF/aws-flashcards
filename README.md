@@ -1,6 +1,6 @@
 # CloudRecall
 
-An interactive, local-first study companion for AWS Certified Cloud Practitioner (CLF-C02). Questions and AWS terminology are in English; explanations and study guidance are in Spanish. No account, API key, paid service, or backend is required.
+An interactive, local-first study companion for independent courses in any subject. Includes the original bilingual AWS Certified Cloud Practitioner (CLF-C02) library. No account, API key, paid service, or backend is required.
 
 ## Run
 
@@ -18,7 +18,29 @@ npm run build
 npm run preview
 ```
 
-## This first release
+## Segundo MVP: cursos y paquetes
+
+El selector **Curso activo** cambia toda la biblioteca, los filtros, las sesiones FSRS, las estadísticas y los retos. Recuerda el curso seleccionado al recargar. El curso original conserva sus 114 tarjetas, IDs y la clave `cloudrecall.progress.v1`: no se migra ni elimina ningún progreso existente.
+
+1. Descarga un archivo desde **Paquetes de ejemplo**: CLF-C02 avanzado, SAA-C03 o DevOps. Cada ejemplo contiene seis tarjetas y seis retos originales; son muestras, no temarios completos.
+2. Usa **Importar paquete JSON**. La vista previa muestra metadatos, temas, cantidades y una tarjeta de ejemplo.
+3. Confirma para añadir el curso y selecciónalo. Cancelar o recibir un error no escribe datos. Un ID de curso existente se rechaza para conservar su contenido y progreso.
+
+Los paquetes se guardan en `cloudrecall.packages.v2`. Cada curso nuevo usa `cloudrecall.course.<id>.progress.v1`; el objetivo diario, las sesiones, la programación, los repasos y los intentos de reto son independientes. Ajustes exporta/importa/restablece solo el progreso del curso activo. Las copias nuevas incluyen `courseId` y rechazan restauraciones en otro curso; las copias antiguas sin ese campo siguen funcionando en el curso original. Conserva también el JSON del paquete para poder restaurar un curso en otro navegador. Un catálogo ilegible se conserva y bloquea nuevas importaciones.
+
+### Formato de paquete v1
+
+Usa los archivos de `public/packages/` como plantillas completas. La raíz requiere `schemaVersion: 1`, `id`, `title`, `description`, `version`, `domains`, `cards` y `challenges`.
+
+- IDs de curso, tema, tarjeta y opción: letras minúsculas ASCII, números y guiones, máximo 80 caracteres. Los IDs de tarjetas pueden repetirse entre cursos.
+- `domains`: 1–20 temas con `id`, `name`, `short`, `description`, `weight` (0–100) y `color` hexadecimal de seis dígitos. Cada tema debe contener tarjetas. Para materias sin examen, usa el peso como referencia editorial.
+- `cards`: 1–10 000 tarjetas con `id`, `domain`, `service` (concepto), `category`, `question`, `answer`, `explanation`, `example`, `confusion`, `mnemonic`, `keywords`, `tags` y `difficulty` (`Foundation` o `Applied`). Los campos de texto son obligatorios; las listas pueden estar vacías.
+- `challenges`: exactamente uno por tarjeta, con el mismo `id` y `domain`, más `prompt`, cuatro `options` (`id`, `text`, `explanation`) y `correctId` que referencia una opción.
+- Máximo 5 MB por archivo y 10 000 caracteres por texto. Se rechazan JSON inválido, versiones no admitidas, duplicados, referencias rotas y respuestas sin opción válida. El contenido se muestra como texto React, sin ejecutar HTML.
+
+`src/lib/catalog.ts` define el contrato, el validador y el catálogo activo compartido por los motores existentes. Cambiar de curso remonta la aplicación de estudio para descartar selecciones y sesiones de UI del curso anterior. Los archivos originales de contenido permanecen intactos.
+
+## Funciones de estudio
 
 - Responsive dashboard with real activity, a configurable daily goal, streak, recall accuracy, upcoming reviews, and domain progress.
 - **114 original bilingual flashcards**: 24 Cloud Concepts, 30 Security & Compliance, 44 Cloud Technology & Services, and 16 Billing, Pricing & Support. Exam domain weights are displayed separately from library counts.

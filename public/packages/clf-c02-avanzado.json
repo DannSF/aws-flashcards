@@ -1,0 +1,303 @@
+{
+  "schemaVersion": 1,
+  "id": "clf-c02-avanzado",
+  "title": "CLF-C02 avanzado",
+  "description": "Decisiones de seguridad, costos y gobierno",
+  "version": "1.0.0",
+  "domains": [
+    {
+      "id": "concepts",
+      "name": "Conceptos y decisiones",
+      "short": "Conceptos",
+      "weight": 100,
+      "color": "#7754d3",
+      "description": "Decisiones de seguridad, costos y gobierno"
+    }
+  ],
+  "cards": [
+    {
+      "id": "clf-c02-avanzado-001",
+      "service": "Responsabilidad compartida",
+      "domain": "concepts",
+      "category": "CLF-C02 avanzado",
+      "question": "¿Quién configura el cifrado y los permisos de un bucket S3?",
+      "answer": "El cliente",
+      "explanation": "AWS protege la infraestructura; el cliente configura acceso y protección lógica.",
+      "keywords": [
+        "Responsabilidad compartida"
+      ],
+      "example": "En una revisión técnica: ¿Quién configura el cifrado y los permisos de un bucket S3? Respuesta: El cliente.",
+      "confusion": "No confundir con: AWS configura todas las políticas.",
+      "mnemonic": "Responsabilidad compartida: El cliente.",
+      "difficulty": "Applied",
+      "tags": [
+        "clf-c02-avanzado"
+      ]
+    },
+    {
+      "id": "clf-c02-avanzado-002",
+      "service": "SCP",
+      "domain": "concepts",
+      "category": "CLF-C02 avanzado",
+      "question": "¿Una SCP concede permisos IAM por sí sola?",
+      "answer": "No; limita el máximo de permisos",
+      "explanation": "Se necesitan políticas IAM que concedan acceso y ninguna denegación aplicable.",
+      "keywords": [
+        "SCP"
+      ],
+      "example": "En una revisión técnica: ¿Una SCP concede permisos IAM por sí sola? Respuesta: No; limita el máximo de permisos.",
+      "confusion": "No confundir con: Sí, concede acceso administrativo.",
+      "mnemonic": "SCP: No; limita el máximo de permisos.",
+      "difficulty": "Applied",
+      "tags": [
+        "clf-c02-avanzado"
+      ]
+    },
+    {
+      "id": "clf-c02-avanzado-003",
+      "service": "Savings Plans",
+      "domain": "concepts",
+      "category": "CLF-C02 avanzado",
+      "question": "¿Qué compromiso utiliza Compute Savings Plans?",
+      "answer": "Gasto por hora durante uno o tres años",
+      "explanation": "Ofrece flexibilidad entre familias y regiones a cambio de un compromiso monetario.",
+      "keywords": [
+        "Savings Plans"
+      ],
+      "example": "En una revisión técnica: ¿Qué compromiso utiliza Compute Savings Plans? Respuesta: Gasto por hora durante uno o tres años.",
+      "confusion": "No confundir con: Número fijo de buckets.",
+      "mnemonic": "Savings Plans: Gasto por hora durante uno o tres años.",
+      "difficulty": "Applied",
+      "tags": [
+        "clf-c02-avanzado"
+      ]
+    },
+    {
+      "id": "clf-c02-avanzado-004",
+      "service": "CloudTrail",
+      "domain": "concepts",
+      "category": "CLF-C02 avanzado",
+      "question": "¿Qué servicio permite investigar quién eliminó una instancia?",
+      "answer": "AWS CloudTrail",
+      "explanation": "Registra actividad de API para auditoría; CloudWatch se centra en observabilidad.",
+      "keywords": [
+        "CloudTrail"
+      ],
+      "example": "En una revisión técnica: ¿Qué servicio permite investigar quién eliminó una instancia? Respuesta: AWS CloudTrail.",
+      "confusion": "No confundir con: AWS Budgets.",
+      "mnemonic": "CloudTrail: AWS CloudTrail.",
+      "difficulty": "Applied",
+      "tags": [
+        "clf-c02-avanzado"
+      ]
+    },
+    {
+      "id": "clf-c02-avanzado-005",
+      "service": "Artifact",
+      "domain": "concepts",
+      "category": "CLF-C02 avanzado",
+      "question": "¿Dónde se descargan informes de cumplimiento de AWS?",
+      "answer": "AWS Artifact",
+      "explanation": "Ofrece documentos de auditoría; no certifica automáticamente la aplicación del cliente.",
+      "keywords": [
+        "Artifact"
+      ],
+      "example": "En una revisión técnica: ¿Dónde se descargan informes de cumplimiento de AWS? Respuesta: AWS Artifact.",
+      "confusion": "No confundir con: Amazon Inspector.",
+      "mnemonic": "Artifact: AWS Artifact.",
+      "difficulty": "Applied",
+      "tags": [
+        "clf-c02-avanzado"
+      ]
+    },
+    {
+      "id": "clf-c02-avanzado-006",
+      "service": "Cost allocation",
+      "domain": "concepts",
+      "category": "CLF-C02 avanzado",
+      "question": "¿Qué permite comparar costos por equipo?",
+      "answer": "Etiquetas de asignación de costos activadas",
+      "explanation": "Las etiquetas deben activarse para usarse en informes de costos.",
+      "keywords": [
+        "Cost allocation"
+      ],
+      "example": "En una revisión técnica: ¿Qué permite comparar costos por equipo? Respuesta: Etiquetas de asignación de costos activadas.",
+      "confusion": "No confundir con: Cambiar el nombre DNS.",
+      "mnemonic": "Cost allocation: Etiquetas de asignación de costos activadas.",
+      "difficulty": "Applied",
+      "tags": [
+        "clf-c02-avanzado"
+      ]
+    }
+  ],
+  "challenges": [
+    {
+      "id": "clf-c02-avanzado-001",
+      "domain": "concepts",
+      "prompt": "¿Quién configura el cifrado y los permisos de un bucket S3?",
+      "correctId": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "El cliente",
+          "explanation": "AWS protege la infraestructura; el cliente configura acceso y protección lógica."
+        },
+        {
+          "id": "b",
+          "text": "AWS configura todas las políticas",
+          "explanation": "No corresponde: AWS protege la infraestructura; el cliente configura acceso y protección lógica."
+        },
+        {
+          "id": "c",
+          "text": "El proveedor de Internet",
+          "explanation": "No corresponde: AWS protege la infraestructura; el cliente configura acceso y protección lógica."
+        },
+        {
+          "id": "d",
+          "text": "Los usuarios anónimos",
+          "explanation": "No corresponde: AWS protege la infraestructura; el cliente configura acceso y protección lógica."
+        }
+      ]
+    },
+    {
+      "id": "clf-c02-avanzado-002",
+      "domain": "concepts",
+      "prompt": "¿Una SCP concede permisos IAM por sí sola?",
+      "correctId": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "No; limita el máximo de permisos",
+          "explanation": "Se necesitan políticas IAM que concedan acceso y ninguna denegación aplicable."
+        },
+        {
+          "id": "b",
+          "text": "Sí, concede acceso administrativo",
+          "explanation": "No corresponde: Se necesitan políticas IAM que concedan acceso y ninguna denegación aplicable."
+        },
+        {
+          "id": "c",
+          "text": "Solo concede acceso a S3",
+          "explanation": "No corresponde: Se necesitan políticas IAM que concedan acceso y ninguna denegación aplicable."
+        },
+        {
+          "id": "d",
+          "text": "Reemplaza las políticas de recursos",
+          "explanation": "No corresponde: Se necesitan políticas IAM que concedan acceso y ninguna denegación aplicable."
+        }
+      ]
+    },
+    {
+      "id": "clf-c02-avanzado-003",
+      "domain": "concepts",
+      "prompt": "¿Qué compromiso utiliza Compute Savings Plans?",
+      "correctId": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "Gasto por hora durante uno o tres años",
+          "explanation": "Ofrece flexibilidad entre familias y regiones a cambio de un compromiso monetario."
+        },
+        {
+          "id": "b",
+          "text": "Número fijo de buckets",
+          "explanation": "No corresponde: Ofrece flexibilidad entre familias y regiones a cambio de un compromiso monetario."
+        },
+        {
+          "id": "c",
+          "text": "Compra perpetua de servidores",
+          "explanation": "No corresponde: Ofrece flexibilidad entre familias y regiones a cambio de un compromiso monetario."
+        },
+        {
+          "id": "d",
+          "text": "Tráfico mensual garantizado",
+          "explanation": "No corresponde: Ofrece flexibilidad entre familias y regiones a cambio de un compromiso monetario."
+        }
+      ]
+    },
+    {
+      "id": "clf-c02-avanzado-004",
+      "domain": "concepts",
+      "prompt": "¿Qué servicio permite investigar quién eliminó una instancia?",
+      "correctId": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "AWS CloudTrail",
+          "explanation": "Registra actividad de API para auditoría; CloudWatch se centra en observabilidad."
+        },
+        {
+          "id": "b",
+          "text": "AWS Budgets",
+          "explanation": "No corresponde: Registra actividad de API para auditoría; CloudWatch se centra en observabilidad."
+        },
+        {
+          "id": "c",
+          "text": "Amazon Route 53",
+          "explanation": "No corresponde: Registra actividad de API para auditoría; CloudWatch se centra en observabilidad."
+        },
+        {
+          "id": "d",
+          "text": "AWS Artifact",
+          "explanation": "No corresponde: Registra actividad de API para auditoría; CloudWatch se centra en observabilidad."
+        }
+      ]
+    },
+    {
+      "id": "clf-c02-avanzado-005",
+      "domain": "concepts",
+      "prompt": "¿Dónde se descargan informes de cumplimiento de AWS?",
+      "correctId": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "AWS Artifact",
+          "explanation": "Ofrece documentos de auditoría; no certifica automáticamente la aplicación del cliente."
+        },
+        {
+          "id": "b",
+          "text": "Amazon Inspector",
+          "explanation": "No corresponde: Ofrece documentos de auditoría; no certifica automáticamente la aplicación del cliente."
+        },
+        {
+          "id": "c",
+          "text": "AWS Cost Explorer",
+          "explanation": "No corresponde: Ofrece documentos de auditoría; no certifica automáticamente la aplicación del cliente."
+        },
+        {
+          "id": "d",
+          "text": "Amazon CloudFront",
+          "explanation": "No corresponde: Ofrece documentos de auditoría; no certifica automáticamente la aplicación del cliente."
+        }
+      ]
+    },
+    {
+      "id": "clf-c02-avanzado-006",
+      "domain": "concepts",
+      "prompt": "¿Qué permite comparar costos por equipo?",
+      "correctId": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "Etiquetas de asignación de costos activadas",
+          "explanation": "Las etiquetas deben activarse para usarse en informes de costos."
+        },
+        {
+          "id": "b",
+          "text": "Cambiar el nombre DNS",
+          "explanation": "No corresponde: Las etiquetas deben activarse para usarse en informes de costos."
+        },
+        {
+          "id": "c",
+          "text": "Crear más regiones",
+          "explanation": "No corresponde: Las etiquetas deben activarse para usarse en informes de costos."
+        },
+        {
+          "id": "d",
+          "text": "Desactivar la facturación",
+          "explanation": "No corresponde: Las etiquetas deben activarse para usarse en informes de costos."
+        }
+      ]
+    }
+  ]
+}

@@ -3794,3 +3794,10 @@ h1 {
   outline-offset: 4px;
   border-radius: 5px;
 }
+
+.course-bar {position:relative; z-index:40; display:flex; flex-wrap:wrap; gap:16px; align-items:center; padding:12px 24px; background:var(--surface, #fff); color:var(--text, #242133); border-bottom:1px solid #ddd;}
+.course-bar select {max-width:280px; margin-left:8px; padding:8px; border:1px solid #aaa; border-radius:8px;}
+.course-import input {display:block; max-width:240px;}
+.course-bar a {display:block; padding:6px;}
+.package-preview {position:relative; z-index:41; margin:20px; padding:24px;}
+.package-preview button {padding:10px 16px; border:1px solid #aaa; border-radius:8px;}
