@@ -7,7 +7,7 @@ const raw = readFileSync('public/packages/devops.json', 'utf8');
 afterEach(() => activateCourse(originalCourse));
 describe('course packages', () => {
   it('validates all supplied packages', () => {
-    for (const id of ['devops','saa-c03','clf-c02-avanzado']) expect(parsePackage(readFileSync(`public/packages/${id}.json`, 'utf8')).cards).toHaveLength(6);
+    for (const id of ['devops','saa-c03','clf-c02-avanzado','python-fundamentos']) expect(parsePackage(readFileSync(`public/packages/${id}.json`, 'utf8')).cards).toHaveLength(id === 'python-fundamentos' ? 8 : 6);
   });
   it('rejects malformed content, duplicate IDs and dangling references', () => {
     for (const mutate of [(p: any) => p.cards.push(p.cards[0]), (p: any) => p.challenges[0].correctId = 'missing', (p: any) => p.cards[0].domain = 'missing', (p: any) => p.challenges[0].options.pop(), (p: any) => p.schemaVersion = 2]) {

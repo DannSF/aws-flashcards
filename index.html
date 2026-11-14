@@ -3,7 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#f6f7fb" />
+    <meta name="theme-color" content="#f7f8fb" />
+    <style>
+      html { background: #f7f8fb; color-scheme: light; }
+      html.dark { background: #14141c; color-scheme: dark; }
+      body { background: inherit; }
+    </style>
+    <script>
+      // Runs before styles and React, so the first painted frame uses the saved theme.
+      try {
+        const dark = localStorage.getItem('cloudrecall.theme') === 'dark';
+        document.documentElement.classList.toggle('dark', dark);
+        document.querySelector('meta[name="theme-color"]').content = dark ? '#14141c' : '#f7f8fb';
+      } catch { /* Keep the default theme when storage is unavailable. */ }
+    </script>
     <meta
       name="description"
       content="CloudRecall: aprende los conceptos de AWS con práctica activa y repetición espaciada."

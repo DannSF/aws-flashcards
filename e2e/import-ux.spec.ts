@@ -1,0 +1,43 @@
+import { test, expect } from '@playwright/test';
+test('dark background is applied before the app JavaScript loads', async ({page}) => {
+  await page.addInitScript(() => localStorage.setItem('cloudrecall.theme','dark'));
+  await page.route(/\/src\/main\.tsx(?:\?.*)?$/,  route => route.abort());
+  await page.goto('/');
+  await expect(page.locator('html')).toHaveClass('dark');
+  await expect(page.locator('html')).toHaveCSS('background-color', 'rgb(20, 20, 28)');
+  await expect(page.locator('body')).toHaveCSS('background-color', 'rgb(20, 20, 28)');
+  await expect(page.locator('#root')).toBeEmpty();
+  await page.reload();
+  await expect(page.locator('html')).toHaveCSS('background-color', 'rgb(20, 20, 28)');
+});
+test('example preview can be cancelled, then added and opened; duplicates preserve data', async ({page}) => {
+  await page.goto('/');
+  await page.getByRole('button', {name:'Añadir curso',exact:true}).click();
+  await page.getByRole('button', {name:'Vista previa de Python desde cero'}).click();
+  await expect(page.getByRole('region',{name:'Vista previa del paquete'})).toContainText('8 flashcards');
+  await page.keyboard.press('Escape');
+  expect(await page.evaluate(() => localStorage.getItem('cloudrecall.packages.v2'))).toBeNull();
+  await page.getByRole('button', {name:'Añadir curso',exact:true}).click();
+  await page.getByRole('button', {name:'Vista previa de Python desde cero'}).click();
+  await page.getByRole('button', {name:'Añadir y abrir curso'}).click();
+  await expect(page.getByLabel('Curso activo')).toHaveValue('python-fundamentos');
+  await expect(page.getByRole('dialog')).toHaveCount(0);
+  await expect(page.getByRole('status')).toContainText('Curso añadido');
+  const saved = await page.evaluate(() => localStorage.getItem('cloudrecall.packages.v2'));
+  await page.getByRole('button', {name:'Añadir curso',exact:true}).click();
+  await page.getByRole('button', {name:'Vista previa de Python desde cero'}).click();
+  await expect(page.getByRole('alert')).toContainText('ya está en tus cursos');
+  expect(await page.evaluate(() => localStorage.getItem('cloudrecall.packages.v2'))).toBe(saved);
+});
+test('import dialog fits a mobile viewport in dark mode', async ({page}) => {
+  await page.setViewportSize({width:390,height:844});
+  await page.addInitScript(() => localStorage.setItem('cloudrecall.theme','dark'));
+  await page.goto('/');
+  await page.getByRole('button', {name:'Añadir curso',exact:true}).click();
+  await expect(page.getByRole('dialog')).toBeVisible();
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await page.screenshot({path:'test-results/import-dark-mobile.png',fullPage:true});
+  await page.getByRole('button', {name:'Vista previa de Python desde cero'}).click();
+  await expect(page.getByRole('region',{name:'Vista previa del paquete'})).toContainText('Paquete validado');
+  expect(await page.getByRole('dialog').evaluate(d => d.scrollWidth <= d.clientWidth)).toBe(true);
+});

@@ -111,6 +111,7 @@ function App() {
   const [selected, setSelected] = useState<string | null>(null);
   useEffect(() => {
     document.documentElement.classList.toggle("dark", dark);
+    document.querySelector('meta[name="theme-color"]')?.setAttribute("content", dark ? "#14141c" : "#f7f8fb");
     try {
       localStorage.setItem("cloudrecall.theme", dark ? "dark" : "light");
     } catch {

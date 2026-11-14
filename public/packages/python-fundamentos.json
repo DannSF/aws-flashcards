@@ -1,0 +1,429 @@
+{
+  "schemaVersion": 1,
+  "id": "python-fundamentos",
+  "title": "Python desde cero",
+  "description": "Tipos, funciones y manejo de errores con ejemplos prácticos.",
+  "version": "1.0.0",
+  "domains": [
+    {
+      "id": "types",
+      "name": "Tipos y colecciones",
+      "short": "Tipos y colecciones",
+      "weight": 38,
+      "color": "#4375bc",
+      "description": "Practica tipos y colecciones en Python 3."
+    },
+    {
+      "id": "flow",
+      "name": "Funciones y control",
+      "short": "Funciones y control",
+      "weight": 37,
+      "color": "#4375bc",
+      "description": "Practica funciones y control en Python 3."
+    },
+    {
+      "id": "practice",
+      "name": "Archivos y errores",
+      "short": "Archivos y errores",
+      "weight": 25,
+      "color": "#4375bc",
+      "description": "Practica archivos y errores en Python 3."
+    }
+  ],
+  "cards": [
+    {
+      "id": "python-001",
+      "domain": "types",
+      "service": "Tipos y colecciones",
+      "category": "Tipos y colecciones",
+      "question": "¿Qué tipo de colección usarías para almacenar elementos únicos?",
+      "answer": "Un conjunto (set)",
+      "explanation": "Un set elimina duplicados. Usa una lista si necesitas conservar repeticiones y el orden de inserción.",
+      "keywords": [
+        "Python",
+        "Tipos y colecciones"
+      ],
+      "example": "set([1, 1, 2]) produce {1, 2}.",
+      "confusion": "Evita esta confusión: Una lista siempre elimina duplicados.",
+      "mnemonic": "Set = sin repetidos.",
+      "difficulty": "Foundation",
+      "tags": [
+        "python",
+        "fundamentos"
+      ]
+    },
+    {
+      "id": "python-002",
+      "domain": "types",
+      "service": "Tipos y colecciones",
+      "category": "Tipos y colecciones",
+      "question": "¿Cuál es la diferencia entre == e is?",
+      "answer": "== compara igualdad; is compara identidad",
+      "explanation": "Dos objetos distintos pueden tener valores iguales. Para comprobar si un valor es None, utiliza is None.",
+      "keywords": [
+        "Python",
+        "Tipos y colecciones"
+      ],
+      "example": "a = [1]; b = [1]: a == b es True, pero a is b es False.",
+      "confusion": "Evita esta confusión: Ambos comparan siempre identidad.",
+      "mnemonic": "Igual valor: ==. Mismo objeto: is.",
+      "difficulty": "Foundation",
+      "tags": [
+        "python",
+        "fundamentos"
+      ]
+    },
+    {
+      "id": "python-003",
+      "domain": "types",
+      "service": "Tipos y colecciones",
+      "category": "Tipos y colecciones",
+      "question": "¿Qué ocurre al ejecutar b = a cuando a es una lista?",
+      "answer": "Ambas variables referencian la misma lista",
+      "explanation": "La asignación no copia la colección. Un cambio mediante b también será visible mediante a. Usa a.copy() para una copia superficial.",
+      "keywords": [
+        "Python",
+        "Tipos y colecciones"
+      ],
+      "example": "a = [1]; b = a; b.append(2): a también contiene [1, 2].",
+      "confusion": "Evita esta confusión: Se crea una copia profunda.",
+      "mnemonic": "Asignar un nombre no duplica el objeto.",
+      "difficulty": "Foundation",
+      "tags": [
+        "python",
+        "fundamentos"
+      ]
+    },
+    {
+      "id": "python-004",
+      "domain": "flow",
+      "service": "Funciones y control",
+      "category": "Funciones y control",
+      "question": "¿Cómo obtener el cuadrado de cada número de una lista?",
+      "answer": "[n * n for n in numeros]",
+      "explanation": "Una comprensión de lista construye una nueva lista a partir de una secuencia. Puede incluir una condición if.",
+      "keywords": [
+        "Python",
+        "Funciones y control"
+      ],
+      "example": "Con numeros = [2, 3], el resultado es [4, 9].",
+      "confusion": "Evita esta confusión: [n for n * n in numeros].",
+      "mnemonic": "Expresión, for, colección.",
+      "difficulty": "Foundation",
+      "tags": [
+        "python",
+        "fundamentos"
+      ]
+    },
+    {
+      "id": "python-005",
+      "domain": "flow",
+      "service": "Funciones y control",
+      "category": "Funciones y control",
+      "question": "¿Qué devuelve una función si termina sin ejecutar return?",
+      "answer": "None",
+      "explanation": "Python devuelve None de forma implícita. Imprimir con print no sustituye a devolver un resultado.",
+      "keywords": [
+        "Python",
+        "Funciones y control"
+      ],
+      "example": "def saludar(): print(\"Hola\"); el valor devuelto al llamar saludar() es None.",
+      "confusion": "Evita esta confusión: Siempre 0.",
+      "mnemonic": "Sin return: None.",
+      "difficulty": "Foundation",
+      "tags": [
+        "python",
+        "fundamentos"
+      ]
+    },
+    {
+      "id": "python-006",
+      "domain": "flow",
+      "service": "Funciones y control",
+      "category": "Funciones y control",
+      "question": "¿Cómo evitar compartir una lista mutable entre llamadas a una función?",
+      "answer": "Usar None como valor predeterminado y crear la lista dentro",
+      "explanation": "Los argumentos predeterminados se evalúan al definir la función, no en cada llamada. Una lista por defecto puede acumular estado involuntariamente.",
+      "keywords": [
+        "Python",
+        "Funciones y control"
+      ],
+      "example": "def agregar(x, items=None):\n    if items is None:\n        items = []\n    items.append(x)\n    return items",
+      "confusion": "Evita esta confusión: Usar [] como argumento predeterminado siempre crea una copia.",
+      "mnemonic": "El valor predeterminado nace una vez.",
+      "difficulty": "Foundation",
+      "tags": [
+        "python",
+        "fundamentos"
+      ]
+    },
+    {
+      "id": "python-007",
+      "domain": "practice",
+      "service": "Archivos y errores",
+      "category": "Archivos y errores",
+      "question": "¿Qué ventaja ofrece abrir un archivo con with open(...) as f?",
+      "answer": "El archivo se cierra al salir del bloque, incluso si ocurre una excepción",
+      "explanation": "El gestor de contexto libera el recurso de forma determinista. Para texto, indicar encoding=\"utf-8\" evita depender de la configuración local.",
+      "keywords": [
+        "Python",
+        "Archivos y errores"
+      ],
+      "example": "with open(\"notas.txt\", encoding=\"utf-8\") as f:\n    contenido = f.read()",
+      "confusion": "Evita esta confusión: El contenido se cifra automáticamente.",
+      "mnemonic": "With cuida el cierre.",
+      "difficulty": "Foundation",
+      "tags": [
+        "python",
+        "fundamentos"
+      ]
+    },
+    {
+      "id": "python-008",
+      "domain": "practice",
+      "service": "Archivos y errores",
+      "category": "Archivos y errores",
+      "question": "¿Cómo gestionar una conversión numérica inválida con int(texto)?",
+      "answer": "Capturar ValueError con try/except",
+      "explanation": "Captura el error concreto que puedes gestionar y muestra una alternativa útil. Capturar todas las excepciones sin criterio puede ocultar fallos distintos.",
+      "keywords": [
+        "Python",
+        "Archivos y errores"
+      ],
+      "example": "try:\n    edad = int(\"abc\")\nexcept ValueError:\n    print(\"Escribe un número entero\")",
+      "confusion": "Evita esta confusión: Capturar solo KeyError.",
+      "mnemonic": "Valor inválido: ValueError.",
+      "difficulty": "Foundation",
+      "tags": [
+        "python",
+        "fundamentos"
+      ]
+    }
+  ],
+  "challenges": [
+    {
+      "id": "python-001",
+      "domain": "types",
+      "prompt": "¿Qué tipo de colección usarías para almacenar elementos únicos?",
+      "correctId": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "Un conjunto (set)",
+          "explanation": "Un set elimina duplicados. Usa una lista si necesitas conservar repeticiones y el orden de inserción."
+        },
+        {
+          "id": "b",
+          "text": "Una lista siempre elimina duplicados",
+          "explanation": "Esta afirmación no es correcta. Un set elimina duplicados. Usa una lista si necesitas conservar repeticiones y el orden de inserción."
+        },
+        {
+          "id": "c",
+          "text": "Una tupla ordena los valores automáticamente",
+          "explanation": "Esta afirmación no es correcta. Un set elimina duplicados. Usa una lista si necesitas conservar repeticiones y el orden de inserción."
+        },
+        {
+          "id": "d",
+          "text": "Un diccionario permite claves duplicadas",
+          "explanation": "Esta afirmación no es correcta. Un set elimina duplicados. Usa una lista si necesitas conservar repeticiones y el orden de inserción."
+        }
+      ]
+    },
+    {
+      "id": "python-002",
+      "domain": "types",
+      "prompt": "¿Cuál es la diferencia entre == e is?",
+      "correctId": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "== compara igualdad; is compara identidad",
+          "explanation": "Dos objetos distintos pueden tener valores iguales. Para comprobar si un valor es None, utiliza is None."
+        },
+        {
+          "id": "b",
+          "text": "Ambos comparan siempre identidad",
+          "explanation": "Esta afirmación no es correcta. Dos objetos distintos pueden tener valores iguales. Para comprobar si un valor es None, utiliza is None."
+        },
+        {
+          "id": "c",
+          "text": "is compara solo números",
+          "explanation": "Esta afirmación no es correcta. Dos objetos distintos pueden tener valores iguales. Para comprobar si un valor es None, utiliza is None."
+        },
+        {
+          "id": "d",
+          "text": "== modifica el objeto",
+          "explanation": "Esta afirmación no es correcta. Dos objetos distintos pueden tener valores iguales. Para comprobar si un valor es None, utiliza is None."
+        }
+      ]
+    },
+    {
+      "id": "python-003",
+      "domain": "types",
+      "prompt": "¿Qué ocurre al ejecutar b = a cuando a es una lista?",
+      "correctId": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "Ambas variables referencian la misma lista",
+          "explanation": "La asignación no copia la colección. Un cambio mediante b también será visible mediante a. Usa a.copy() para una copia superficial."
+        },
+        {
+          "id": "b",
+          "text": "Se crea una copia profunda",
+          "explanation": "Esta afirmación no es correcta. La asignación no copia la colección. Un cambio mediante b también será visible mediante a. Usa a.copy() para una copia superficial."
+        },
+        {
+          "id": "c",
+          "text": "Se convierte la lista en tupla",
+          "explanation": "Esta afirmación no es correcta. La asignación no copia la colección. Un cambio mediante b también será visible mediante a. Usa a.copy() para una copia superficial."
+        },
+        {
+          "id": "d",
+          "text": "La lista original se elimina",
+          "explanation": "Esta afirmación no es correcta. La asignación no copia la colección. Un cambio mediante b también será visible mediante a. Usa a.copy() para una copia superficial."
+        }
+      ]
+    },
+    {
+      "id": "python-004",
+      "domain": "flow",
+      "prompt": "¿Cómo obtener el cuadrado de cada número de una lista?",
+      "correctId": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "[n * n for n in numeros]",
+          "explanation": "Una comprensión de lista construye una nueva lista a partir de una secuencia. Puede incluir una condición if."
+        },
+        {
+          "id": "b",
+          "text": "[n for n * n in numeros]",
+          "explanation": "Esta afirmación no es correcta. Una comprensión de lista construye una nueva lista a partir de una secuencia. Puede incluir una condición if."
+        },
+        {
+          "id": "c",
+          "text": "numeros.square() siempre existe",
+          "explanation": "Esta afirmación no es correcta. Una comprensión de lista construye una nueva lista a partir de una secuencia. Puede incluir una condición if."
+        },
+        {
+          "id": "d",
+          "text": "for numeros in n * n",
+          "explanation": "Esta afirmación no es correcta. Una comprensión de lista construye una nueva lista a partir de una secuencia. Puede incluir una condición if."
+        }
+      ]
+    },
+    {
+      "id": "python-005",
+      "domain": "flow",
+      "prompt": "¿Qué devuelve una función si termina sin ejecutar return?",
+      "correctId": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "None",
+          "explanation": "Python devuelve None de forma implícita. Imprimir con print no sustituye a devolver un resultado."
+        },
+        {
+          "id": "b",
+          "text": "Siempre 0",
+          "explanation": "Esta afirmación no es correcta. Python devuelve None de forma implícita. Imprimir con print no sustituye a devolver un resultado."
+        },
+        {
+          "id": "c",
+          "text": "Siempre una cadena vacía",
+          "explanation": "Esta afirmación no es correcta. Python devuelve None de forma implícita. Imprimir con print no sustituye a devolver un resultado."
+        },
+        {
+          "id": "d",
+          "text": "Provoca obligatoriamente un error",
+          "explanation": "Esta afirmación no es correcta. Python devuelve None de forma implícita. Imprimir con print no sustituye a devolver un resultado."
+        }
+      ]
+    },
+    {
+      "id": "python-006",
+      "domain": "flow",
+      "prompt": "¿Cómo evitar compartir una lista mutable entre llamadas a una función?",
+      "correctId": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "Usar None como valor predeterminado y crear la lista dentro",
+          "explanation": "Los argumentos predeterminados se evalúan al definir la función, no en cada llamada. Una lista por defecto puede acumular estado involuntariamente."
+        },
+        {
+          "id": "b",
+          "text": "Usar [] como argumento predeterminado siempre crea una copia",
+          "explanation": "Esta afirmación no es correcta. Los argumentos predeterminados se evalúan al definir la función, no en cada llamada. Una lista por defecto puede acumular estado involuntariamente."
+        },
+        {
+          "id": "c",
+          "text": "Convertir la función en una cadena",
+          "explanation": "Esta afirmación no es correcta. Los argumentos predeterminados se evalúan al definir la función, no en cada llamada. Una lista por defecto puede acumular estado involuntariamente."
+        },
+        {
+          "id": "d",
+          "text": "Eliminar todos los parámetros",
+          "explanation": "Esta afirmación no es correcta. Los argumentos predeterminados se evalúan al definir la función, no en cada llamada. Una lista por defecto puede acumular estado involuntariamente."
+        }
+      ]
+    },
+    {
+      "id": "python-007",
+      "domain": "practice",
+      "prompt": "¿Qué ventaja ofrece abrir un archivo con with open(...) as f?",
+      "correctId": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "El archivo se cierra al salir del bloque, incluso si ocurre una excepción",
+          "explanation": "El gestor de contexto libera el recurso de forma determinista. Para texto, indicar encoding=\"utf-8\" evita depender de la configuración local."
+        },
+        {
+          "id": "b",
+          "text": "El contenido se cifra automáticamente",
+          "explanation": "Esta afirmación no es correcta. El gestor de contexto libera el recurso de forma determinista. Para texto, indicar encoding=\"utf-8\" evita depender de la configuración local."
+        },
+        {
+          "id": "c",
+          "text": "El archivo nunca puede producir errores",
+          "explanation": "Esta afirmación no es correcta. El gestor de contexto libera el recurso de forma determinista. Para texto, indicar encoding=\"utf-8\" evita depender de la configuración local."
+        },
+        {
+          "id": "d",
+          "text": "El archivo se guarda en la nube",
+          "explanation": "Esta afirmación no es correcta. El gestor de contexto libera el recurso de forma determinista. Para texto, indicar encoding=\"utf-8\" evita depender de la configuración local."
+        }
+      ]
+    },
+    {
+      "id": "python-008",
+      "domain": "practice",
+      "prompt": "¿Cómo gestionar una conversión numérica inválida con int(texto)?",
+      "correctId": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "Capturar ValueError con try/except",
+          "explanation": "Captura el error concreto que puedes gestionar y muestra una alternativa útil. Capturar todas las excepciones sin criterio puede ocultar fallos distintos."
+        },
+        {
+          "id": "b",
+          "text": "Capturar solo KeyError",
+          "explanation": "Esta afirmación no es correcta. Captura el error concreto que puedes gestionar y muestra una alternativa útil. Capturar todas las excepciones sin criterio puede ocultar fallos distintos."
+        },
+        {
+          "id": "c",
+          "text": "Usar print evita la excepción",
+          "explanation": "Esta afirmación no es correcta. Captura el error concreto que puedes gestionar y muestra una alternativa útil. Capturar todas las excepciones sin criterio puede ocultar fallos distintos."
+        },
+        {
+          "id": "d",
+          "text": "int siempre devuelve 0 si no puede convertir",
+          "explanation": "Esta afirmación no es correcta. Captura el error concreto que puedes gestionar y muestra una alternativa útil. Capturar todas las excepciones sin criterio puede ocultar fallos distintos."
+        }
+      ]
+    }
+  ]
+}
