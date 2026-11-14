@@ -134,10 +134,24 @@ The exam interfaces are reserved for these later phases. This version rejects ba
 
 ## Gestionar cursos
 
-**Mis cursos** reúne dos secciones: **Mi biblioteca** y **Explorar ejemplos**, con una única acción principal **Añadir curso** para importar un JSON. La biblioteca permite buscar por título o descripción, ver tarjetas estudiadas y repasos por curso, abrir un curso y exportar su paquete de contenido JSON (el progreso se exporta desde Ajustes). La tarjeta **Curso activo** abre una lista con búsqueda, descripciones y una marca en el curso actual. Permite cambiar con Tab/Enter y cerrar con Escape o al pulsar fuera. **Mis cursos** es una página propia (`#courses`) que se conserva al recargar y funciona con Atrás/Adelante del navegador. En móvil se accede desde el menú de navegación.
+**Mis cursos** reúne dos secciones: **Mi biblioteca** y **Explorar ejemplos**, con una única acción principal **Añadir curso** para importar un JSON. La biblioteca permite buscar por título o descripción, ver tarjetas estudiadas y repasos por curso, abrir un curso y exportar su paquete de contenido JSON (el progreso se exporta desde Ajustes). El botón **Curso activo** abre un diálogo de selección con búsqueda, descripciones, tarjetas estudiadas y una marca en la materia actual. Se puede elegir con Tab/Enter y cerrar con Escape, el botón de cierre o el fondo. Elegir la materia actual cierra el diálogo sin reiniciar la sesión. **Ir a Mis cursos** abre la página de gestión para importar, exportar y eliminar; estas acciones no se duplican en el diálogo. En móvil, elegir otra materia o ir al gestor también cierra la navegación lateral. **Mis cursos** es una página propia (`#courses`) que se conserva al recargar y funciona con Atrás/Adelante del navegador. En móvil se accede desde el menú de navegación.
 
 Los cursos importados se pueden eliminar con confirmación. Por defecto solo se quita el paquete: su progreso se conserva y se recupera al reimportar el mismo paquete. **Deshacer** restaura el último paquete eliminado mientras siga abierta la sesión. La casilla **Eliminar también sus repasos, retos y progreso guardados** permite borrar permanentemente ese progreso; no ofrece Deshacer. Al eliminar el curso activo se abre CLF-C02. El curso incluido se mantiene protegido y su progreso se gestiona desde Ajustes.
 
 La eliminación vuelve a leer el catálogo guardado para conservar cambios de otras pestañas. Si falla el borrado del progreso, restaura el catálogo y muestra el error; los cursos ajenos nunca se borran.
 
 Los ejemplos que ya están instalados ofrecen **Abrir curso** en lugar de invitar a importarlos de nuevo.
+
+### Contenido de las explicaciones
+
+El contrato JSON valida tipos, campos y referencias, pero eso no garantiza calidad pedagógica. Los campos de apoyo de cada tarjeta se comparten con la explicación del reto que tiene el mismo ID. Cada campo tiene una función distinta:
+
+| Campo | Uso |
+| --- | --- |
+| `explanation` | Explicar por qué la respuesta es correcta. |
+| `example` | Mostrar una aplicación concreta con acción y resultado; se presenta como «En la vida real». Los casos hipotéticos son ilustrativos, no afirmaciones de incidentes reales. |
+| `confusion` | Contrastar conceptos que se pueden confundir; se presenta como «La distinción clave». |
+| `mnemonic` | Ofrecer una pista breve para recordar el concepto. |
+| `challenges[].options[].explanation` | Explicar específicamente por qué esa alternativa encaja o falla. |
+
+No se debe rellenar `example` repitiendo `question` ni copiar la explicación de un distractor en `confusion`. El paquete introductorio de DevOps incluye comprobaciones de contenido para detectar esas regresiones; no se bloquean automáticamente otros paquetes por coincidencias textuales. Las fuentes quedan como metadatos del paquete.

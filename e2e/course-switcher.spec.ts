@@ -11,7 +11,7 @@ test('one add action, searchable course switcher, keyboard dismissal and install
   await trigger.click();
   await expect(page.getByLabel('Buscar un curso para cambiar')).toBeFocused();
   await page.getByLabel('Buscar un curso para cambiar').fill('no-existe');
-  await expect(page.getByRole('region',{name:'Cambiar de curso'})).toContainText('No hay coincidencias');
+  await expect(page.getByRole('dialog',{name:'Cambiar de curso'})).toContainText('No encontramos ese curso');
   await page.keyboard.press('Escape');
   await expect(trigger).toBeFocused(); await expect(trigger).toHaveAttribute('aria-expanded','false');
   await trigger.click();
@@ -26,6 +26,7 @@ test('one add action, searchable course switcher, keyboard dismissal and install
   await expect(page.getByRole('button',{name:'Vista previa de Python desde cero',exact:true})).toHaveCount(0);
   await page.getByRole('button',{name:'Abrir curso de Python desde cero',exact:true}).click();
   await expect(page.getByRole('button',{name:'Cambiar curso: Python desde cero',exact:true})).toBeVisible();
+  await page.getByRole('button',{name:'Activar modo oscuro'}).click();
   await page.setViewportSize({width:390,height:844});
   await page.getByRole('button',{name:'Abrir navegación'}).click();
   await page.getByRole('button',{name:'Cambiar curso: Python desde cero',exact:true}).click();
@@ -33,5 +34,37 @@ test('one add action, searchable course switcher, keyboard dismissal and install
   await expect.poll(() => page.locator('.sidebar').evaluate(el => el.getBoundingClientRect().right)).toBeLessThanOrEqual(0);
   await page.getByRole('button',{name:'Abrir navegación'}).click();
   await page.getByRole('button',{name:'Cambiar curso: AWS Cloud Practitioner',exact:true}).click();
+  await expect(page.getByRole('dialog',{name:'Cambiar de curso'})).toBeVisible();
   await page.screenshot({path:'test-results/course-switcher-mobile.png'});
+  await page.getByRole('button',{name:'Ir a Mis cursos'}).click();
+  await expect(page.getByRole('heading',{name:'Mis cursos.',exact:true})).toBeVisible();
+  await expect.poll(() => page.locator('.sidebar').evaluate(el => el.getBoundingClientRect().right)).toBeLessThanOrEqual(0);
+});
+
+test('modal preserves the current study session and links to course management', async ({page}) => {
+  await page.goto('/');
+  await page.getByRole('button',{name:'Continuar estudiando'}).click();
+  await page.getByRole('button',{name:'Revelar respuesta'}).click();
+  const card = await page.locator('.flashcard h2').innerText();
+  const trigger = page.getByRole('button',{name:'Cambiar curso: AWS Cloud Practitioner',exact:true});
+  await trigger.click();
+  const modal = page.getByRole('dialog',{name:'Cambiar de curso'});
+  await expect(modal).toBeVisible();
+  await expect(modal.getByRole('button',{name:'Cambiar a AWS Cloud Practitioner'})).toHaveAttribute('aria-current','true');
+  await modal.getByRole('button',{name:'Cambiar a AWS Cloud Practitioner'}).click();
+  await expect(modal).toHaveCount(0);
+  await expect(page.locator('.flashcard h2')).toHaveText(card);
+  await expect(page.getByRole('button',{name:/Good/})).toBeVisible();
+  await trigger.click();
+  await modal.getByRole('button',{name:'Cerrar diálogo'}).click();
+  await expect(trigger).toBeFocused();
+  await trigger.click();
+  await page.mouse.click(2,2);
+  await expect(modal).toHaveCount(0);
+  await expect(trigger).toBeFocused();
+  await trigger.click();
+  await modal.getByRole('button',{name:'Ir a Mis cursos'}).click();
+  await expect(modal).toHaveCount(0);
+  await expect(page).toHaveURL(/#courses$/);
+  await expect(page.getByRole('heading',{name:'Mis cursos.',exact:true})).toBeVisible();
 });

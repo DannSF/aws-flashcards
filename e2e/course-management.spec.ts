@@ -40,7 +40,7 @@ test('manage, search, cancel deletion, preserve progress, undo and permanently d
   await page.getByRole('button', {name:'Mi dashboard',exact:true}).click(); await page.reload();
   await expect(page.getByRole('button',{name:'Cambiar curso: AWS Cloud Practitioner',exact:true})).toBeVisible();
   await page.getByRole('button',{name:/^Cambiar curso:/}).click();
-  await expect(page.getByRole('region',{name:'Cambiar de curso'}).getByRole('button', {name:/^Cambiar a /})).toHaveCount(1);
+  await expect(page.getByRole('dialog',{name:'Cambiar de curso'}).getByRole('button', {name:/^Cambiar a /})).toHaveCount(1);
 });
 test('reimporting a removed package resumes retained progress', async ({page}) => {
   await page.goto('/'); await addPython(page);

@@ -1,4 +1,5 @@
 import { useEffect, useId, useRef } from "react";
+import type { RefObject } from "react";
 import type { LucideIcon } from "lucide-react";
 import { Check, ChevronRight, Sparkles, X } from "lucide-react";
 import { cards } from "../lib/catalog";
@@ -142,22 +143,27 @@ export function Dialog({
   title,
   onClose,
   children,
+  initialFocusRef,
+  className = '',
 }: {
   title: string;
   onClose: () => void;
   children: React.ReactNode;
+  initialFocusRef?: RefObject<HTMLElement | null>;
+  className?: string;
 }) {
   const ref = useRef<HTMLDialogElement>(null);
   const titleId = useId();
   useEffect(() => {
     const d = ref.current;
     d?.showModal();
+    initialFocusRef?.current?.focus();
     return () => d?.close();
-  }, []);
+  }, [initialFocusRef]);
   return (
     <dialog
       ref={ref}
-      className="dialog"
+      className={`dialog ${className}`}
       aria-labelledby={titleId}
       onCancel={onClose}
       onClick={(e) => {
