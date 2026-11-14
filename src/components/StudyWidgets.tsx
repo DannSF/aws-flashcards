@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import type { LucideIcon } from "lucide-react";
 import { Check, ChevronRight, Sparkles, X } from "lucide-react";
-import { cards } from "../data/cards";
+import { cards } from "../lib/catalog";
 import type { UserProgress } from "../types";
 import { localDay } from "../lib/progress";
 export function Stat({

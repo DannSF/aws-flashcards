@@ -1,0 +1,303 @@
+{
+  "schemaVersion": 1,
+  "id": "devops",
+  "title": "DevOps · Fundamentos prácticos",
+  "description": "Entrega continua, fiabilidad y operación",
+  "version": "1.0.0",
+  "domains": [
+    {
+      "id": "concepts",
+      "name": "Conceptos y decisiones",
+      "short": "Conceptos",
+      "weight": 100,
+      "color": "#7754d3",
+      "description": "Entrega continua, fiabilidad y operación"
+    }
+  ],
+  "cards": [
+    {
+      "id": "devops-001",
+      "service": "Canary",
+      "domain": "concepts",
+      "category": "DevOps · Fundamentos prácticos",
+      "question": "¿Cómo reducir el impacto de un despliegue arriesgado?",
+      "answer": "Liberar primero a una fracción del tráfico",
+      "explanation": "Un canary permite observar métricas antes de ampliar y revertir si falla.",
+      "keywords": [
+        "Canary"
+      ],
+      "example": "En una revisión técnica: ¿Cómo reducir el impacto de un despliegue arriesgado? Respuesta: Liberar primero a una fracción del tráfico.",
+      "confusion": "No confundir con: Desplegar todo sin métricas.",
+      "mnemonic": "Canary: Liberar primero a una fracción del tráfico.",
+      "difficulty": "Applied",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "id": "devops-002",
+      "service": "IaC",
+      "domain": "concepts",
+      "category": "DevOps · Fundamentos prácticos",
+      "question": "¿Qué práctica reduce diferencias entre entornos?",
+      "answer": "Infraestructura como código versionada",
+      "explanation": "Las definiciones revisadas y reproducibles permiten auditar y recrear infraestructura.",
+      "keywords": [
+        "IaC"
+      ],
+      "example": "En una revisión técnica: ¿Qué práctica reduce diferencias entre entornos? Respuesta: Infraestructura como código versionada.",
+      "confusion": "No confundir con: Cambios manuales sin registro.",
+      "mnemonic": "IaC: Infraestructura como código versionada.",
+      "difficulty": "Applied",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "id": "devops-003",
+      "service": "SLO",
+      "domain": "concepts",
+      "category": "DevOps · Fundamentos prácticos",
+      "question": "¿Qué representa un SLO?",
+      "answer": "Objetivo medible de fiabilidad de un servicio",
+      "explanation": "Se define sobre indicadores como disponibilidad o latencia durante una ventana temporal.",
+      "keywords": [
+        "SLO"
+      ],
+      "example": "En una revisión técnica: ¿Qué representa un SLO? Respuesta: Objetivo medible de fiabilidad de un servicio.",
+      "confusion": "No confundir con: Una herramienta de compilación.",
+      "mnemonic": "SLO: Objetivo medible de fiabilidad de un servicio.",
+      "difficulty": "Applied",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "id": "devops-004",
+      "service": "Idempotencia",
+      "domain": "concepts",
+      "category": "DevOps · Fundamentos prácticos",
+      "question": "¿Qué propiedad permite reintentar una operación sin duplicar efectos?",
+      "answer": "Idempotencia",
+      "explanation": "Una clave de operación o deduplicación evita efectos repetidos al recibir la misma solicitud.",
+      "keywords": [
+        "Idempotencia"
+      ],
+      "example": "En una revisión técnica: ¿Qué propiedad permite reintentar una operación sin duplicar efectos? Respuesta: Idempotencia.",
+      "confusion": "No confundir con: Aleatoriedad.",
+      "mnemonic": "Idempotencia: Idempotencia.",
+      "difficulty": "Applied",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "id": "devops-005",
+      "service": "Secrets",
+      "domain": "concepts",
+      "category": "DevOps · Fundamentos prácticos",
+      "question": "¿Cómo suministrar credenciales a una canalización?",
+      "answer": "Gestor de secretos y permisos mínimos",
+      "explanation": "Los secretos se recuperan en ejecución y pueden rotarse sin incluirlos en el código.",
+      "keywords": [
+        "Secrets"
+      ],
+      "example": "En una revisión técnica: ¿Cómo suministrar credenciales a una canalización? Respuesta: Gestor de secretos y permisos mínimos.",
+      "confusion": "No confundir con: Incluirlos en Git.",
+      "mnemonic": "Secrets: Gestor de secretos y permisos mínimos.",
+      "difficulty": "Applied",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "id": "devops-006",
+      "service": "Rollback",
+      "domain": "concepts",
+      "category": "DevOps · Fundamentos prácticos",
+      "question": "¿Qué debe comprobar una estrategia de reversión?",
+      "answer": "Compatibilidad de datos y versión anterior",
+      "explanation": "Revertir binarios puede fallar si una migración de datos es incompatible; usar cambios expandir y contraer.",
+      "keywords": [
+        "Rollback"
+      ],
+      "example": "En una revisión técnica: ¿Qué debe comprobar una estrategia de reversión? Respuesta: Compatibilidad de datos y versión anterior.",
+      "confusion": "No confundir con: Solo el color de la interfaz.",
+      "mnemonic": "Rollback: Compatibilidad de datos y versión anterior.",
+      "difficulty": "Applied",
+      "tags": [
+        "devops"
+      ]
+    }
+  ],
+  "challenges": [
+    {
+      "id": "devops-001",
+      "domain": "concepts",
+      "prompt": "¿Cómo reducir el impacto de un despliegue arriesgado?",
+      "correctId": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "Liberar primero a una fracción del tráfico",
+          "explanation": "Un canary permite observar métricas antes de ampliar y revertir si falla."
+        },
+        {
+          "id": "b",
+          "text": "Desplegar todo sin métricas",
+          "explanation": "No corresponde: Un canary permite observar métricas antes de ampliar y revertir si falla."
+        },
+        {
+          "id": "c",
+          "text": "Desactivar alarmas",
+          "explanation": "No corresponde: Un canary permite observar métricas antes de ampliar y revertir si falla."
+        },
+        {
+          "id": "d",
+          "text": "Eliminar la versión anterior primero",
+          "explanation": "No corresponde: Un canary permite observar métricas antes de ampliar y revertir si falla."
+        }
+      ]
+    },
+    {
+      "id": "devops-002",
+      "domain": "concepts",
+      "prompt": "¿Qué práctica reduce diferencias entre entornos?",
+      "correctId": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "Infraestructura como código versionada",
+          "explanation": "Las definiciones revisadas y reproducibles permiten auditar y recrear infraestructura."
+        },
+        {
+          "id": "b",
+          "text": "Cambios manuales sin registro",
+          "explanation": "No corresponde: Las definiciones revisadas y reproducibles permiten auditar y recrear infraestructura."
+        },
+        {
+          "id": "c",
+          "text": "Contraseñas en el repositorio",
+          "explanation": "No corresponde: Las definiciones revisadas y reproducibles permiten auditar y recrear infraestructura."
+        },
+        {
+          "id": "d",
+          "text": "Configuración solo en memoria",
+          "explanation": "No corresponde: Las definiciones revisadas y reproducibles permiten auditar y recrear infraestructura."
+        }
+      ]
+    },
+    {
+      "id": "devops-003",
+      "domain": "concepts",
+      "prompt": "¿Qué representa un SLO?",
+      "correctId": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "Objetivo medible de fiabilidad de un servicio",
+          "explanation": "Se define sobre indicadores como disponibilidad o latencia durante una ventana temporal."
+        },
+        {
+          "id": "b",
+          "text": "Una herramienta de compilación",
+          "explanation": "No corresponde: Se define sobre indicadores como disponibilidad o latencia durante una ventana temporal."
+        },
+        {
+          "id": "c",
+          "text": "Un secreto de producción",
+          "explanation": "No corresponde: Se define sobre indicadores como disponibilidad o latencia durante una ventana temporal."
+        },
+        {
+          "id": "d",
+          "text": "Una lista de servidores",
+          "explanation": "No corresponde: Se define sobre indicadores como disponibilidad o latencia durante una ventana temporal."
+        }
+      ]
+    },
+    {
+      "id": "devops-004",
+      "domain": "concepts",
+      "prompt": "¿Qué propiedad permite reintentar una operación sin duplicar efectos?",
+      "correctId": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "Idempotencia",
+          "explanation": "Una clave de operación o deduplicación evita efectos repetidos al recibir la misma solicitud."
+        },
+        {
+          "id": "b",
+          "text": "Aleatoriedad",
+          "explanation": "No corresponde: Una clave de operación o deduplicación evita efectos repetidos al recibir la misma solicitud."
+        },
+        {
+          "id": "c",
+          "text": "Mayor concurrencia sin control",
+          "explanation": "No corresponde: Una clave de operación o deduplicación evita efectos repetidos al recibir la misma solicitud."
+        },
+        {
+          "id": "d",
+          "text": "Eliminar logs",
+          "explanation": "No corresponde: Una clave de operación o deduplicación evita efectos repetidos al recibir la misma solicitud."
+        }
+      ]
+    },
+    {
+      "id": "devops-005",
+      "domain": "concepts",
+      "prompt": "¿Cómo suministrar credenciales a una canalización?",
+      "correctId": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "Gestor de secretos y permisos mínimos",
+          "explanation": "Los secretos se recuperan en ejecución y pueden rotarse sin incluirlos en el código."
+        },
+        {
+          "id": "b",
+          "text": "Incluirlos en Git",
+          "explanation": "No corresponde: Los secretos se recuperan en ejecución y pueden rotarse sin incluirlos en el código."
+        },
+        {
+          "id": "c",
+          "text": "Imprimirlos en logs",
+          "explanation": "No corresponde: Los secretos se recuperan en ejecución y pueden rotarse sin incluirlos en el código."
+        },
+        {
+          "id": "d",
+          "text": "Compartir una cuenta raíz",
+          "explanation": "No corresponde: Los secretos se recuperan en ejecución y pueden rotarse sin incluirlos en el código."
+        }
+      ]
+    },
+    {
+      "id": "devops-006",
+      "domain": "concepts",
+      "prompt": "¿Qué debe comprobar una estrategia de reversión?",
+      "correctId": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "Compatibilidad de datos y versión anterior",
+          "explanation": "Revertir binarios puede fallar si una migración de datos es incompatible; usar cambios expandir y contraer."
+        },
+        {
+          "id": "b",
+          "text": "Solo el color de la interfaz",
+          "explanation": "No corresponde: Revertir binarios puede fallar si una migración de datos es incompatible; usar cambios expandir y contraer."
+        },
+        {
+          "id": "c",
+          "text": "Solo el tamaño del repositorio",
+          "explanation": "No corresponde: Revertir binarios puede fallar si una migración de datos es incompatible; usar cambios expandir y contraer."
+        },
+        {
+          "id": "d",
+          "text": "Que no existan pruebas",
+          "explanation": "No corresponde: Revertir binarios puede fallar si una migración de datos es incompatible; usar cambios expandir y contraer."
+        }
+      ]
+    }
+  ]
+}

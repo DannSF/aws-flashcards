@@ -1,0 +1,303 @@
+{
+  "schemaVersion": 1,
+  "id": "saa-c03",
+  "title": "SAA-C03 · Arquitectura",
+  "description": "Resiliencia, almacenamiento y redes",
+  "version": "1.0.0",
+  "domains": [
+    {
+      "id": "concepts",
+      "name": "Conceptos y decisiones",
+      "short": "Conceptos",
+      "weight": 100,
+      "color": "#7754d3",
+      "description": "Resiliencia, almacenamiento y redes"
+    }
+  ],
+  "cards": [
+    {
+      "id": "saa-c03-001",
+      "service": "Multi-AZ",
+      "domain": "concepts",
+      "category": "SAA-C03 · Arquitectura",
+      "question": "¿Qué opción de RDS prioriza alta disponibilidad con failover?",
+      "answer": "Despliegue Multi-AZ",
+      "explanation": "Una réplica en otra zona permite conmutación ante fallos; una read replica atiende escalado de lecturas.",
+      "keywords": [
+        "Multi-AZ"
+      ],
+      "example": "En una revisión técnica: ¿Qué opción de RDS prioriza alta disponibilidad con failover? Respuesta: Despliegue Multi-AZ.",
+      "confusion": "No confundir con: Una instancia más grande.",
+      "mnemonic": "Multi-AZ: Despliegue Multi-AZ.",
+      "difficulty": "Applied",
+      "tags": [
+        "saa-c03"
+      ]
+    },
+    {
+      "id": "saa-c03-002",
+      "service": "S3 Gateway Endpoint",
+      "domain": "concepts",
+      "category": "SAA-C03 · Arquitectura",
+      "question": "¿Cómo acceden instancias privadas a S3 sin NAT?",
+      "answer": "Gateway VPC endpoint para S3",
+      "explanation": "Las tablas de rutas envían tráfico a S3 por el endpoint sin salida a Internet.",
+      "keywords": [
+        "S3 Gateway Endpoint"
+      ],
+      "example": "En una revisión técnica: ¿Cómo acceden instancias privadas a S3 sin NAT? Respuesta: Gateway VPC endpoint para S3.",
+      "confusion": "No confundir con: Internet Gateway sin IP pública.",
+      "mnemonic": "S3 Gateway Endpoint: Gateway VPC endpoint para S3.",
+      "difficulty": "Applied",
+      "tags": [
+        "saa-c03"
+      ]
+    },
+    {
+      "id": "saa-c03-003",
+      "service": "SQS",
+      "domain": "concepts",
+      "category": "SAA-C03 · Arquitectura",
+      "question": "¿Cómo desacoplar pedidos de su procesamiento?",
+      "answer": "Cola Amazon SQS",
+      "explanation": "Los consumidores procesan a su ritmo y deben gestionar reintentos e idempotencia.",
+      "keywords": [
+        "SQS"
+      ],
+      "example": "En una revisión técnica: ¿Cómo desacoplar pedidos de su procesamiento? Respuesta: Cola Amazon SQS.",
+      "confusion": "No confundir con: Una llamada síncrona sin reintentos.",
+      "mnemonic": "SQS: Cola Amazon SQS.",
+      "difficulty": "Applied",
+      "tags": [
+        "saa-c03"
+      ]
+    },
+    {
+      "id": "saa-c03-004",
+      "service": "CloudFront",
+      "domain": "concepts",
+      "category": "SAA-C03 · Arquitectura",
+      "question": "¿Cómo reducir latencia global de contenido estático?",
+      "answer": "Amazon CloudFront",
+      "explanation": "Almacena contenido en cachés de borde cercanas a usuarios con políticas de expiración.",
+      "keywords": [
+        "CloudFront"
+      ],
+      "example": "En una revisión técnica: ¿Cómo reducir latencia global de contenido estático? Respuesta: Amazon CloudFront.",
+      "confusion": "No confundir con: Un volumen EBS mayor.",
+      "mnemonic": "CloudFront: Amazon CloudFront.",
+      "difficulty": "Applied",
+      "tags": [
+        "saa-c03"
+      ]
+    },
+    {
+      "id": "saa-c03-005",
+      "service": "DynamoDB",
+      "domain": "concepts",
+      "category": "SAA-C03 · Arquitectura",
+      "question": "¿Cómo servir una tabla DynamoDB con escrituras locales en varias regiones?",
+      "answer": "Global Tables",
+      "explanation": "Replica entre regiones y requiere comprender resolución de conflictos y consistencia.",
+      "keywords": [
+        "DynamoDB"
+      ],
+      "example": "En una revisión técnica: ¿Cómo servir una tabla DynamoDB con escrituras locales en varias regiones? Respuesta: Global Tables.",
+      "confusion": "No confundir con: Un índice local.",
+      "mnemonic": "DynamoDB: Global Tables.",
+      "difficulty": "Applied",
+      "tags": [
+        "saa-c03"
+      ]
+    },
+    {
+      "id": "saa-c03-006",
+      "service": "EFS",
+      "domain": "concepts",
+      "category": "SAA-C03 · Arquitectura",
+      "question": "¿Qué almacenamiento de archivos comparten varias instancias Linux?",
+      "answer": "Amazon EFS",
+      "explanation": "Proporciona un sistema de archivos NFS administrado y compartido.",
+      "keywords": [
+        "EFS"
+      ],
+      "example": "En una revisión técnica: ¿Qué almacenamiento de archivos comparten varias instancias Linux? Respuesta: Amazon EFS.",
+      "confusion": "No confundir con: Instance store.",
+      "mnemonic": "EFS: Amazon EFS.",
+      "difficulty": "Applied",
+      "tags": [
+        "saa-c03"
+      ]
+    }
+  ],
+  "challenges": [
+    {
+      "id": "saa-c03-001",
+      "domain": "concepts",
+      "prompt": "¿Qué opción de RDS prioriza alta disponibilidad con failover?",
+      "correctId": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "Despliegue Multi-AZ",
+          "explanation": "Una réplica en otra zona permite conmutación ante fallos; una read replica atiende escalado de lecturas."
+        },
+        {
+          "id": "b",
+          "text": "Una instancia más grande",
+          "explanation": "No corresponde: Una réplica en otra zona permite conmutación ante fallos; una read replica atiende escalado de lecturas."
+        },
+        {
+          "id": "c",
+          "text": "Una sola AZ",
+          "explanation": "No corresponde: Una réplica en otra zona permite conmutación ante fallos; una read replica atiende escalado de lecturas."
+        },
+        {
+          "id": "d",
+          "text": "Solo snapshots manuales",
+          "explanation": "No corresponde: Una réplica en otra zona permite conmutación ante fallos; una read replica atiende escalado de lecturas."
+        }
+      ]
+    },
+    {
+      "id": "saa-c03-002",
+      "domain": "concepts",
+      "prompt": "¿Cómo acceden instancias privadas a S3 sin NAT?",
+      "correctId": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "Gateway VPC endpoint para S3",
+          "explanation": "Las tablas de rutas envían tráfico a S3 por el endpoint sin salida a Internet."
+        },
+        {
+          "id": "b",
+          "text": "Internet Gateway sin IP pública",
+          "explanation": "No corresponde: Las tablas de rutas envían tráfico a S3 por el endpoint sin salida a Internet."
+        },
+        {
+          "id": "c",
+          "text": "Peering entre buckets",
+          "explanation": "No corresponde: Las tablas de rutas envían tráfico a S3 por el endpoint sin salida a Internet."
+        },
+        {
+          "id": "d",
+          "text": "Un registro CNAME",
+          "explanation": "No corresponde: Las tablas de rutas envían tráfico a S3 por el endpoint sin salida a Internet."
+        }
+      ]
+    },
+    {
+      "id": "saa-c03-003",
+      "domain": "concepts",
+      "prompt": "¿Cómo desacoplar pedidos de su procesamiento?",
+      "correctId": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "Cola Amazon SQS",
+          "explanation": "Los consumidores procesan a su ritmo y deben gestionar reintentos e idempotencia."
+        },
+        {
+          "id": "b",
+          "text": "Una llamada síncrona sin reintentos",
+          "explanation": "No corresponde: Los consumidores procesan a su ritmo y deben gestionar reintentos e idempotencia."
+        },
+        {
+          "id": "c",
+          "text": "Un disco local compartido",
+          "explanation": "No corresponde: Los consumidores procesan a su ritmo y deben gestionar reintentos e idempotencia."
+        },
+        {
+          "id": "d",
+          "text": "Un balanceador sin cola",
+          "explanation": "No corresponde: Los consumidores procesan a su ritmo y deben gestionar reintentos e idempotencia."
+        }
+      ]
+    },
+    {
+      "id": "saa-c03-004",
+      "domain": "concepts",
+      "prompt": "¿Cómo reducir latencia global de contenido estático?",
+      "correctId": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "Amazon CloudFront",
+          "explanation": "Almacena contenido en cachés de borde cercanas a usuarios con políticas de expiración."
+        },
+        {
+          "id": "b",
+          "text": "Un volumen EBS mayor",
+          "explanation": "No corresponde: Almacena contenido en cachés de borde cercanas a usuarios con políticas de expiración."
+        },
+        {
+          "id": "c",
+          "text": "Una NAT Gateway",
+          "explanation": "No corresponde: Almacena contenido en cachés de borde cercanas a usuarios con políticas de expiración."
+        },
+        {
+          "id": "d",
+          "text": "Una única instancia privada",
+          "explanation": "No corresponde: Almacena contenido en cachés de borde cercanas a usuarios con políticas de expiración."
+        }
+      ]
+    },
+    {
+      "id": "saa-c03-005",
+      "domain": "concepts",
+      "prompt": "¿Cómo servir una tabla DynamoDB con escrituras locales en varias regiones?",
+      "correctId": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "Global Tables",
+          "explanation": "Replica entre regiones y requiere comprender resolución de conflictos y consistencia."
+        },
+        {
+          "id": "b",
+          "text": "Un índice local",
+          "explanation": "No corresponde: Replica entre regiones y requiere comprender resolución de conflictos y consistencia."
+        },
+        {
+          "id": "c",
+          "text": "Un snapshot de EBS",
+          "explanation": "No corresponde: Replica entre regiones y requiere comprender resolución de conflictos y consistencia."
+        },
+        {
+          "id": "d",
+          "text": "Un ALB multirregión",
+          "explanation": "No corresponde: Replica entre regiones y requiere comprender resolución de conflictos y consistencia."
+        }
+      ]
+    },
+    {
+      "id": "saa-c03-006",
+      "domain": "concepts",
+      "prompt": "¿Qué almacenamiento de archivos comparten varias instancias Linux?",
+      "correctId": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "Amazon EFS",
+          "explanation": "Proporciona un sistema de archivos NFS administrado y compartido."
+        },
+        {
+          "id": "b",
+          "text": "Instance store",
+          "explanation": "No corresponde: Proporciona un sistema de archivos NFS administrado y compartido."
+        },
+        {
+          "id": "c",
+          "text": "Un volumen EBS sin Multi-Attach",
+          "explanation": "No corresponde: Proporciona un sistema de archivos NFS administrado y compartido."
+        },
+        {
+          "id": "d",
+          "text": "S3 como disco de bloques",
+          "explanation": "No corresponde: Proporciona un sistema de archivos NFS administrado y compartido."
+        }
+      ]
+    }
+  ]
+}

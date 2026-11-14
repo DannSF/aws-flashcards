@@ -40,8 +40,8 @@ import { Challenge } from "./pages/Challenge";
 import { Dashboard } from "./pages/Dashboard";
 import { createEmptyCard } from "ts-fsrs";
 import { Button } from "./components/ui/button";
-import { cards, CONTENT_VERSION } from "./data/cards";
-import { domains } from "./data/domains";
+import { cards, contentVersion as CONTENT_VERSION } from "./lib/catalog";
+import { domains } from "./lib/catalog";
 import {
   cardStatus,
   download,
@@ -56,6 +56,7 @@ import {
   STORAGE_KEY,
   streak,
 } from "./lib/progress";
+import { activeCourse } from "./lib/catalog";
 import type { DomainId, RecallRating, UserProgress } from "./types";
 
 type Page =
@@ -67,7 +68,7 @@ const statusNames: Record<Exclude<Status, "all">, string> = {
   due: "Por repasar",
   mastered: "Dominada",
 };
-const initial = loadProgress();
+
 const nav: { page: Page; label: string; icon: LucideIcon }[] = [
   { page: "dashboard", label: "Mi dashboard", icon: LayoutDashboard },
   { page: "study", label: "Estudiar", icon: Layers3 },
@@ -76,6 +77,7 @@ const nav: { page: Page; label: string; icon: LucideIcon }[] = [
   { page: "analytics", label: "Mi progreso", icon: BarChart3 },
 ];
 function App() {
+  const [initial] = useState(loadProgress);
   const [progress, setProgress] = useState(initial.progress);
   const [storageError, setStorageError] = useState(initial.error);
   const [page, setPage] = useState<Page>("dashboard");
@@ -276,12 +278,12 @@ function App() {
     try {
       const raw = storageError
         ? localStorage.getItem(STORAGE_KEY)
-        : JSON.stringify(progress, null, 2);
+        : JSON.stringify({ ...progress, courseId: activeCourse.id }, null, 2);
       if (!raw) {
         setNotice("No hay una copia guardada para exportar.");
         return;
       }
-      download(`cloudrecall-${localDay(now)}.json`, raw);
+      download(`cloudrecall-${activeCourse.id}-${localDay(now)}.json`, raw);
       setNotice("Copia exportada. Guárdala en un lugar seguro.");
     } catch {
       setNotice("El navegador no permite leer el almacenamiento.");
@@ -354,11 +356,11 @@ function App() {
           ))}
         </nav>
         <div className="sidebar-rule" />
-        <div className="workspace-label">CERTIFICACIÓN</div>
+        <div className="workspace-label">CURSO</div>
         <div className="cert-label">
-          <span className="aws-small">aws</span>
+          <span className="aws-small"><BookOpen size={20} /></span>
           <div>
-            AWS Cloud Practitioner<small>CLF-C02 · Nivel foundational</small>
+            {activeCourse.title}<small>{activeCourse.description}</small>
           </div>
         </div>
         <div className="sidebar-tip">
@@ -783,7 +785,7 @@ function App() {
                 <div>
                   <div className="eyebrow">EXPLORA. CONECTA. COMPRENDE.</div>
                   <h1>
-                    Tu biblioteca de AWS<span className="heading-dot">.</span>
+                    Tu biblioteca<span className="heading-dot">.</span>
                   </h1>
                   <p>
                     {cards.length} tarjetas originales para construir una base
@@ -1149,12 +1151,10 @@ function App() {
                 <section className="panel settings-panel content-notes">
                   <h2>Acerca del contenido</h2>
                   <p>
-                    114 preguntas de práctica originales, con preguntas y
-                    terminología en inglés y explicaciones en español. No son
-                    preguntas oficiales del examen.
+                    {cards.length} tarjetas de {activeCourse.title}. {activeCourse.description}
                   </p>
                   <p>
-                    Esta primera versión incluye Flashcards, Aprender,
+                    CloudRecall incluye Flashcards, Aprender,
                     repetición espaciada, retos de opción múltiple y analítica
                     local. Los escenarios, comparaciones interactivas, simulador
                     de examen y modo cram quedan para las siguientes fases.
