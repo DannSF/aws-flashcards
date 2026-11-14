@@ -22,9 +22,13 @@ npm run preview
 
 El selector **Curso activo** cambia toda la biblioteca, los filtros, las sesiones FSRS, las estadísticas y los retos. Recuerda el curso seleccionado al recargar. El curso original conserva sus 114 tarjetas, IDs y la clave `cloudrecall.progress.v1`: no se migra ni elimina ningún progreso existente.
 
-1. Descarga un archivo desde **Paquetes de ejemplo**: CLF-C02 avanzado, SAA-C03 o DevOps. Cada ejemplo contiene seis tarjetas y seis retos originales; son muestras, no temarios completos.
-2. Usa **Importar paquete JSON**. La vista previa muestra metadatos, temas, cantidades y una tarjeta de ejemplo.
-3. Confirma para añadir el curso y selecciónalo. Cancelar o recibir un error no escribe datos. Un ID de curso existente se rechaza para conservar su contenido y progreso.
+1. Pulsa **Añadir curso**. Arrastra un paquete JSON o usa **Elegir archivo**; también puedes abrir un ejemplo sin descargarlo.
+2. Revisa la vista previa: validación, temas, cantidades y una tarjeta de muestra. Los detalles técnicos quedan en un desplegable.
+3. Pulsa **Añadir y abrir curso** para comenzar directamente. Cancelar con Escape o cerrar el diálogo no escribe datos. Un ID existente se rechaza para conservar su contenido y progreso.
+
+El diálogo permite descargar cada JSON. **Python desde cero** incluye ocho tarjetas y ocho retos sobre tipos, funciones, archivos y errores; CLF-C02 avanzado, SAA-C03 y DevOps incluyen seis de cada uno. Son muestras, no temarios completos. Para probar la importación manual, descarga `public/packages/python-fundamentos.json` y selecciónalo en **Elegir archivo**.
+
+La preferencia de tema se aplica en el `<head>` antes de cargar React y el CSS, con un fondo inicial coherente para evitar destellos blancos al recargar en modo oscuro.
 
 Los paquetes se guardan en `cloudrecall.packages.v2`. Cada curso nuevo usa `cloudrecall.course.<id>.progress.v1`; el objetivo diario, las sesiones, la programación, los repasos y los intentos de reto son independientes. Ajustes exporta/importa/restablece solo el progreso del curso activo. Las copias nuevas incluyen `courseId` y rechazan restauraciones en otro curso; las copias antiguas sin ese campo siguen funcionando en el curso original. Conserva también el JSON del paquete para poder restaurar un curso en otro navegador. Un catálogo ilegible se conserva y bloquea nuevas importaciones.
 

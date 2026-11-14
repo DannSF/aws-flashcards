@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useId, useRef } from "react";
 import type { LucideIcon } from "lucide-react";
 import { Check, ChevronRight, Sparkles, X } from "lucide-react";
 import { cards } from "../lib/catalog";
@@ -148,6 +148,7 @@ export function Dialog({
   children: React.ReactNode;
 }) {
   const ref = useRef<HTMLDialogElement>(null);
+  const titleId = useId();
   useEffect(() => {
     const d = ref.current;
     d?.showModal();
@@ -157,6 +158,7 @@ export function Dialog({
     <dialog
       ref={ref}
       className="dialog"
+      aria-labelledby={titleId}
       onCancel={onClose}
       onClick={(e) => {
         if (e.target === e.currentTarget) {
@@ -172,7 +174,7 @@ export function Dialog({
       }}
     >
       <div className="dialog-header">
-        <h2>{title}</h2>
+        <h2 id={titleId}>{title}</h2>
         <button
           className="icon-button"
           aria-label="Cerrar diálogo"
