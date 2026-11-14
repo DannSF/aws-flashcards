@@ -37,6 +37,7 @@ import {
   WeakCards,
   Dialog,
 } from "./components/StudyWidgets";
+import { CourseSwitcher } from "./components/CourseSwitcher";
 import { Challenge } from "./pages/Challenge";
 import { Dashboard } from "./pages/Dashboard";
 import { createEmptyCard } from "ts-fsrs";
@@ -360,13 +361,7 @@ function App({ coursesContent, showCourses, onOpenCourses, onLeaveCourses, cours
         </nav>
         <div className="sidebar-rule" />
         <div className="workspace-label">CURSO ACTIVO</div>
-        <div className="sidebar-course-picker">
-          <BookOpen size={18} aria-hidden="true" />
-          <label className="sr-only" htmlFor="active-course-select">Curso activo</label>
-          <select id="active-course-select" value={activeCourse.id} onChange={e => { const course = courseList.find(c => c.id === e.target.value); if (course) { onSelectCourse(course); setMobile(false); } }}>
-            {courseList.map(c => <option key={c.id} value={c.id}>{c.title}</option>)}
-          </select>
-        </div>
+        <CourseSwitcher courses={courseList} activeId={activeCourse.id} onSelect={course => { onSelectCourse(course); setMobile(false); }} />
         <nav aria-label="Aprender en el curso activo">
           {nav.map(({ page: p, label, icon: Icon }) => (
             <button key={p} className={`nav-item ${!showCourses && page === p ? "active" : ""}`} aria-current={!showCourses && page === p ? 'page' : undefined} onClick={() => { if (p === "study" && !started) startStudy(); else go(p); }}>
