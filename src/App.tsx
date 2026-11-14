@@ -361,7 +361,7 @@ function App({ coursesContent, showCourses, onOpenCourses, onLeaveCourses, cours
         </nav>
         <div className="sidebar-rule" />
         <div className="workspace-label">CURSO ACTIVO</div>
-        <CourseSwitcher courses={courseList} activeId={activeCourse.id} onSelect={course => { onSelectCourse(course); setMobile(false); }} />
+        <CourseSwitcher courses={courseList} activeId={activeCourse.id} onManage={() => { onOpenCourses(); setMobile(false); }} onSelect={course => { onSelectCourse(course); setMobile(false); }} />
         <nav aria-label="Aprender en el curso activo">
           {nav.map(({ page: p, label, icon: Icon }) => (
             <button key={p} className={`nav-item ${!showCourses && page === p ? "active" : ""}`} aria-current={!showCourses && page === p ? 'page' : undefined} onClick={() => { if (p === "study" && !started) startStudy(); else go(p); }}>
